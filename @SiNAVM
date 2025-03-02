@@ -84,7 +84,8 @@
       "outbounds": [
         "auto",
         "direct",
-        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
+        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
       ],
       "tag": "proxy",
       "type": "selector"
@@ -92,7 +93,8 @@
     {
       "interval": "10m",
       "outbounds": [
-        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
+        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
       ],
       "tag": "auto",
       "tolerance": 50,
@@ -128,6 +130,34 @@
         "insecure": true
       },
       "type": "hysteria2"
+    },
+    {
+      "down_mbps": 10,
+      "obfs": {
+        "password": "@SiNAVM",
+        "type": "salamander"
+      },
+      "password": "SiNAVM-@SiNAVM",
+      "server": "sinavm.sinabigo.ir",
+      "server_port": 80,
+      "tag": "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+      "tls": {
+        "ech": {
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "ADn+DQA1AAAgACCLCX9Y4Cj08KLCAAC8P35SXwXKYbkrf5yCezMoNEOAIwAIAAEA",
+            "AQABAAMAAicnAAA=",
+            "-----END ECH CONFIGS-----"
+          ],
+          "dynamic_record_sizing_disabled": null,
+          "enabled": true,
+          "pq_signature_schemes_enabled": null
+        },
+        "enabled": true,
+        "insecure": true
+      },
+      "type": "hysteria2",
+      "up_mbps": 10
     }
   ],
   "route": {
