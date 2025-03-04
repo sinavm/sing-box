@@ -85,7 +85,8 @@
         "auto",
         "direct",
         "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
-        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
       ],
       "tag": "proxy",
       "type": "selector"
@@ -94,7 +95,8 @@
       "interval": "10m",
       "outbounds": [
         "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
-        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
       ],
       "tag": "auto",
       "tolerance": 50,
@@ -107,7 +109,7 @@
     },
     {
       "obfs": {
-        "password": "@SiNAVM",
+        "password": "@SiNAVM-@SiNAVM",
         "type": "salamander"
       },
       "password": "SiNAVM-@SiNAVM",
@@ -115,26 +117,30 @@
       "server_port": 443,
       "tag": "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
       "tls": {
+        "alpn": [
+          "h3"
+        ],
         "ech": {
           "config": [
             "-----BEGIN ECH CONFIGS-----",
-            "ADn+DQA1AAAgACAScEQjsYbGD9CnLe99TFEtQEPjSGkSmoKSsyQdEMReCQAIAAEA",
+            "ADn+DQA1AAAgACD7A22bR3IMTk6hgHGXUqR2kWlhooi7npryl/sdlMhhGwAIAAEA",
             "AQABAAMAAicnAAA=",
             "-----END ECH CONFIGS-----"
           ],
           "dynamic_record_sizing_disabled": null,
           "enabled": true,
-          "pq_signature_schemes_enabled": null
+          "pq_signature_schemes_enabled": false
         },
         "enabled": true,
-        "insecure": true
+        "insecure": true,
+        "max_version": "1.3",
+        "min_version": "1.3"
       },
       "type": "hysteria2"
     },
     {
-      "down_mbps": 10,
       "obfs": {
-        "password": "@SiNAVM",
+        "password": "@SiNAVM-@SiNAVM",
         "type": "salamander"
       },
       "password": "SiNAVM-@SiNAVM",
@@ -142,10 +148,13 @@
       "server_port": 80,
       "tag": "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
       "tls": {
+        "alpn": [
+          "h3"
+        ],
         "ech": {
           "config": [
             "-----BEGIN ECH CONFIGS-----",
-            "ADn+DQA1AAAgACCLCX9Y4Cj08KLCAAC8P35SXwXKYbkrf5yCezMoNEOAIwAIAAEA",
+            "ADn+DQA1AAAgACColYKL/Osqj3TWg9kGVa2jsnHCD8DN0oUhjzDLfpb1FAAIAAEA",
             "AQABAAMAAicnAAA=",
             "-----END ECH CONFIGS-----"
           ],
@@ -154,10 +163,42 @@
           "pq_signature_schemes_enabled": null
         },
         "enabled": true,
-        "insecure": true
+        "insecure": true,
+        "max_version": "1.3",
+        "min_version": "1.3"
       },
-      "type": "hysteria2",
-      "up_mbps": 10
+      "type": "hysteria2"
+    },
+    {
+      "obfs": {
+        "password": "@SiNAVM-@SiNAVM",
+        "type": "salamander"
+      },
+      "password": "SiNAVM-@SiNAVM",
+      "server": "sinavm.sinabigo.ir",
+      "server_port": 8080,
+      "tag": "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "ech": {
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "ADn+DQA1AAAgACA/sV1ucFExCwmz6eRNZtjdcuXhnSAZdL5bTR86pXnfGQAIAAEA",
+            "AQABAAMAAicnAAA=",
+            "-----END ECH CONFIGS-----"
+          ],
+          "dynamic_record_sizing_disabled": null,
+          "enabled": true,
+          "pq_signature_schemes_enabled": null
+        },
+        "enabled": true,
+        "insecure": true,
+        "max_version": "1.3",
+        "min_version": "1.3"
+      },
+      "type": "hysteria2"
     }
   ],
   "route": {
