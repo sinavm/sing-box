@@ -109,7 +109,7 @@
     },
     {
       "obfs": {
-        "password": "@SiNAVM-@SiNAVM",
+        "password": "@SiNAVM",
         "type": "salamander"
       },
       "password": "SiNAVM-@SiNAVM",
@@ -143,7 +143,7 @@
         "password": "@SiNAVM-@SiNAVM",
         "type": "salamander"
       },
-      "password": "SiNAVM-@SiNAVM",
+      "password": "SiNAVM",
       "server": "sinavm.sinabigo.ir",
       "server_port": 80,
       "tag": "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
