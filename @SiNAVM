@@ -1,115 +1,225 @@
 {
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
   "dns": {
-    "final": "local-dns",
-    "rules": [
-      {
-        "action": "route",
-        "clash_mode": "Global",
-        "server": "proxy-dns",
-        "source_ip_cidr": [
-          "172.19.0.0/30",
-          "fdfe:dcba:9876::1/126"
-        ]
-      },
-      {
-        "action": "route",
-        "server": "proxy-dns",
-        "source_ip_cidr": [
-          "172.19.0.0/30",
-          "fdfe:dcba:9876::1/126"
-        ]
-      },
-      {
-        "action": "route",
-        "clash_mode": "Direct",
-        "server": "direct-dns"
-      },
-      {
-        "action": "route",
-        "rule_set": [
-          "geosite-ir"
-        ],
-        "server": "direct-dns"
-      }
-    ],
     "servers": [
       {
-        "address": "tcp://8.8.8.8",
-        "address_resolver": "local-dns",
-        "detour": "proxy",
-        "tag": "proxy-dns"
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_direct",
+        "strategy": "prefer_ipv4",
+        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
       },
       {
-        "address": "local",
-        "detour": "direct",
-        "tag": "local-dns"
+        "tag": "dns_proxy_ipv4",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_direct",
+        "strategy": "ipv4_only",
+        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
       },
       {
+        "tag": "dns_direct",
         "address": "local",
-        "detour": "direct",
-        "tag": "direct-dns"
+        "strategy": "prefer_ipv4",
+        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://success"
       }
     ],
-    "strategy": "prefer_ipv4"
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_direct"
+      },
+      {
+        "rule_set": [
+          "geosite-category-ads-all",
+          "geosite-malware",
+          "geosite-phishing",
+          "geosite-cryptominers"
+        ],
+        "server": "dns_block",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-ir",
+        "server": "dns_direct"
+      },
+      {
+        "rule_set": "geosite-meta",
+        "server": "dns_proxy_ipv4"
+      }
+    ],
+    "final": "dns_proxy",
+    "independent_cache": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "ir.pool.ntp.org",
+    "server_port": 123,
+    "detour": "direct"
   },
   "inbounds": [
     {
+      "type": "tun",
+      "mtu": 9000,
       "address": [
         "172.19.0.1/30",
         "fdfe:dcba:9876::1/126"
       ],
       "auto_route": true,
-      "endpoint_independent_nat": false,
-      "mtu": 9000,
+      "strict_route": true,
+      "stack": "mixed",
       "platform": {
         "http_proxy": {
           "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 2080
+          "server": "",
+          "server_port": 20122
         }
       },
-      "stack": "system",
-      "strict_route": false,
-      "type": "tun"
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only"
     },
     {
+      "type": "socks",
+      "tag": "socks-in",
       "listen": "127.0.0.1",
-      "listen_port": 2080,
+      "listen_port": 2333,
+      "domain_strategy": "prefer_ipv4"
+    },
+    {
       "type": "mixed",
-      "users": []
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
+      "listen_port": 2080,
+      "sniff": true
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "0.0.0.0",
+      "listen_port": 6450,
+      "override_address": "8.8.8.8",
+      "override_port": 53
     }
   ],
   "outbounds": [
     {
+      "type": "selector",
+      "tag": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
       "outbounds": [
-        "auto",
-        "direct",
-        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
-        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
-        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
-      ],
-      "tag": "proxy",
-      "type": "selector"
+        "T.me/SiNAVM  👈🏻تلگرام ",
+        "🏎️ Hysteria",
+        "☄️Vless",
+        "🤸‍♂️ShadowTLS",
+        "⚡️Star-Link"
+      ]
     },
     {
-      "interval": "10m",
-      "outbounds": [
-        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
-        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
-        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام"
-      ],
-      "tag": "auto",
-      "tolerance": 50,
       "type": "urltest",
-      "url": "http://www.gstatic.com/generate_204"
+      "tag": "T.me/SiNAVM  👈🏻تلگرام ",
+      "outbounds": [
+        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➊",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➋",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➌",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➍",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➎",
+        "👉🏻@KevinZakarian",
+        "👉🏻@azadi_az_inja_migzare",
+        "🇬🇧 YAPC IPv6Only",
+        "👉🏻@Ln2Ray",
+        "𝐒𝐕𝐌 | 👉🏻@SiNAVM",
+        "SiNAVM-germany-fast",
+        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇨🇦@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇪🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇫🇮@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇫🇷@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇮🇹@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇳🇵@SiNAVM👈🏻کانفیگ رایگان ",
+        "🇪🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام§1",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐁𝐢𝐆𝐎👈🏻کانال تلگرام§4",
+        "SiNAVM-usa-fast",
+        "🇵🇷@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇩🇪 IRCP",
+        "🇨🇭@𝕊𝕚ℕ𝔸𝕍𝕄👈کانال تلگرام § 9",
+        "@𝕊𝕚ℕ𝔸𝔹𝕚𝔾𝕆🇳🇱",
+        "↩️"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "3m0s"
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "type": "urltest",
+      "tag": "🏎️ Hysteria",
+      "outbounds": [
+        "🇳🇱@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
+        "👉🏻@KevinZakarian",
+        "👉🏻@azadi_az_inja_migzare",
+        "🇬🇧 YAPC IPv6Only",
+        "👉🏻@Ln2Ray",
+        "𝐒𝐕𝐌 | 👉🏻@SiNAVM"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "☄️Vless",
+      "outbounds": [
+        "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇨🇦@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇪🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇫🇮@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇫🇷@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇮🇹@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "🇳🇵@SiNAVM👈🏻کانفیگ رایگان ",
+        "🇪🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام§1",
+        "🇩🇪@𝐒𝐢𝐍𝐀𝐁𝐢𝐆𝐎👈🏻کانال تلگرام§4",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➊",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➋",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➌",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➍",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠 ➎",
+        "🇵🇷@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+        "SiNAVM-usa-fast",
+        "🇩🇪 IRCP",
+        "🇨🇭@𝕊𝕚ℕ𝔸𝕍𝕄👈کانال تلگرام § 9"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "🤸‍♂️ShadowTLS",
+      "outbounds": [
+        "@𝕊𝕚ℕ𝔸𝔹𝕚𝔾𝕆🇳🇱",
+        "↩️"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "⚡️Star-Link",
+      "outbounds": [
+        "SiNAVM-germany-fast"
+     
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
     },
     {
       "obfs": {
-        "password": "@SiNAVM",
+        "password": "@SiNAVM-@SiNAVM",
         "type": "salamander"
       },
       "password": "SiNAVM-@SiNAVM",
@@ -143,7 +253,7 @@
         "password": "@SiNAVM-@SiNAVM",
         "type": "salamander"
       },
-      "password": "SiNAVM",
+      "password": "SiNAVM-@SiNAVM",
       "server": "sinavm.sinabigo.ir",
       "server_port": 80,
       "tag": "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌 👈🏻کانال تلگرام",
@@ -199,82 +309,919 @@
         "min_version": "1.3"
       },
       "type": "hysteria2"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "👉🏻@KevinZakarian",
+      "server": "keviny.iserver.store",
+      "server_port": 8443,
+      "obfs": {
+        "type": "salamander",
+        "password": "@KevinZakarian"
+      },
+      "password": "@KevinZakarian",
+      "tls": {
+        "enabled": true,
+        "insecure": true
+      }
+    },
+
+    {
+      "type": "hysteria2",
+      "tag": "👉🏻@azadi_az_inja_migzare",
+      "domain_strategy": "ipv4_only",
+      "server": "yet-another-public-config-1.flazzard.com",
+      "server_port": 0,
+      "server_ports": "35000:45000",
+      "hop_interval": "30s",
+      "obfs": {
+        "type": "salamander",
+        "password": "yet-another-public-config-1"
+      },
+      "password": "yet-another-public-config-1",
+      "tls": {
+        "enabled": true,
+        "server_name": "yet-another-public-config-1.qpal.us.kg",
+        "alpn": "h3",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "ech": {
+          "enabled": true,
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "AEr+DQBGAAAgACCHxu43IXY1+1o63pQc6j+D64SYcIh7Mn2fhzLbSUp3RgAIAAEA",
+            "AQABAAMAE2hvbWEuY3lic2VjZ3VydS5jb20AAA==",
+            "-----END ECH CONFIGS-----"
+          ]
+        }
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "🇬🇧 YAPC IPv6Only",
+      "domain_strategy": "ipv6_only",
+      "server": "yet-another-public-config-1-ipv6.flazzard.com",
+      "server_port": 0,
+      "server_ports": "35000:45000",
+      "hop_interval": "10s",
+      "obfs": {
+        "type": "salamander",
+        "password": "yet-another-public-config-1"
+      },
+      "password": "yet-another-public-config-1",
+      "tls": {
+        "enabled": true,
+        "server_name": "yet-another-public-config-1.qpal.us.kg",
+        "alpn": "h3",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "ech": {
+          "enabled": true,
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "AEr+DQBGAAAgACCHxu43IXY1+1o63pQc6j+D64SYcIh7Mn2fhzLbSUp3RgAIAAEA",
+            "AQABAAMAE2hvbWEuY3lic2VjZ3VydS5jb20AAA==",
+            "-----END ECH CONFIGS-----"
+          ]
+        }
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "👉🏻@Ln2Ray",
+      "domain_strategy": "ipv6_only",
+      "server": "h2.88981401.xyz",
+      "server_port": 443,
+      "password": "yVdMahZlkkgk",
+      "tls": {
+        "enabled": true,
+        "server_name": "hy2.55994421.xyz",
+        "alpn": "h3",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "ech": {
+          "enabled": true,
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "AFf+DQBTAAAgACBgC+U935o5TbXkGxia/GgQYBb3+goW2Z0l/6se3ObxZwAIAAEA",
+            "AQABAAMAIFstLXBxLXNpZ25hdHVyZS1zY2hlbWVzLWVuYWJsZWRdAAA=",
+            "-----END ECH CONFIGS-----"
+          ]
+        }
+      }
+    },
+    {
+      "type": "hysteria2",
+      "tag": "𝐒𝐕𝐌 | 👉🏻@SiNAVM",
+      "domain_strategy": "prefer_ipv6",
+      "server": "h2.88981401.xyz",
+      "server_port": 443,
+      "password": "yVdMahZlkkgk",
+      "tls": {
+        "enabled": true,
+        "server_name": "hy2.55994421.xyz",
+        "alpn": "h3",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "ech": {
+          "enabled": true,
+          "pq_signature_schemes_enabled": true,
+          "config": [
+            "-----BEGIN ECH CONFIGS-----",
+            "AFf+DQBTAAAgACBgC+U935o5TbXkGxia/GgQYBb3+goW2Z0l/6se3ObxZwAIAAEA",
+            "AQABAAMAIFstLXBxLXNpZ25hdHVyZS1zY2hlbWVzLWVuYWJsZWRdAAA=",
+            "-----END ECH CONFIGS-----"
+          ]
+        }
+      }
+    },
+    
+    {
+      "type": "vless",
+      "tag": "SiNAVM-germany-fast",
+      "server": "direct.pdownloaddigikala.ir",
+      "server_port": 443,
+      "uuid": "eacc24ed-a1c1-4037-9af4-4f6bcd657119",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "direct.pdownloaddigikala.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "Rcapy_5gvuL9LOr1Bqz-Y84P69L3wUQjG48xpB4fLTA",
+          "short_id": "1d13151ce1"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+
+    {
+      "type": "vless",
+      "tag": "🇸🇪@𝐒𝐢𝐍𝐀𝐕𝐌⭐§0",
+      "server": "live.wkrq.com",
+      "server_port": 443,
+      "uuid": "36b000c5-1e99-439c-8152-1e77530a171e",
+      "tls": {
+        "enabled": true,
+        "server_name": "live.wkrq.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/downloader",
+        "headers": {
+          "Host": "peacefulpigs.ir"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇬🇷@𝐒𝐢𝐍𝐀𝐕𝐌⭐§1",
+      "server": "live.wkrq.com",
+      "server_port": 443,
+      "uuid": "50bdcd85-5bc8-4381-9ec7-19f66cdbd23a",
+      "tls": {
+        "enabled": true,
+        "server_name": "live.wkrq.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/ws",
+        "headers": {
+          "Host": "eitaa.com"
+        },
+        "max_early_data": 2048,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vmess",
+      "tag": "🇦🇩@𝐒𝐢𝐍𝐀𝐁𝐢𝐆𝐎👈🏻کانال تلگرام",
+      "server": "live.wkrq.com",
+      "server_port": 443,
+      "uuid": "6f460f93-337a-49c8-b6d8-c9be4cbc5a13",
+      "security": "auto",
+      "authenticated_length": true,
+      "tls": {
+        "enabled": true,
+        "server_name": "live.wkrq.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/ws",
+        "headers": {
+          "Host": "namnakt.com"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇦@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانفیگ رایگان ",
+      "server": "upload.moviesaparat.ddns-ip.net",
+      "server_port": 80,
+      "uuid": "483c2dc5-786d-4cd1-bd97-b8ca2c14af92",
+      "transport": {
+        "type": "ws",
+        "path": "/free_intnet",
+        "headers": {
+          "Host": "upload.moviesaparat.ddns-ip.net"
+        },
+        "max_early_data": 61555,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+
+
+    {
+      "type": "vless",
+      "tag": "🇺🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 2087,
+      "uuid": "30254c31-8e12-4943-b6cb-0ca037ef6f47",
+      "tls": {
+        "enabled": true,
+        "server_name": "peacefulpigs.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/random",
+        "headers": {
+          "Host": "peacefulpigs.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇦@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 443,
+      "uuid": "4e125438-1a39-440e-95fc-36b9dec03e5f",
+      "tls": {
+        "enabled": true,
+        "server_name": "adderall.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/random",
+        "headers": {
+          "Host": "adderall.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 8443,
+      "uuid": "0525f54a-568b-4f0b-89e5-c2666e800d83",
+      "tls": {
+        "enabled": true,
+        "server_name": "matoride.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/downloader",
+        "headers": {
+          "Host": "matoride.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇪🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 2087,
+      "uuid": "904cdf83-1b0c-4cd5-a0c1-6690c1ee6219",
+      "tls": {
+        "enabled": true,
+        "server_name": "rita.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/downloader",
+        "headers": {
+          "Host": "rita.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇫🇮@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 2087,
+      "uuid": "95db402b-6288-4241-8810-0be7d317401d",
+      "tls": {
+        "enabled": true,
+        "server_name": "ritalin.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/downloader",
+        "headers": {
+          "Host": "ritalin.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇫🇷@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 443,
+      "uuid": "1b7110d8-26c7-420e-98c9-6bf82012bb73",
+      "tls": {
+        "enabled": true,
+        "server_name": "baguette.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/random",
+        "headers": {
+          "Host": "baguette.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇮🇹@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 8443,
+      "uuid": "1eb16f02-dd2c-4a7b-8c46-34e1a62875f5",
+      "tls": {
+        "enabled": true,
+        "server_name": "avid.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/downloader",
+        "headers": {
+          "Host": "avid.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+
+
+    {
+      "type": "vless",
+      "tag": "🇳🇵@SiNAVM👈🏻کانفیگ رایگان ",
+      "server": "2a0b:4140:659a:6::6",
+      "server_port": 33000,
+      "uuid": "94c3155b-5252-4d66-bead-06b2e489f658",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.speedtest.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "JrN7nZEbUeBJFHTAKwtz5Dmd10SGgA8UCHEMLA2xOg0",
+          "short_id": "be7f13dd"
+        }
+      },
+      "transport": {
+        "type": "grpc",
+        "service_name": "b",
+        "idle_timeout": "15s",
+        "ping_timeout": "15s"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇬🇧@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام§",
+      "server": "9.141.19.84",
+      "server_port": 443,
+      "uuid": "8f6566c5-f40a-48c4-91be-73ac0d3ff213",
+      "tls": {
+        "enabled": true,
+        "disable_sni": true,
+        "alpn": "h3"
+      },
+      "transport": {
+        "type": "quic"
+      },
+      "packet_encoding": "xudp"
+    },
+   {
+      "type": "vless",
+      "tag": "🇧🇾@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام§0",
+      "server": "104.26.14.85",
+      "server_port": 80,
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "a.xn--i-sx6a60i.us.kg."
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+
+{
+      "type": "vless",
+      "tag": "🇪🇸@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام§1",
+      "server": "104.21.56.44",
+      "server_port": 443,
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "tls": {
+        "enabled": true,
+        "server_name": "301.POoRIam.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/Ewn8AiCso7BnkGtV",
+        "headers": {
+          "Host": "301.pooriam.ir"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+
+    {
+      "type": "vless",
+      "tag": "🇩🇪@𝐒𝐢𝐍𝐀𝐁𝐢𝐆𝐎👈🏻کانال تلگرام§4",
+      "domain_strategy": "prefer_ipv6",
+      "server": "all-v6.cybsecguru.com",
+      "server_port": 44441,
+      "uuid": "ec8a65ad-aafc-4095-9b8c-ea10890ca629",
+      "tls": {
+        "enabled": true,
+        "server_name": "tile.openstreetmap.org",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "h-tx4d8yBKf5Cevu1bPJZwrSxT3kCkaMESHBIofaalo",
+          "short_id": "be4243"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠 ➊",
+      "server": "www.speedtest.net",
+      "server_port": 443,
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "tls": {
+        "enabled": true,
+        "server_name": "redfree8w.pooriam.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/sinavm-sinavm",
+        "headers": {
+          "Host": "redfree8w.pooriam.ir"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠 ➋",
+      "server": "104.21.56.44",
+      "server_port": 443,
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "tls": {
+        "enabled": true,
+        "server_name": "redfree8w.pooriam.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/sinavm-sinavm",
+        "headers": {
+          "Host": "redfree8w.pooriam.ir"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠 ➌",
+      "server": "104.21.56.44",
+      "server_port": 443,
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "tls": {
+        "enabled": true,
+        "server_name": "reDFrEE8-304.POorIaM.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/sinavm-sinavm",
+        "headers": {
+          "Host": "redfree8-304.pooriam.ir"
+        },
+        "max_early_data": 2550,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "trojan",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠 ➍",
+      "server": "www.speedtest.net",
+      "server_port": 443,
+      "password": "Pooria",
+      "tls": {
+        "enabled": true,
+        "server_name": "redfree8w.pooriam.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/trJF1XisQEbWZpxEHh",
+        "headers": {
+          "Host": "redfree8w.pooriam.ir"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠 ➎",
+      "server": "www.speedtest.net",
+      "server_port": 80,
+      "password": "Pooria",
+      "transport": {
+        "type": "ws",
+        "path": "/trLwW5jwrnymnOdqki",
+        "headers": {
+          "Host": "redfree8w.pooriam.ir"
+        },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇵🇷@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام ",
+      "server": "zula.ir",
+      "server_port": 2087,
+      "uuid": "30254c31-8e12-4943-b6cb-0ca037ef6f47",
+      "tls": {
+        "enabled": true,
+        "server_name": "peacefulpigs.adaspoloandco.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/random",
+        "headers": {
+          "Host": "peacefulpigs.adaspoloandco.com"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+{
+      "type": "vless",
+      "tag": "SiNAVM-usa-fast",
+      "server": "rocwin-casino.de",
+      "server_port": 443,
+      "uuid": "e712562e-fff7-4668-83d3-8b77c05ea2ca",
+      "tls": {
+        "enabled": true,
+        "server_name": "maHSA.panOtOSU.STore",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/EcdiHtkYFCK2NIo7/MTMyLjIyNi4xMzEuNA==",
+        "headers": {
+          "Host": "mahsa.panotosu.store"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "🇩🇪 IRCP",
+      "domain_strategy": "ipv4_only",
+      "server": "mods.lnmarketplace.net",
+      "server_port": 443,
+      "uuid": "9e55e24c-8de9-4357-8a37-9cf1212c6491",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "mods.lnmarketplace.net",
+        "alpn": "h2",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇨🇭@𝕊𝕚ℕ𝔸𝕍𝕄👈کانال تلگرام § 9",
+      "server": "www.speedtest.net",
+      "server_port": 80,
+      "uuid": "53fa8faf-ba4b-4322-9c69-a3e5b1555049",
+      "transport": {
+        "type": "ws",
+        "path": "/No0b7KFvNtbAEJWV",
+        "headers": {
+          "Host": "301.pooriam.ir"
+        },
+        "max_early_data": 2096,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "@𝕊𝕚ℕ𝔸𝔹𝕚𝔾𝕆🇳🇱",
+      "detour": "↩️",
+      "server": "127.0.0.1",
+      "server_port": 1080,
+      "method": "chacha20-ietf-poly1305",
+      "password": "1bd9d418-335e-42f0-a83c-257f3917d773",
+      "udp_over_tcp": true
+    },
+    {
+      "type": "shadowtls",
+      "tag": "↩️",
+      "server": "hys10.afsharidempire.uk",
+      "server_port": 443,
+      "version": 3,
+      "password": "1bd9d418-335e-42f0-a83c-257f3917d773",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
     }
   ],
   "route": {
-    "auto_detect_interface": true,
-    "final": "proxy",
-    "rule_set": [
-      {
-        "download_detour": "direct",
-        "format": "binary",
-        "tag": "geosite-ads",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
-        "tag": "geosite-private",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
-        "tag": "geosite-ir",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
-        "tag": "geoip-private",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
-        "tag": "geoip-ir",
-        "type": "remote",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
-      }
-    ],
     "rules": [
       {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          }
+        ],
         "action": "sniff"
       },
       {
-        "action": "route",
-        "clash_mode": "Direct",
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          }
+        ],
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "ip_is_private": true,
         "outbound": "direct"
       },
       {
-        "action": "route",
-        "clash_mode": "Global",
-        "outbound": "proxy"
+        "clash_mode": "Hysteria",
+        "outbound": "🏎️ Hysteria"
       },
       {
-        "action": "hijack-dns",
-        "protocol": "dns"
+        "clash_mode": "Vless",
+        "outbound": "☄️Vless"
       },
       {
-        "action": "route",
-        "outbound": "direct",
+        "clash_mode": "ShadowTLS",
+        "outbound": "🤸‍♂️ShadowTLS"
+      },
+      {
+        "clash_mode": "Star-Link",
+        "outbound": "⚡️Star-Link"
+      },
+      {
+        "protocol": "quic",
+        "outbound": "block"
+      },
+      {
         "rule_set": [
-          "geoip-private",
-          "geosite-private",
+          "geosite-category-ads-all",
+          "geosite-malware",
+          "geosite-phishing",
+          "geosite-cryptominers",
+          "geoip-malware",
+          "geoip-phishing"
+        ],
+        "action": "reject",
+        "method": "default"
+      },
+      {
+        "rule_set": [
           "geosite-ir",
           "geoip-ir"
-        ]
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-ir",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
       },
       {
-        "action": "reject",
-        "rule_set": [
-          "geosite-ads"
-        ]
+        "type": "remote",
+        "tag": "geosite-category-ads-all",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-category-ads-all.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-malware",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-malware.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-phishing",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-phishing.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cryptominers",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-cryptominers.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-ir",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-malware",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-malware.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-phishing",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-phishing.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-meta",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-meta.srs",
+        "download_detour": "direct",
+        "update_interval": "72h0m0s"
       }
-    ]
+    ],
+    "final": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true
+    },
+    "clash_api": {
+      "default_mode": "@𝕊𝕚ℕ𝔸𝕍𝕄"
+    }
   }
 }
