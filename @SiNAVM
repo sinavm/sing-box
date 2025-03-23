@@ -1,9 +1,10 @@
-# Copyright (c) 2025 Sina Bigo
-# All rights reserved.  
-# This configuration file is for personal use only. Redistribution, modification, or commercial use is prohibited without explicit permission
-//subscription-userinfo: upload=1073741824; download=1073741824; total=10995116277760; expire=2592000
-//support-url: https://t.me/sinavm
-//profile-web-page-url: https://t.me/sinavm
+// Copyright (c) 2025 Sina Bigo  
+// All rights reserved.  
+// This configuration file is for personal use only. Redistribution, modification, or commercial use is prohibited without explicit permission  
+
+//subscription-userinfo: upload=5368709120000; download=5368709120000; total=109951162777600000; used=5368709120; expire=2592000; update-interval=3600  
+//support-url: https://t.me/sinavm  
+//profile-web-page-url: https://t.me/sinavm  
 {
   "log": {
     "level": "warn",
