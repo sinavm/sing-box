@@ -7,7 +7,7 @@
 //profile-web-page-url: https://t.me/sinavm  
 {
   "log": {
-    "level": "warn",
+    "level": "panic",
     "timestamp": true
   },
   "dns": {
@@ -83,7 +83,7 @@
       "stack": "mixed",
       "platform": {
         "http_proxy": {
-          "enabled": true,
+          "enabled": false,
           "server": "",
           "server_port": 20122
         }
@@ -227,7 +227,7 @@
       "tag": "🇲🇩@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "morse-stank-most.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "morse-stank-most.stark-industries.solutions"
@@ -238,7 +238,7 @@
       "tag": "🇳🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "acre-cable-skip.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "acre-cable-skip.stark-industries.solutions"
@@ -249,7 +249,7 @@
       "tag": "🇳🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "copy-wifi-twins.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "copy-wifi-twins.stark-industries.solutions"
@@ -260,7 +260,7 @@
       "tag": "🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "eats-rigor-judge.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "eats-rigor-judge.stark-industries.solutions"
@@ -271,7 +271,7 @@
       "tag": "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "wispy-crib-net.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "wispy-crib-net.stark-industries.solutions"
@@ -282,7 +282,7 @@
       "tag": "🇧🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "chop-wrist-bud.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "chop-wrist-bud.stark-industries.solutions"
@@ -293,7 +293,7 @@
       "tag": "🇨🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "both-cramp-banjo.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "both-cramp-banjo.stark-industries.solutions"
@@ -304,7 +304,7 @@
       "tag": "🇺🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "keep-chess-self.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "keep-chess-self.stark-industries.solutions"
@@ -315,7 +315,7 @@
       "tag": "🇵🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "tag-frown-lying.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "tag-frown-lying.stark-industries.solutions"
@@ -326,7 +326,7 @@
       "tag": "🇦🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "cushy-coil-chaos.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "cushy-coil-chaos.stark-industries.solutions"
@@ -337,7 +337,7 @@
       "tag": "🇭🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "skate-whole-old.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "skate-whole-old.stark-industries.solutions"
@@ -348,7 +348,7 @@
       "tag": "🇱🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "stem-entry-gala.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "stem-entry-gala.stark-industries.solutions"
@@ -359,7 +359,7 @@
       "tag": "🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "boss-tutu-fled.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "boss-tutu-fled.stark-industries.solutions"
@@ -370,7 +370,7 @@
       "tag": "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "cadet-woven-march.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "cadet-woven-march.stark-industries.solutions"
@@ -381,7 +381,7 @@
       "tag": "🇷🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "slaw-hush-agile.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "slaw-hush-agile.stark-industries.solutions"
@@ -392,7 +392,7 @@
       "tag": "🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "share-basil-gills.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "share-basil-gills.stark-industries.solutions"
@@ -403,7 +403,7 @@
       "tag": "🇺🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "patch-lint-hazel.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "patch-lint-hazel.stark-industries.solutions"
@@ -414,7 +414,7 @@
       "tag": "🇮🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "bring-glove-shine.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "bring-glove-shine.stark-industries.solutions"
@@ -425,7 +425,7 @@
       "tag": "🇬🇧@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "ankle-straw-untie.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "ankle-straw-untie.stark-industries.solutions"
@@ -436,7 +436,7 @@
       "tag": "🇪🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "tag-stump-ranch.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "tag-stump-ranch.stark-industries.solutions"
@@ -447,7 +447,7 @@
       "tag": "🇬🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "stem-omen-area.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "stem-omen-area.stark-industries.solutions"
@@ -458,7 +458,7 @@
       "tag": "🇮🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "slang-pecan-lever.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "slang-pecan-lever.stark-industries.solutions"
@@ -469,7 +469,7 @@
       "tag": "🇨🇭@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "crazy-grope-jeep.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "crazy-grope-jeep.stark-industries.solutions"
@@ -480,7 +480,7 @@
       "tag": "🇭🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "sleep-boots-motor.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "sleep-boots-motor.stark-industries.solutions"
@@ -491,7 +491,7 @@
       "tag": "🇷🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "guy-trace-lyric.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "guy-trace-lyric.stark-industries.solutions"
@@ -502,7 +502,7 @@
       "tag": "🇹🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "dried-chow-kite.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "dried-chow-kite.stark-industries.solutions"
@@ -513,7 +513,7 @@
       "tag": "🇪🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "strut-brisk-scope.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "strut-brisk-scope.stark-industries.solutions"
@@ -524,7 +524,7 @@
       "tag": "🇷🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "gong-aqua-rhyme.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "gong-aqua-rhyme.stark-industries.solutions"
@@ -535,7 +535,7 @@
       "tag": "🇫🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "thaw-gut-jelly.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "thaw-gut-jelly.stark-industries.solutions"
@@ -546,7 +546,7 @@
       "tag": "🇸🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "rash-scorn-glue.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "rash-scorn-glue.stark-industries.solutions"
@@ -557,7 +557,7 @@
       "tag": "🇧🇬@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "cache-giver-wife.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "cache-giver-wife.stark-industries.solutions"
@@ -568,7 +568,7 @@
       "tag": "🇨🇿@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "bats-paper-chump.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "bats-paper-chump.stark-industries.solutions"
@@ -579,7 +579,7 @@
       "tag": "🇸🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "nacho-rerun-crepe.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "nacho-rerun-crepe.stark-industries.solutions"
@@ -590,7 +590,7 @@
       "tag": "🇱🇻@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "dig-cage-gala.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "dig-cage-gala.stark-industries.solutions"
@@ -601,7 +601,7 @@
       "tag": "🇮🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "trap-movie-power.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "trap-movie-power.stark-industries.solutions"
@@ -612,7 +612,7 @@
       "tag": "🇯🇵@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "lemon-gas-army.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "lemon-gas-army.stark-industries.solutions"
@@ -623,7 +623,7 @@
       "tag": "🇧🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "wake-bagel-tall.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "wake-bagel-tall.stark-industries.solutions"
@@ -634,7 +634,7 @@
       "tag": "🇸🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "lazy-work-poppy.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "lazy-work-poppy.stark-industries.solutions"
@@ -645,7 +645,7 @@
       "tag": "🇦🇲@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "upon-wimp-legal.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "upon-wimp-legal.stark-industries.solutions"
@@ -656,7 +656,7 @@
       "tag": "🇲🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "snarl-dish-cloth.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "snarl-dish-cloth.stark-industries.solutions"
@@ -667,7 +667,7 @@
       "tag": "🇱🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "parka-limit-runny.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "parka-limit-runny.stark-industries.solutions"
@@ -678,7 +678,7 @@
       "tag": "🇰🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "vice-dove-flock.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "vice-dove-flock.stark-industries.solutions"
@@ -689,7 +689,7 @@
       "tag": "🇭🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
       "server": "dose-siren-pagan.stark-industries.solutions",
       "server_port": 443,
-      "password": "8264f515-90b6-4152-9830-7abc0ec215c6",
+      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
       "tls": {
         "enabled": true,
         "server_name": "dose-siren-pagan.stark-industries.solutions"
