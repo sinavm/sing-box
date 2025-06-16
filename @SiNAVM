@@ -14,107 +14,82 @@
   },
   "dns": {
     "servers": [
+        {
+        "tag": "default",
+        "address": "tls://8.8.8.8",
+        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
+      },
       {
-        "tag": "dns_proxy",
+        "tag": "local",
         "address": "https://1.1.1.1/dns-query",
-        "address_resolver": "dns_direct",
-        "strategy": "prefer_ipv4",
         "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
-      },
-      {
-        "tag": "dns_proxy_ipv4",
-        "address": "https://1.1.1.1/dns-query",
-        "address_resolver": "dns_direct",
-        "strategy": "ipv4_only",
-        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
-      },
-      {
-        "tag": "dns_direct",
-        "address": "local",
-        "strategy": "prefer_ipv4",
-        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
-      },
-      {
-        "tag": "dns_block",
-        "address": "rcode://success"
       }
+    
     ],
     "rules": [
       {
         "outbound": "any",
-        "server": "dns_direct"
-      },
-      {
-        "rule_set": [
-          "geosite-category-ads-all",
-          "geosite-malware",
-          "geosite-phishing",
-          "geosite-cryptominers"
-        ],
-        "server": "dns_block",
-        "disable_cache": true
-      },
-      {
-        "rule_set": "geosite-ir",
-        "server": "dns_direct"
-      },
-      {
-        "rule_set": "geosite-meta",
-        "server": "dns_proxy_ipv4"
+        "server": "local"
       }
+    
     ],
-    "final": "dns_proxy",
-    "independent_cache": true
-  },
-  "ntp": {
-    "enabled": true,
-    "server": "ir.pool.ntp.org",
-    "server_port": 123,
-    "detour": "direct"
+    "final": "default",
+    "strategy": "ipv4_only"
   },
   "inbounds": [
     {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 20122,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "http",
+      "listen": "127.0.0.1",
+      "listen_port": 8181,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 8080,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "ipv4_only",
+      "tcp_fast_open": false,
+      "tcp_multi_path": false,
+      "udp_fragment": true
+    },
+    {
       "type": "tun",
-      "mtu": 9000,
-      "address": [
+     "address": [
         "172.19.0.1/30",
         "fdfe:dcba:9876::1/126"
       ],
       "auto_route": true,
       "strict_route": true,
+      "endpoint_independent_nat": false,
       "stack": "mixed",
       "platform": {
         "http_proxy": {
-          "enabled": false,
-          "server": "",
+          "enabled": true,
+          "server": "127.0.0.1",
           "server_port": 20122
         }
       },
       "sniff": true,
       "sniff_override_destination": true,
       "domain_strategy": "ipv4_only"
-    },
-    {
-      "type": "socks",
-      "tag": "socks-in",
-      "listen": "127.0.0.1",
-      "listen_port": 2333,
-      "domain_strategy": "prefer_ipv4"
-    },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 2080,
-      "sniff": true
-    },
-    {
-      "type": "direct",
-      "tag": "dns-in",
-      "listen": "0.0.0.0",
-      "listen_port": 6450,
-      "override_address": "8.8.8.8",
-      "override_port": 53
     }
   ],
   "outbounds": [
@@ -122,727 +97,1086 @@
       "type": "selector",
       "tag": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
       "outbounds": [
-        "T.me/SiNAVM  👈🏻تلگرام ",
-        "🇲🇩@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇳🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇳🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇧🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇨🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇺🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇵🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇦🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇭🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇱🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇷🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇺🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇬🇧@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇪🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇬🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇨🇭@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇭🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇷🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇹🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇪🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇷🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇫🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇸🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇧🇬@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇨🇿@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇸🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇱🇻@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇯🇵@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇧🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇸🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇦🇲@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇲🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇱🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇰🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇭🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻"
+        "T.me/SiNAVM 👈🏻تلگرام ",
+"همراه اول 🔵",
+        "ایرانسل 🟡"
       ]
     },
     {
       "type": "urltest",
-      "tag": "T.me/SiNAVM  👈🏻تلگرام ",
+      "tag": "T.me/SiNAVM 👈🏻تلگرام ",
       "outbounds": [
-        "🇲🇩@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇳🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇳🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇧🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇨🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇺🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇵🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇦🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇭🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇱🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇷🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇺🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇬🇧@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇪🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇬🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇨🇭@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇭🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇷🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇹🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇪🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇷🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇫🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇸🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇧🇬@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇨🇿@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇸🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇱🇻@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇮🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇯🇵@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇧🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇸🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇦🇲@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇲🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇱🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇰🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-        "🇭🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻"
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇺",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
+"🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
+"🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡"
       ],
-      "url": "http://www.gstatic.com/generate_204",
+      "url": "http://1.1.1.1/",
       "interval": "3m0s"
     },
+    {
+      "type": "urltest",
+      "tag": "همراه اول 🔵",
+      "outbounds": [
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇺",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭"
 
-    {
-      "type": "direct",
-      "tag": "direct"
-    },
-        {
-      "type": "trojan",
-      "tag": "🇲🇩@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "morse-stank-most.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "morse-stank-most.stark-industries.solutions"
-      }
+      ]
     },
     {
-      "type": "trojan",
-      "tag": "🇳🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "acre-cable-skip.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "acre-cable-skip.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇳🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "copy-wifi-twins.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "copy-wifi-twins.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇵🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "eats-rigor-judge.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "eats-rigor-judge.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "wispy-crib-net.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "wispy-crib-net.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇧🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "chop-wrist-bud.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "chop-wrist-bud.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇨🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "both-cramp-banjo.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "both-cramp-banjo.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇺🇦@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "keep-chess-self.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "keep-chess-self.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇵🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "tag-frown-lying.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "tag-frown-lying.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇦🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "cushy-coil-chaos.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "cushy-coil-chaos.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇭🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "skate-whole-old.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "skate-whole-old.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇱🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "stem-entry-gala.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "stem-entry-gala.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "boss-tutu-fled.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "boss-tutu-fled.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "cadet-woven-march.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "cadet-woven-march.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇷🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "slaw-hush-agile.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "slaw-hush-agile.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "share-basil-gills.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "share-basil-gills.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇺🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "patch-lint-hazel.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "patch-lint-hazel.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇮🇱@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "bring-glove-shine.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "bring-glove-shine.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇬🇧@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "ankle-straw-untie.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "ankle-straw-untie.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇪🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "tag-stump-ranch.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "tag-stump-ranch.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇬🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "stem-omen-area.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "stem-omen-area.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇮🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "slang-pecan-lever.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "slang-pecan-lever.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇨🇭@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "crazy-grope-jeep.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "crazy-grope-jeep.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇭🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "sleep-boots-motor.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "sleep-boots-motor.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇷🇴@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "guy-trace-lyric.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "guy-trace-lyric.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇹🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "dried-chow-kite.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dried-chow-kite.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇪🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "strut-brisk-scope.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "strut-brisk-scope.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇷🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "gong-aqua-rhyme.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "gong-aqua-rhyme.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇫🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "thaw-gut-jelly.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "thaw-gut-jelly.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇸🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "rash-scorn-glue.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "rash-scorn-glue.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇧🇬@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "cache-giver-wife.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "cache-giver-wife.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇨🇿@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "bats-paper-chump.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "bats-paper-chump.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇸🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "nacho-rerun-crepe.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "nacho-rerun-crepe.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇱🇻@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "dig-cage-gala.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dig-cage-gala.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇮🇸@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "trap-movie-power.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "trap-movie-power.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇯🇵@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "lemon-gas-army.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "lemon-gas-army.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇧🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "wake-bagel-tall.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "wake-bagel-tall.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇸🇮@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "lazy-work-poppy.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "lazy-work-poppy.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇦🇲@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "upon-wimp-legal.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "upon-wimp-legal.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇲🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "snarl-dish-cloth.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "snarl-dish-cloth.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇱🇺@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "parka-limit-runny.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "parka-limit-runny.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇰🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "vice-dove-flock.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "vice-dove-flock.stark-industries.solutions"
-      }
-    },
-    {
-      "type": "trojan",
-      "tag": "🇭🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻",
-      "server": "dose-siren-pagan.stark-industries.solutions",
-      "server_port": 443,
-      "password": "e6a2e741-0fce-440b-910c-b81325e2263a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dose-siren-pagan.stark-industries.solutions"
-      }
-    },
-  ],
-  "route": {
-    "rules": [
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 53
-          }
-        ],
-        "action": "sniff"
-      },
-      {
-        "protocol": "dns",
-        "action": "hijack-dns"
-      },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          }
-        ],
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct"
-      },
+      "type": "urltest",
+      "tag": "ایرانسل 🟡",
+      "outbounds": [
+"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+"🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡"
+]
+},
+{
+"type":"direct",
+"tag":"direct"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ro.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
+"tls":{
+"alpn":["h2,http/1.1"],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-es.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
+"tls":{
+"alpn":["h2,http/1.1"],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
 
-      {
-        "protocol": "quic",
-        "outbound": "block"
-      },
-      {
-        "rule_set": [
-          "geosite-malware",
-          "geosite-phishing",
-          "geosite-cryptominers",
-          "geoip-malware",
-          "geoip-phishing"
-        ],
-        "action": "reject",
-        "method": "default"
-      },
-      {
-        "rule_set": [
-          "geosite-ir",
-          "geoip-ir"
-        ],
-        "outbound": "direct"
-      }
-    ],
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "geosite-ir",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-category-ads-all",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-category-ads-all.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-malware",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-malware.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-phishing",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-phishing.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-cryptominers",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-cryptominers.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geoip-ir",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-ir.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geoip-malware",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-malware.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geoip-phishing",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geoip-phishing.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-meta",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-meta.srs",
-        "download_detour": "direct",
-        "update_interval": "72h0m0s"
-      }
-    ],
-    "final": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
-    "auto_detect_interface": true,
-    "override_android_vpn": true
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "path": "cache.db",
-      "store_fakeip": true
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-se.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
+"tls":{
+"alpn":["h2,http/1.1"],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ae.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-al.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-at.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-au.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇺",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-in.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bg.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-br.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇷",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ca.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-mc.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-dk.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bo.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"mvgojzp3aSXrWgD9AfyeLWMN",
+"path":"",
+"server":"[::ffff:426f:3de9]",
+"server_port":89,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":true,
+"insecure":true,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"XWYvRVwmMgwTMhB2LVwAkWAW"
+},
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-pr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-cz.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-cl.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-om.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bb.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ee.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-es.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-vn.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-tr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-af.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-gr.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ro.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-hu.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bh.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-is.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"mvgojzp3aSXrWgD9AfyeLWMN",
+"path":"",
+"server":"85.190.238.27",
+"server_port":89,
+"domain_strategy":"",
+"tag":"🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":true,
+"insecure":true,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"XWYvRVwmMgwTMhB2LVwAkWAW"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"mvgojzp3aSXrWgD9AfyeLWMN",
+"path":"",
+"server":"185.81.125.67",
+"server_port":89,
+"domain_strategy":"",
+"tag":"🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":true,
+"insecure":true,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"XWYvRVwmMgwTMhB2LVwAkWAW"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-lt.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-bs.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ie.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-rs.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"ioqn613v",
+"path":"",
+"server":"prox-ky.pointtoserver.com",
+"server_port":10799,
+"domain_strategy":"",
+"tag":"@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":false,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"purevpn0s12300644"
+},
+{
+"headers":{
+"Host":[
+"https://stream.meet.google.com"
+]
+},
+"password":"0067AD9A-7DC8-215C-4AF9-62648743C931",
+"path":"",
+"server":"141.98.214.100",
+"server_port":7070,
+"domain_strategy":"",
+"tag":"🇩🇪@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":true,
+"insecure":true,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"wearestandtelegram@gmail.com"
+},
+{
+"headers":{
+"Host":[
+"stream.meet.google.com"
+]
+},
+"password":"mvgojzp3aSXrWgD9AfyeLWMN",
+"path":"",
+"server":"85.190.232.156",
+"server_port":89,
+"domain_strategy":"",
+"tag":"🇮🇹@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+"tls":{
+"alpn":[
+"h2,http/1.1"
+],
+"disable_sni":false,
+"enabled":true,
+"insecure":true,
+"server_name":"ieee.org"
+},
+"type":"http",
+"username":"XWYvRVwmMgwTMhB2LVwAkWAW"
+},
+
+{
+"type":"direct",
+"tag":"direct"
+}
+],
+"route":{
+"rules":[
+{
+"inbound":"tun-in",
+"action":"sniff"
+},
+{
+"protocol":"dns",
+"action":"hijack-dns"
+},
+{
+"clash_mode":"همراه اول",
+"outbound":"همراهاول🔵"
+},
+{
+"clash_mode":"ایرانسل",
+"outbound":"ایرانسل🟡"
+},
+{
+"network":"tcp",
+"port":853,
+"action":"reject",
+"method":"default"
+},
+{
+"network":"udp",
+"port":443,
+"action":"reject",
+"method":"default"
+},
+
+{
+"inbound":"tun-in",
+"action":"resolve"
+},
+
+{
+"ip_cidr":"10.10.34.0/24",
+"outbound":"@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
+},
+{
+"ip_is_private":true,
+"outbound":"direct"
+}
+],
+"rule_set":[
+
+],
+"final":"@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
+"auto_detect_interface":true
+},
+"experimental":{
+"cache_file":{
+"enabled":true
     },
     "clash_api": {
-      "default_mode": "@𝕊𝕚ℕ𝔸𝕍𝕄"
+        "default_mode": "@SiNAVM👈🏻تلگرام",
+      "external_controller": "127.0.0.1:9090",
+      "access_control_allow_origin": "https://yacd.metacubex.one",
+      "access_control_allow_private_network": true
     }
   }
+}
+}
 }
