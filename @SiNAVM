@@ -19,13 +19,13 @@
           "address": "https://1.1.1.1/dns-query",
           "address_resolver": "dns_direct",
           "strategy": "prefer_ipv4",
-          "detour": "@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام"
+          "detour": "T.me/SiNAVM 👈🏻تلگرام "
         },
         {
           "tag": "dns_direct",
           "address": "local",
           "strategy": "prefer_ipv4",
-          "detour": "@𝐒𝐢𝐍𝐀𝐕𝐌👈🏻کانال تلگرام"
+          "detour": "T.me/SiNAVM 👈🏻تلگرام "
         },
         {
           "tag": "dns_block",
@@ -104,8 +104,7 @@
       "sniff_override_destination": true,
       "domain_strategy": "ipv4_only"
     }
-
-    ],
+  ],
   "outbounds": [
     {
       "type": "selector",
@@ -114,10 +113,14 @@
         "T.me/SiNAVM 👈🏻تلگرام ",
 "همراه اول 🔵",
         "ایرانسل 🟡"
-      ]
-    },
+        ],
+        "default": "T.me/SiNAVM 👈🏻تلگرام ",
+        "interrupt_exist_connections": true
+      },
     {
       "type": "urltest",
+      "url": "http://cp.cloudflare.com",
+      "interval": "10m0s",
       "tag": "T.me/SiNAVM 👈🏻تلگرام ",
       "outbounds": [
 "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
@@ -164,7 +167,7 @@
       "interval": "3m0s"
     },
     {
-      "type": "urltest",
+      "type": "selector",
       "tag": "همراه اول 🔵",
       "outbounds": [
 "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
