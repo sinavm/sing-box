@@ -146,8 +146,8 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
         "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
         "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
-        "👉🏻@IranRamona",
-        "👉🏻@wearestand"
+        "wearestand",
+        "IranRamona"
       ]
     },
     {
@@ -192,8 +192,8 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
-        "👉🏻@IranRamona",
-        "👉🏻@wearestand"
+        "wearestand",
+        "IranRamona"
       ],
       "url": "http://cp.cloudflare.com",
       "interval": "5m0s"
@@ -782,7 +782,7 @@
     },
     {
       "type": "http",
-      "tag": "👉🏻@IranRamona",
+      "tag": "wearestand",
       "server": "141.98.214.100",
       "server_port": 7070,
       "username": "wearestandtelegram@gmail.com",
@@ -799,7 +799,7 @@
     },
     {
       "type": "http",
-      "tag": "👉🏻@wearestand",
+      "tag": "IranRamona",
       "server": "85.190.232.156",
       "server_port": 89,
       "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
