@@ -146,7 +146,6 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
         "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
         "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
-        "wearestand",
         "IranRamona"
       ]
     },
@@ -192,7 +191,6 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
-        "wearestand",
         "IranRamona"
       ],
       "url": "http://cp.cloudflare.com",
@@ -778,23 +776,6 @@
       },
       "headers": {
         "Host": "stream.meet.google.com"
-      }
-    },
-    {
-      "type": "http",
-      "tag": "wearestand",
-      "server": "141.98.214.100",
-      "server_port": 7070,
-      "username": "wearestandtelegram@gmail.com",
-      "password": "0067AD9A-7DC8-215C-4AF9-62648743C931",
-      "tls": {
-        "enabled": true,
-        "server_name": "ieee.org",
-        "insecure": true,
-        "alpn": "h2,http/1.1"
-      },
-      "headers": {
-        "Host": "https://stream.meet.google.com"
       }
     },
     {
