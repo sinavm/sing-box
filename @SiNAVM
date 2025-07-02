@@ -1,3 +1,6 @@
+#حق_کپی_کردن_و_تغییر_تگها_رو_نداره_کسی
+ #اسکی_نرو_بی
+
 {
   "log": {
     "level": "panic",
@@ -135,18 +138,25 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭"
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
+        "t.me/SiNAVM-US-5",
+        "t.me/SiNAVM-US-6"
       ]
     },
     {
       "type": "selector",
       "tag": "ایرانسل 🟡",
       "outbounds": [
-        "@IranRamona👈🏻🇭🇳",
-        "@IranRamona👈🏻🇺🇸",
-        "🇩🇰@wearestand👈🏻🟡",
-        "🇫🇷@wearestand👈🏻🟡",
-        "IranRamona"
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "t.me/SiNAVM-US-4",
+        "t.me/SiNAVM-US-5",
+        "t.me/SiNAVM-US-6"
       ]
     },
     {
@@ -167,8 +177,8 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
-        "@IranRamona👈🏻🇭🇳",
-        "@IranRamona👈🏻🇺🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
@@ -184,21 +194,19 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
-        "🇩🇰@wearestand👈🏻🟡",
-        "🇫🇷@wearestand👈🏻🟡",
+        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
-        "IranRamona"
+        "t.me/SiNAVM-US-4",
+        "t.me/SiNAVM-US-5",
+        "t.me/SiNAVM-US-6"
       ],
       "url": "http://cp.cloudflare.com",
       "interval": "5m0s"
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
     },
     {
       "type": "http",
@@ -412,7 +420,7 @@
     },
     {
       "type": "http",
-      "tag": "@IranRamona👈🏻🇭🇳",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
       "server": "193.9.32.3",
       "server_port": 90,
       "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
@@ -429,7 +437,7 @@
     },
     {
       "type": "http",
-      "tag": "@IranRamona👈🏻🇺🇸",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
       "server": "[::ffff:426f:3de9]",
       "server_port": 89,
       "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
@@ -445,50 +453,96 @@
       }
     },
     {
-      "type": "http",
+      "type": "vless",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
-      "server": "prox-pr.pointtoserver.com",
-      "server_port": 10799,
-      "username": "purevpn0s12300644",
-      "password": "ioqn613v",
+      "server": "92.112.126.34",
+      "server_port": 11002,
+      "uuid": "82af21a9-6a98-4da6-b951-72347b8e40d9",
+      "flow": "xtls-rprx-vision",
       "tls": {
-        "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "onYhi7WJAagIg9liEjsjDDdgpJQ5h-T8Z_lanR-kakQ",
+          "short_id": "f57645e2"
+        }
       },
-      "headers": {
-        "Host": "stream.meet.google.com"
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
       }
     },
     {
-      "type": "http",
+      "type": "vless",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
-      "server": "prox-cz.pointtoserver.com",
-      "server_port": 10799,
-      "username": "purevpn0s12300644",
-      "password": "ioqn613v",
+      "server": "85.93.8.142",
+      "server_port": 11002,
+      "uuid": "82af21a9-6a98-4da6-b951-72347b8e40d9",
+      "flow": "xtls-rprx-vision",
       "tls": {
-        "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "cT2LpCh0dCr4jmoG6N2pDi8Pf8wxZZ4MFU-yDiVT_zI",
+          "short_id": "b535db"
+        }
       },
-      "headers": {
-        "Host": "stream.meet.google.com"
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
       }
     },
     {
-      "type": "http",
+      "type": "vless",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
-      "server": "prox-cl.pointtoserver.com",
-      "server_port": 10799,
-      "username": "purevpn0s12300644",
-      "password": "ioqn613v",
+      "server": "104.234.74.23",
+      "server_port": 11002,
+      "uuid": "3185f90f-f8eb-499b-b76c-6a27afaf970d",
+      "flow": "xtls-rprx-vision",
       "tls": {
-        "server_name": "ieee.org",
-        "alpn": "h2,http/1.1"
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "R_zZS27sEP3wbCa7qX7jV0CcLiv1sAL_i_snquX-MAA",
+          "short_id": "4f"
+        }
       },
-      "headers": {
-        "Host": "stream.meet.google.com"
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
       }
     },
+
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
@@ -671,7 +725,7 @@
     },
     {
       "type": "http",
-      "tag": "🇩🇰@wearestand👈🏻🟡",
+      "tag": "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
       "server": "85.190.238.27",
       "server_port": 89,
       "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
@@ -688,7 +742,7 @@
     },
     {
       "type": "http",
-      "tag": "🇫🇷@wearestand👈🏻🟡",
+      "tag": "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
       "server": "185.81.125.67",
       "server_port": 89,
       "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
@@ -780,7 +834,7 @@
     },
     {
       "type": "http",
-      "tag": "IranRamona",
+      "tag": "t.me/SiNAVM-US-4",
       "server": "85.190.232.156",
       "server_port": 89,
       "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
@@ -796,9 +850,34 @@
       }
     },
     {
+      "type": "http",
+      "tag": "t.me/SiNAVM-US-5",
+      "server": "50.114.206.151",
+      "server_port": 11001,
+      "username": "Babak-US-2",
+      "password": "q44tiTaJyf",
+      "headers": {
+        "Host": "google.com",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "t.me/SiNAVM-US-6",
+      "server": "50.114.206.150",
+      "server_port": 11001,
+      "username": "Babak-US-1",
+      "password": "yHFqYPbYgs",
+      "headers": {
+        "Host": "google.com",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      }
+    },
+
+    {
       "type": "direct",
       "tag": "direct"
-    }
+    },
   ],
   "route": {
     "rules": [
