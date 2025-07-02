@@ -1,5 +1,6 @@
 #حق_کپی_کردن_و_تغییر_تگها_رو_نداره_کسی
  #اسکی_نرو_بی
+#بفهمم_
 
 {
   "log": {
@@ -9,7 +10,7 @@
   "dns": {
     "servers": [
       {
-        "tag": "dns_proxy",
+        "tag": "dns_sinavmy",
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_direct",
         "strategy": "prefer_ipv4",
@@ -28,11 +29,11 @@
     ],
     "rules": [
       {
-        "outbound": "dns_proxy",
+        "outbound": "dns_sinavmy",
         "server": "dns_direct"
       }
     ],
-    "final": "dns_proxy",
+    "final": "dns_sinavmy",
     "independent_cache": true
   },
   "ntp": {
@@ -79,7 +80,7 @@
       "strict_route": true,
       "stack": "mixed",
       "platform": {
-        "http_proxy": {
+        "http_sinavmy": {
           "enabled": true,
           "server": "127.0.0.1",
           "server_port": 20122
@@ -154,6 +155,7 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
         "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
         "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "SiNAVM-DE-3",
         "t.me/SiNAVM-US-4",
         "t.me/SiNAVM-US-5",
         "t.me/SiNAVM-US-6"
@@ -201,6 +203,7 @@
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
+        "SiNAVM-DE-3",
         "t.me/SiNAVM-US-4",
         "t.me/SiNAVM-US-5",
         "t.me/SiNAVM-US-6"
@@ -211,7 +214,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇷🇴",
-      "server": "prox-ro.pointtoserver.com",
+      "server": "sinavm-ro.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -226,7 +229,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇫🇷",
-      "server": "prox-es.pointtoserver.com",
+      "server": "sinavm-es.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -241,7 +244,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇪",
-      "server": "prox-se.pointtoserver.com",
+      "server": "sinavm-se.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -256,7 +259,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇪",
-      "server": "prox-ae.pointtoserver.com",
+      "server": "sinavm-ae.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -271,7 +274,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇿",
-      "server": "prox-al.pointtoserver.com",
+      "server": "sinavm-al.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -286,7 +289,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇹",
-      "server": "prox-at.pointtoserver.com",
+      "server": "sinavm-at.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -301,7 +304,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇦🇺",
-      "server": "prox-au.pointtoserver.com",
+      "server": "sinavm-au.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -316,7 +319,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇪",
-      "server": "prox-in.pointtoserver.com",
+      "server": "sinavm-in.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -331,7 +334,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇬",
-      "server": "prox-bg.pointtoserver.com",
+      "server": "sinavm-bg.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -346,7 +349,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇷",
-      "server": "prox-br.pointtoserver.com",
+      "server": "sinavm-br.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -361,7 +364,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
-      "server": "prox-ca.pointtoserver.com",
+      "server": "sinavm-ca.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -376,7 +379,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
-      "server": "prox-mc.pointtoserver.com",
+      "server": "sinavm-mc.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -391,7 +394,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
-      "server": "prox-dk.pointtoserver.com",
+      "server": "sinavm-dk.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -406,7 +409,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
-      "server": "prox-bo.pointtoserver.com",
+      "server": "sinavm-bo.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -423,8 +426,8 @@
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
       "server": "193.9.32.3",
       "server_port": 90,
-      "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
-      "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
       "tls": {
         "enabled": true,
         "server_name": "ieee.org",
@@ -440,8 +443,8 @@
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
       "server": "[::ffff:426f:3de9]",
       "server_port": 89,
-      "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
-      "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
       "tls": {
         "enabled": true,
         "server_name": "ieee.org",
@@ -546,7 +549,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
-      "server": "prox-om.pointtoserver.com",
+      "server": "sinavm-om.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -561,7 +564,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
-      "server": "prox-bb.pointtoserver.com",
+      "server": "sinavm-bb.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -576,7 +579,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
-      "server": "prox-ee.pointtoserver.com",
+      "server": "sinavm-ee.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -591,7 +594,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
-      "server": "prox-es.pointtoserver.com",
+      "server": "sinavm-es.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -606,7 +609,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
-      "server": "prox-vn.pointtoserver.com",
+      "server": "sinavm-vn.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -621,7 +624,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
-      "server": "prox-tr.pointtoserver.com",
+      "server": "sinavm-tr.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -636,7 +639,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
-      "server": "prox-af.pointtoserver.com",
+      "server": "sinavm-af.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -651,7 +654,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
-      "server": "prox-gr.pointtoserver.com",
+      "server": "sinavm-gr.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -666,7 +669,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
-      "server": "prox-ro.pointtoserver.com",
+      "server": "sinavm-ro.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -681,7 +684,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
-      "server": "prox-hu.pointtoserver.com",
+      "server": "sinavm-hu.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -696,7 +699,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
-      "server": "prox-bh.pointtoserver.com",
+      "server": "sinavm-bh.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -711,7 +714,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
-      "server": "prox-is.pointtoserver.com",
+      "server": "sinavm-is.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -728,8 +731,8 @@
       "tag": "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
       "server": "85.190.238.27",
       "server_port": 89,
-      "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
-      "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
       "tls": {
         "enabled": true,
         "server_name": "ieee.org",
@@ -745,8 +748,8 @@
       "tag": "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
       "server": "185.81.125.67",
       "server_port": 89,
-      "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
-      "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
       "tls": {
         "enabled": true,
         "server_name": "ieee.org",
@@ -760,7 +763,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
-      "server": "prox-lt.pointtoserver.com",
+      "server": "sinavm-lt.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -775,7 +778,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
-      "server": "prox-bs.pointtoserver.com",
+      "server": "sinavm-bs.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -790,7 +793,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
-      "server": "prox-ie.pointtoserver.com",
+      "server": "sinavm-ie.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -805,7 +808,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
-      "server": "prox-rs.pointtoserver.com",
+      "server": "sinavm-rs.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -820,7 +823,7 @@
     {
       "type": "http",
       "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
-      "server": "prox-ky.pointtoserver.com",
+      "server": "sinavm-ky.pointtoserver.com",
       "server_port": 10799,
       "username": "purevpn0s12300644",
       "password": "ioqn613v",
@@ -832,13 +835,38 @@
         "Host": "stream.meet.google.com"
       }
     },
+
+        {
+            "headers": {
+                "Host": [
+                    "stream.meet.google.com"
+                ]
+            },
+            "password": "79QQqCPBLgrFzen5tP9kzLVX",
+            "path": "",
+            "server": "194.233.96.24",
+            "server_port": 90,
+            "domain_strategy": "",
+            "tag": "SiNAVM-DE-3",
+            "tls": {
+                "alpn": [
+                    "h2,http/1.1"
+                ],
+                "disable_sni": false,
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ieee.org"
+            },
+            "type": "http",
+            "username": "79QQqCPBLgrFzen5tP9kzLVX"
+        },
     {
       "type": "http",
       "tag": "t.me/SiNAVM-US-4",
       "server": "85.190.232.156",
       "server_port": 89,
-      "username": "XWYvRVwmMgwTMhB2LVwAkWAW",
-      "password": "mvgojzp3aSXrWgD9AfyeLWMN",
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
       "tls": {
         "enabled": true,
         "server_name": "ieee.org",
