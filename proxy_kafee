@@ -1,75 +1,83 @@
+#حق_کپی_کردن_و_تغییر_تگها_رو_نداره_کسی
+ #اسکی_نرو_بی
+#ببینم_گیتهاب_یاتوی چنلی_...
+
 {
   "log": {
-    "level": "warn",
+    "level": "panic",
     "timestamp": true
   },
   "dns": {
     "servers": [
-        {
-        "tag": "default",
-        "address": "tls://1.1.1.1",
-        "detour": "@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام"
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_direct",
+        "strategy": "prefer_ipv4",
+        "detour": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
       },
       {
-        "tag": "local",
-        "address": "https://1.1.1.1/dns-query",
-        "detour": "Best Latency"
+        "tag": "dns_direct",
+        "address": "local",
+        "strategy": "prefer_ipv4",
+        "detour": "T.me/SiNAVM 👈🏻تلگرام "
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://success"
       }
-    
     ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "local"
-      },
-    
+        "outbound": "dns_proxy",
+        "server": "dns_direct"
+      }
     ],
-    "final": "default",
-    "strategy": "ipv4_only"
+    "final": "dns_proxy",
+    "independent_cache": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "ir.pool.ntp.org",
+    "server_port": 123,
+    "detour": "direct"
   },
   "inbounds": [
     {
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 20122,
+      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": true
+      "domain_strategy": "ipv4_only"
     },
     {
       "type": "http",
       "listen": "127.0.0.1",
       "listen_port": 8181,
+      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": true
+      "domain_strategy": "ipv4_only"
     },
     {
       "type": "socks",
       "listen": "127.0.0.1",
       "listen_port": 8080,
+      "udp_fragment": true,
       "sniff": true,
       "sniff_override_destination": true,
-      "domain_strategy": "ipv4_only",
-      "tcp_fast_open": false,
-      "tcp_multi_path": false,
-      "udp_fragment": true
+      "domain_strategy": "ipv4_only"
     },
     {
       "type": "tun",
-     "address": [
+      "address": [
         "172.19.0.1/30",
         "fdfe:dcba:9876::1/126"
       ],
       "auto_route": true,
       "strict_route": true,
-      "endpoint_independent_nat": false,
       "stack": "mixed",
       "platform": {
         "http_proxy": {
@@ -84,450 +92,716 @@
     }
   ],
   "outbounds": [
-
- {
-            "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام",
-            "type": "selector",
-            "interrupt_exist_connections": true,
-           
-            "outbounds": [
-                "Best Latency",
-                "🇧🇷 @proxy_kafee",
-                "🇺🇸 @proxy_kafee",
-                "🇬🇪 @𝗦𝗶𝗡𝗔𝗩𝗠",
-                "🇹🇷 @proxy_kafee",
-                "🇭🇳 @𝗦𝗶𝗡𝗔𝗩𝗠",
-                "🇩🇪 @𝗦𝗶𝗡𝗔𝗩𝗠",
-                "🇮🇹 @𝗦𝗶𝗡𝗔𝗩𝗠",
-                "🇳🇱 @proxy_kafee",
-                "🇺🇸 @𝗦𝗶𝗡𝗔𝗩𝗠",
-                "🇫🇷 @proxy_kafee",
-                "🇪🇪 @𝗦𝗶𝗡𝗔𝗩𝗠"
-             
-            ]
+    {
+      "type": "selector",
+      "tag": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
+      "outbounds": [
+        "T.me/SiNAVM 👈🏻تلگرام ",
+        "T.me/SiNAVM 👈🏻تلگرام "
+      ],
+      "default": "T.me/SiNAVM 👈🏻تلگرام ",
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "همراه اول 🔵",
+      "outbounds": [
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭"
+      ]
+    },
+    {
+      "type": "selector",
+      "tag": "ایرانسل 🟡",
+      "outbounds": [
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "t.me/SiNAVM-US-4",
+        "t.me/SiNAVM-US-5",
+        "t.me/SiNAVM-US-6"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "T.me/SiNAVM 👈🏻تلگرام ",
+      "outbounds": [
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
+        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
+        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
+        "t.me/SiNAVM-US-4",
+        "t.me/SiNAVM-US-5",
+        "t.me/SiNAVM-US-6"
+      ],
+      "url": "http://cp.cloudflare.com",
+      "interval": "5m0s"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+   {
+      "type": "shadowsocks",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇦",
+      "domain_strategy": "prefer_ipv4",
+      "server": "45.87.175.170",
+      "server_port": 8080,
+      "method": "chacha20-ietf-poly1305",
+      "password": "cvII85TrW6n0OGyfpHVS1u",
+      "udp_over_tcp": true
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇭",
+      "domain_strategy": "prefer_ipv4",
+      "server": "104.22.16.91",
+      "server_port": 443,
+      "uuid": "9dd24d01-2b7a-4bd8-8c76-129d6ca89b8c",
+      "tls": {
+        "enabled": true,
+        "server_name": "kawaiifreevpn-7ds.pages.dev",
+        "alpn": "h3",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "kawaiifreevpn-7ds.pages.dev"
         },
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "trojan",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇱",
+      "domain_strategy": "prefer_ipv4",
+      "server": "52.47.92.41",
+      "server_port": 22223,
+      "password": "telegram-id-directvpn",
+      "tls": {
+        "enabled": true,
+        "server_name": "trojan.burgerip.co.uk",
+        "alpn": "http/1.1",
+        "min_version": "1.3",
+        "max_version": "1.3",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
 
-        {
-            "tag": "Best Latency",
-            "type": "urltest",
-            "url": "http://cp.cloudflare.com",
-            "interval": "10m0s",
-            "outbounds": [
-                "🇧🇷BRAZIL",
-                "🇺🇸USA",
-                "🇬🇪GEORGIA",
-                "🇹🇷TURKEY",
-                "🇭🇳HONDURAS",
-                "🇩🇪GERMANY",
-                "🇮🇹ITALY",
-                "🇩🇰DENMARK",
-                "🇺🇸UNITED STATES",
-                "🇫🇷FRANCE",
-                "🇪🇪ESTONIA"
-                
-  
-            ]
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇲🇩",
+      "server": "prox-bo.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
+      "server": "193.9.32.3",
+      "server_port": 90,
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
+      "tls": {
+        "enabled": true,
+        "server_name": "ieee.org",
+        "insecure": true,
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
+      "server": "[::ffff:426f:3de9]",
+      "server_port": 89,
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
+      "tls": {
+        "enabled": true,
+        "server_name": "ieee.org",
+        "insecure": true,
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇾",
+      "server": "92.112.126.34",
+      "server_port": 11002,
+      "uuid": "82af21a9-6a98-4da6-b951-72347b8e40d9",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
-
-{
-            "tag": "🇧🇷 @proxy_kafee",
-            "type": "urltest",
-            "outbounds": [
-               "🇧🇷BRAZIL"
-
-
-            ]
+        "reality": {
+          "enabled": true,
+          "public_key": "onYhi7WJAagIg9liEjsjDDdgpJQ5h-T8Z_lanR-kakQ",
+          "short_id": "f57645e2"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇨🇿",
+      "server": "85.93.8.142",
+      "server_port": 11002,
+      "uuid": "82af21a9-6a98-4da6-b951-72347b8e40d9",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
-{
-            "tag": "🇺🇸 @proxy_kafee",
-            "type": "urltest",
-            "outbounds": [
-               "🇺🇸USA"
-
-
-            ]
+        "reality": {
+          "enabled": true,
+          "public_key": "cT2LpCh0dCr4jmoG6N2pDi8Pf8wxZZ4MFU-yDiVT_zI",
+          "short_id": "b535db"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇪",
+      "server": "104.234.74.23",
+      "server_port": 11002,
+      "uuid": "3185f90f-f8eb-499b-b76c-6a27afaf970d",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
+        "reality": {
+          "enabled": true,
+          "public_key": "R_zZS27sEP3wbCa7qX7jV0CcLiv1sAL_i_snquX-MAA",
+          "short_id": "4f"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
 
-{
-            "tag": "🇬🇪 @𝗦𝗶𝗡𝗔𝗩𝗠",
-            "type": "urltest",
-            "outbounds": [
-                "🇬🇪GEORGIA"
-
-
-
-            ]
+     {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇩🇰",
+      "server": "178.236.254.188",
+      "server_port": 11002,
+      "uuid": "3185f90f-f8eb-499b-b76c-6a27afaf970d",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
-{
-            "tag": "🇹🇷 @proxy_kafee",
-            "type": "urltest",
-            "outbounds": [
-                "🇹🇷TURKEY"
-
-
-            ]
+        "reality": {
+          "enabled": true,
+          "public_key": "R_zZS27sEP3wbCa7qX7jV0CcLiv1sAL_i_snquX-MAA",
+          "short_id": "4f"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
+      "server": "50.114.206.142",
+      "server_port": 11002,
+      "uuid": "dac71259-66e0-4a69-8461-77b4d3c5a3e5",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
-{
-            "tag": "🇭🇳 @𝗦𝗶𝗡𝗔𝗩𝗠",
-            "type": "urltest",
-            "outbounds": [
-                "🇭🇳HONDURAS"
- 
-
-            ]
+        "reality": {
+          "enabled": true,
+          "public_key": "F2uLYT-sytvM7QGSz3AXEZQ5AlIOq8W8zAsWV433MBI",
+          "short_id": "94f496"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
+      "server": "50.114.206.150",
+      "server_port": 11002,
+      "uuid": "635a99a1-1082-4907-b3a6-53c4e195ed2d",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
-
-{
-            "tag": "🇩🇪 @𝗦𝗶𝗡𝗔𝗩𝗠",
-            "type": "urltest",
-            "outbounds": [
-                "🇩🇪GERMANY"
-           
-
-
-            ]
+        "reality": {
+          "enabled": true,
+          "public_key": "K3MiIlY1FlV1TgV8AZFq6-KCGHAL0XZI7-U0bRmN7z0",
+          "short_id": "f3"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇸",
+      "server": "178.236.254.188",
+      "server_port": 11001,
+      "uuid": "d56c0983-b2ff-4276-b94a-a565012a2fa5",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "gallery.sourceforge.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         },
+        "reality": {
+          "enabled": true,
+          "public_key": "CQby3rROi9zKZaUF-Z3RMlObL1Co1X8-ypBQyEl-608",
+          "short_id": "01af"
+        }
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "gallery.sourceforge.net",
+        "path": "/ws",
+        "headers": {
+          "Host": "gallery.sourceforge.net",
+          "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+        }
+      }
+    },
 
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇺",
+      "server": "iplocation.net",
+      "server_port": 443,
+      "uuid": "fd9a3396-e9a4-45b5-93b9-a0bed3f8b309",
+      "tls": {
+        "enabled": true,
+        "server_name": "r6.sanam.dpdns.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
 
-{
-            "tag": "🇮🇹 @𝗦𝗶𝗡𝗔𝗩𝗠",
-            "type": "urltest",
-            "outbounds": [
-                "🇮🇹ITALY"
-
-
-            ]
+    {
+      "type": "vless",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇷",
+      "tls_fragment": {
+      },
+      "server": "www.speedtest.net",
+      "server_port": 443,
+      "uuid": "8df60790-c903-4661-b85d-64c0009378e5",
+      "tls": {
+        "enabled": true,
+        "server_name": "F1.paRsa.fiLegEar-Sg.Me",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "randomized"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "f1.parsa.filegear-sg.me"
         },
-{
-            "tag": "🇳🇱 @proxy_kafee",
-            "type": "urltest",
-            "outbounds": [
-                "🇩🇰DENMARK"
+        "max_early_data": 2560,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
 
-
-            ]
-        },
-
-
-{
-            "tag": "🇺🇸 @𝗦𝗶𝗡𝗔𝗩𝗠",
-            "type": "urltest",
-            "outbounds": [
-                "🇺🇸UNITED STATES"
-                
-
-
-            ]
-        },
-{
-            "tag": "🇫🇷 @proxy_kafee",
-            "type": "urltest",
-            "outbounds": [
-                "🇫🇷FRANCE"
-
-
-            ]
-        },
-
-{
-            "tag": "🇪🇪 @𝗦𝗶𝗡𝗔𝗩𝗠",
-            "type": "urltest",
-            "outbounds": [
-                "🇪🇪ESTONIA"
-                
-
-
-            ]
-        },
-
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "66.111.61.161",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇧🇷BRAZIL",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "[::ffff:c32f:c211]",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇺🇸USA",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-
-
-       
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "81.17.123.114",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇬🇪GEORGIA",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-        
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "[::ffff:2d86:bd03]",
-            "server_port": 90,
-            "domain_strategy": "",
-            "tag": "🇹🇷TURKEY",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-               "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-        
-        
-
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "193.9.32.3",
-            "server_port": 90,
-            "domain_strategy": "",
-            "tag": "🇭🇳HONDURAS",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-        
-        
-       
-
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "194.233.96.24",
-            "server_port": 90,
-            "domain_strategy": "",
-            "tag": "🇩🇪GERMANY",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-        
-
-        
-        
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "85.190.232.156",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇮🇹ITALY",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-        
-        {
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "85.190.238.27",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇩🇰DENMARK",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-        
-
-{
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "[::ffff:426f:3de9]",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇺🇸UNITED STATES",
-             "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-
-
-{
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "185.81.125.67",
-            "server_port": 89,
-            "domain_strategy": "",
-            "tag": "🇫🇷FRANCE",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-    
-
-{
-            "headers": {
-                "Host": [
-                    "stream.meet.google.com"
-                ]
-            },
-            "password": "mvgojzp3aSXrWgD9AfyeLWMN",
-            "path": "",
-            "server": "85.190.239.114",
-            "server_port": 90,
-            "domain_strategy": "",
-            "tag": "🇪🇪ESTONIA",
-            "tls": {
-                "alpn": [
-                    "h2,http/1.1"
-                ],
-                "disable_sni": false,
-                "enabled": true,
-                "insecure": true,
-                "server_name": "google.com"
-            },
-            "type": "http",
-            "username": "XWYvRVwmMgwTMhB2LVwAkWAW"
-        },
-
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇪",
+      "server": "prox-af.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇷",
+      "server": "prox-gr.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇰",
+      "server": "prox-ro.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇭🇺",
+      "server": "prox-hu.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇸🇬",
+      "server": "prox-bh.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇬🇧",
+      "server": "prox-is.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+      "server": "85.190.238.27",
+      "server_port": 89,
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
+      "tls": {
+        "enabled": true,
+        "server_name": "ieee.org",
+        "insecure": true,
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
+      "server": "185.81.125.67",
+      "server_port": 89,
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
+      "tls": {
+        "enabled": true,
+        "server_name": "ieee.org",
+        "insecure": true,
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇮🇹",
+      "server": "prox-lt.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇱🇹",
+      "server": "prox-bs.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇳🇱",
+      "server": "prox-ie.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇹🇩",
+      "server": "prox-rs.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇧🇭",
+      "server": "prox-ky.pointtoserver.com",
+      "server_port": 10799,
+      "username": "purevpn0s12300644",
+      "password": "ioqn613v",
+      "tls": {
+        "server_name": "ieee.org",
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "t.me/SiNAVM-US-4",
+      "server": "85.190.232.156",
+      "server_port": 89,
+      "username": "79QQqCPBLgrFzen5tP9kzLVX",
+      "password": "NDbeMN6pQE5f3cuHmmmJrAfz",
+      "tls": {
+        "enabled": true,
+        "server_name": "ieee.org",
+        "insecure": true,
+        "alpn": "h2,http/1.1"
+      },
+      "headers": {
+        "Host": "stream.meet.google.com"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "t.me/SiNAVM-US-5",
+      "server": "50.114.206.151",
+      "server_port": 11001,
+      "username": "Babak-US-2",
+      "password": "q44tiTaJyf",
+      "headers": {
+        "Host": "google.com",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "type": "http",
+      "tag": "t.me/SiNAVM-US-6",
+      "server": "50.114.206.150",
+      "server_port": 11001,
+      "username": "Babak-US-1",
+      "password": "yHFqYPbYgs",
+      "headers": {
+        "Host": "google.com",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      }
+    },
 
     {
       "type": "direct",
@@ -544,7 +818,14 @@
         "protocol": "dns",
         "action": "hijack-dns"
       },
-
+      {
+        "clash_mode": "همراه اول",
+        "outbound": "همراهاول🔵"
+      },
+      {
+        "clash_mode": "ایرانسل",
+        "outbound": "ایرانسل🟡"
+      },
       {
         "network": "tcp",
         "port": 853,
@@ -557,30 +838,31 @@
         "action": "reject",
         "method": "default"
       },
-      
       {
         "inbound": "tun-in",
         "action": "resolve"
       },
-      
       {
         "ip_cidr": "10.10.34.0/24",
-        "outbound": "@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام"
+        "outbound": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام"
       },
       {
         "ip_is_private": true,
         "outbound": "direct"
       }
     ],
-    "rule_set": [
-      
-    ],
-    "final": "@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام",
+    "final": "@𝑺𝒊𝑵𝑨𝐕𝐌👈🏻تلگرام",
     "auto_detect_interface": true
   },
   "experimental": {
     "cache_file": {
       "enabled": true
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "default_mode": "@SiNAVM👈🏻تلگرام",
+      "access_control_allow_origin": "https://yacd.metacubex.one",
+      "access_control_allow_private_network": true
     }
   }
 }
