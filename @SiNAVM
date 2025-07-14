@@ -80,7 +80,7 @@
       "strict_route": true,
       "stack": "mixed",
       "platform": {
-        "http_sinavmy": {
+        "http_sinavm": {
           "enabled": true,
           "server": "127.0.0.1",
           "server_port": 20122
@@ -965,3 +965,4 @@
     }
   }
 }
+=
