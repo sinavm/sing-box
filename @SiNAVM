@@ -10,7 +10,7 @@
   "dns": {
     "servers": [
       {
-        "tag": "dns_sinavmy",
+        "tag": "dns_sinavm",
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_direct",
         "strategy": "prefer_ipv4",
@@ -29,11 +29,11 @@
     ],
     "rules": [
       {
-        "outbound": "dns_sinavmy",
+        "outbound": "dns_sinavm",
         "server": "dns_direct"
       }
     ],
-    "final": "dns_sinavmy",
+    "final": "dns_sinavm",
     "independent_cache": true
   },
   "ntp": {
