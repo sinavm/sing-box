@@ -1,17 +1,16 @@
-// Copyright (c) 2025 SiNAVM  
-// All rights reserved.  
-// This configuration file is for personal use only. Redistribution, modification, or commercial use is prohibited without explicit permission  
-
-//subscription-userinfo: upload=0; download=0; total=9000000000000; expire=0  
-//profile-update-interval: 6  
-//support-url: https://t.me/sinavm  
-//profile-web-page-url: https://t.me/sinavm  
-
 #حق_کپی_کردن_و_تغییر_تگها_رو_نداره_کسی
  #اسکی_نرو_بی
 #ببینم_گیتهاب_گذاشتید
 #توی_چنلی_گذاشتید
 #میگم_کاربرها_ریپورت_کنن
+
+// Copyright (c) 2025 SiNAVM  
+// All rights reserved.  
+// This configuration file is for personal use only. Redistribution, modification, or commercial use is prohibited without explicit permission  
+//subscription-userinfo: upload=0; download=0; total=9000000000000; expire=1755868800
+//profile-update-interval: 6  
+//support-url: https://t.me/sinavm  
+//profile-web-page-url: https://t.me/sinavm 
 
 {
   "log": {
@@ -53,7 +52,7 @@
         "server": "local"
       },
       {
-        "outbound": "MTN",
+        "outbound": "mtn",
         "server": "direct"
       }
     ],
@@ -120,7 +119,7 @@
       "type": "selector",
       "tag": "@sinvt  خرید نسخه ویژه",
       "outbounds": [
-        "mtn-ping",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
 "جهت خرید به sinvt@",
         "جهت خرید به sinvt@ § 2",
         "جهت خرید به sinvt@ § 3",
@@ -154,7 +153,7 @@
       "type": "selector",
       "tag": "کانفیگ های رایگان هستند",
       "outbounds": [
-        "mtn-ping",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
 "جهت خرید به sinvt@",
         "جهت خرید به sinvt@ § 2",
         "جهت خرید به sinvt@ § 3",
@@ -188,7 +187,7 @@
       "type": "selector",
       "tag": "mtn",
       "outbounds": [
-        "mtn-ping",
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
         "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
@@ -197,23 +196,6 @@
         "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
         "t.me/SiNAVM -US-4"
       ]
-    },
-    {
-      "type": "urltest",
-      "tag": "mtn-ping",
-      "outbounds": [
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇺🇸",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻تلگرام🇪🇪",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇭🇳",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🇺🇸",
-        "🇩🇰@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
-        "🇫🇷@𝗦𝗶𝗡𝗔𝗩𝗠👈🏻🟡",
-        "t.me/SiNAVM -US-4"
-      ],
-      "url": "http://whoer.net",
-      "interval": "1m0s",
-      "tolerance": 1,
-      "idle_timeout": "9m0s"
     },
     {
       "type": "urltest",
