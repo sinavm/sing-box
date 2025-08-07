@@ -4,7 +4,6 @@
 #توی_چنلی_گذاشتید
 #میگم_کاربرها_ریپورت_کنن
 
-
 // Copyright (c) 2025 SiNAVM  
 // All rights reserved.  
 // This configuration file is for personal use only. Redistribution, modification, or commercial use is prohibited without explicit permission  
@@ -13,7 +12,6 @@
 //profile-update-interval: 6  
 //support-url: https://t.me/sinavm  
 //profile-web-page-url: https://t.me/sinavm 
-
 
 {
   "log": {
@@ -142,120 +140,34 @@
 "جهت خرید به sinvt@",
         "جهت خرید به sinvt@ § 2",
         "جهت خرید به sinvt@ § 3",
-        "🤴🏼@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-        "@sinavm-1",
-        "@sinavm-2",
-        "@sinavm-3",
-        "@sinavm-4",
-        "Marseille-@SiNAVM § 0",
-        "Kyiv-@SiNAVM § 1",
-        "Como-@SiNAVM § 2",
-        "Marseille-@SiNAVM § 3",
-        "Kyiv-@SiNAVM § 4",
-        "Como-@SiNAVM § 5",
-        "Marseille-@SiNAVM § 6",
-        "Kyiv-@SiNAVM § 7",
-        "Como-@SiNAVM § 8",
-        "Marseille-@SiNAVM § 33",
-        "Kyiv-@SiNAVM § 34",
-        "Como-@SiNAVM § 35",
-        "Marseille-@SiNAVM § 36",
-        "Kyiv-@SiNAVM § 37",
-        "Como-@SiNAVM § 38",
-        "Marseille-@SiNAVM § 39",
-        "Kyiv-@SiNAVM § 40",
-        "Como-@SiNAVM § 41",
-        "Marseille-@SiNAVM § 42",
-        "Kyiv-@SiNAVM § 43",
-        "Como-@SiNAVM § 44",
-        "Marseille-@SiNAVM § 45",
-        "Kyiv-@SiNAVM § 46",
-        "Como-@SiNAVM § 47",
-        "Marseille-@SiNAVM § 48",
-        "Kyiv-@SiNAVM § 49",
-        "Como-@SiNAVM § 50",
-        "Marseille-@SiNAVM § 51",
-        "Kyiv-@SiNAVM § 52",
-        "Como-@SiNAVM § 53",
-        "Marseille-@SiNAVM § 54",
-        "Kyiv-@SiNAVM § 55",
-        "Como-@SiNAVM § 56",
-        "Marseille-@SiNAVM § 57",
-        "Kyiv-@SiNAVM § 58",
-        "Como-@SiNAVM § 59",
-        "Marseille-@SiNAVM § 60",
-        "Kyiv-@SiNAVM § 61",
-        "Como-@SiNAVM § 62",
-        "Marseille-@SiNAVM § 63",
-        "Kyiv-@SiNAVM § 64",
-        "Como-@SiNAVM § 65"
-        ],
-        "default": "@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-        "interrupt_exist_connections": true
-      },
+        "@SiNAVM¹ § 0",
+        "@SiNAVM² § 1",
+        "@SiNAVM³ § 2",
+        "@SiNAVM⁴ § 3",
+        "@SiNAVM5 § 4",
+        "@SiNAVM6 § 5"
+      ]
+    },
     {
       "type": "urltest",
       "tag": "@𝙎𝙞𝙉𝘼𝙑𝙈",
       "outbounds": [
-
 "جهت خرید به sinvt@",
         "جهت خرید به sinvt@ § 2",
         "جهت خرید به sinvt@ § 3",
-        "🤴🏼@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-        "@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-        "@sinavm-1",
-        "@sinavm-2",
-        "@sinavm-3",
-        "@sinavm-4",
-        "Marseille-@SiNAVM § 0",
-        "Kyiv-@SiNAVM § 1",
-        "Como-@SiNAVM § 2",
-        "Marseille-@SiNAVM § 3",
-        "Kyiv-@SiNAVM § 4",
-        "Como-@SiNAVM § 5",
-        "Marseille-@SiNAVM § 6",
-        "Kyiv-@SiNAVM § 7",
-        "Como-@SiNAVM § 8",
-        "Marseille-@SiNAVM § 33",
-        "Kyiv-@SiNAVM § 34",
-        "Como-@SiNAVM § 35",
-        "Marseille-@SiNAVM § 36",
-        "Kyiv-@SiNAVM § 37",
-        "Como-@SiNAVM § 38",
-        "Marseille-@SiNAVM § 39",
-        "Kyiv-@SiNAVM § 40",
-        "Como-@SiNAVM § 41",
-        "Marseille-@SiNAVM § 42",
-        "Kyiv-@SiNAVM § 43",
-        "Como-@SiNAVM § 44",
-        "Marseille-@SiNAVM § 45",
-        "Kyiv-@SiNAVM § 46",
-        "Como-@SiNAVM § 47",
-        "Marseille-@SiNAVM § 48",
-        "Kyiv-@SiNAVM § 49",
-        "Como-@SiNAVM § 50",
-        "Marseille-@SiNAVM § 51",
-        "Kyiv-@SiNAVM § 52",
-        "Como-@SiNAVM § 53",
-        "Marseille-@SiNAVM § 54",
-        "Kyiv-@SiNAVM § 55",
-        "Como-@SiNAVM § 56",
-        "Marseille-@SiNAVM § 57",
-        "Kyiv-@SiNAVM § 58",
-        "Como-@SiNAVM § 59",
-        "Marseille-@SiNAVM § 60",
-        "Kyiv-@SiNAVM § 61",
-        "Como-@SiNAVM § 62",
-        "Marseille-@SiNAVM § 63",
-        "Kyiv-@SiNAVM § 64",
-        "Como-@SiNAVM § 65"
+        "@SiNAVM¹ § 0",
+        "@SiNAVM² § 1",
+        "@SiNAVM³ § 2",
+        "@SiNAVM⁴ § 3",
+        "@SiNAVM5 § 4",
+        "@SiNAVM6 § 5"
       ],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "9m0s",
+      "url": "http://cp.cloudflare.com",
+      "interval": "10m0s",
       "tolerance": 1,
-      "idle_timeout": "9m0s"
+      "idle_timeout": "30m0s"
     },
+
     {
       "type": "shadowsocks",
       "tag": "جهت خرید به sinvt@",
@@ -268,10 +180,10 @@
     {
       "type": "shadowsocks",
       "tag": "جهت خرید به sinvt@ § 2",
-      "server": "185.157.212.141",
-      "server_port": 50564,
+      "server": "85.208.139.158",
+      "server_port": 25607,
       "method": "chacha20-ietf-poly1305",
-      "password": "Uv3If0rBTdkNNjnbI6cVmb"
+      "password": "IX8JhjWfZl0iQ8iSaIiCNm"
     },
     {
       "type": "shadowsocks",
@@ -279,14 +191,73 @@
       "server": "89.110.85.176",
       "server_port": 16432,
       "method": "chacha20-ietf-poly1305",
-      "password": "riP3aC03AxvUEmDsuslHuw"
+      "password": "86DvwOOD3CCeeMiQFbscgn"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "@SiNAVM¹ § 0",
+      "server": "45.87.175.65",
+      "server_port": 8080,
+      "method": "chacha20-ietf-poly1305",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "@SiNAVM² § 1",
+      "server": "193.29.139.240",
+      "server_port": 8080,
+      "method": "chacha20-ietf-poly1305",
+      "password": "oZIoA69Q8yhcQV8ka3Pa3A"
     },
     {
       "type": "vless",
-      "tag": "🤴🏼@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-      "server": "public15v7.fastipsport.com",
+      "tag": "@SiNAVM³ § 2",
+      "server": "104.16.68.95",
       "server_port": 8880,
-      "uuid": "e4824193-4f54-453b-d037-88368e85ef0e",
+      "uuid": "02811288-9ef3-42ef-86db-d9b1399c1a59",
+      "transport": {
+        "type": "ws",
+        "headers": {
+          "Host": "vghavi32.ip-ddns.com"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "@SiNAVM⁴ § 3",
+      "server": "104.21.112.1",
+      "server_port": 80,
+      "uuid": "2036e2c3-18a5-4eed-9db4-f91a7f02c7d5",
+      "transport": {
+        "type": "ws",
+        "path": "/193.123.81.105=443",
+        "headers": {
+          "Host": "zoomgov.vipren.biz.id"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "@SiNAVM5 § 4",
+      "server": "handSoME-dEvice.ONEeAt.CO",
+      "server_port": 80,
+      "uuid": "2ad87f95-7a0b-4018-8497-5ecaac2f0ddf",
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "@SiNAVM6 § 5",
+      "server": "185.231.205.253",
+      "server_port": 8880,
+      "uuid": "df0680ca-e43c-498d-ed86-8e196eedd012",
       "transport": {
         "type": "grpc",
         "idle_timeout": "15s",
@@ -294,530 +265,6 @@
       },
       "packet_encoding": "xudp"
     },
-    {
-      "obfs": {
-        "password": "FarzanehDreams",
-        "type": "salamander"
-      },
-      "password": "5oITDYnNW7",
-      "server": "45.138.99.213",
-      "server_port": 8443,
-      "tag": "@𝗦𝗶𝗡𝗔𝗩𝗠👈کانال تلگرام",
-      "tls": {
-        "enabled": true,
-        "insecure": true
-      },
-      "type": "hysteria2"
-    },
-    {
-      "obfs": {
-        "password": "KevinZakarian",
-        "type": "salamander"
-      },
-      "password": "aFs3HWCicZ",
-      "server": "103.83.86.119",
-      "server_port": 8443,
-      "tag": "@sinavm-1",
-      "tls": {
-        "enabled": true,
-        "insecure": true
-      },
-      "type": "hysteria2"
-    },
-{
-  "type": "hysteria2",
-  "tag": "@sinavm-2",
-      "server": "45.138.99.213",
-      "server_port": 8443,
-      "obfs": {
-        "type": "salamander",
-        "password": "FarzanehDreams"
-      },
-      "password": "5oITDYnNW7",
-      "tls": {
-        "enabled": true,
-        "insecure": true
-      }
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "@sinavm-3",
-      "server": "45.87.175.22",
-      "server_port": 8080,
-      "method": "chacha20-ietf-poly1305",
-      "password": "oZIoA69Q8yhcQV8ka3Pa3A"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "@sinavm-4",
-      "server": "45.87.175.22",
-      "server_port": 8080,
-      "method": "chacha20-ietf-poly1305",
-      "password": "oZIoA69Q8yhcQV8ka3Pa3A"
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 0",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "07c122ad-50b2-4f61-9435-efcf112bb10b",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 1",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "07c122ad-50b2-4f61-9435-efcf112bb10b",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 2",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "07c122ad-50b2-4f61-9435-efcf112bb10b",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 3",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "0cb527d9-6117-4bcf-a52b-1704b3458cef",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 4",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "0cb527d9-6117-4bcf-a52b-1704b3458cef",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 5",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "0cb527d9-6117-4bcf-a52b-1704b3458cef",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 6",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "1045aedf-053c-4585-875d-e2fc3f3ea6dd",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 7",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "1045aedf-053c-4585-875d-e2fc3f3ea6dd",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 8",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "1045aedf-053c-4585-875d-e2fc3f3ea6dd",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 33",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "1fdb6b30-5371-4ff8-a001-efdc4b43d79b",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 34",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "1fdb6b30-5371-4ff8-a001-efdc4b43d79b",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 35",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "1fdb6b30-5371-4ff8-a001-efdc4b43d79b",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 36",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "23125f6e-ec56-4c26-9714-0bbacdb53d01",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 37",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "23125f6e-ec56-4c26-9714-0bbacdb53d01",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 38",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "23125f6e-ec56-4c26-9714-0bbacdb53d01",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 39",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "29fbd51f-03c8-4d76-849a-436e54d58317",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 40",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "29fbd51f-03c8-4d76-849a-436e54d58317",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 41",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "29fbd51f-03c8-4d76-849a-436e54d58317",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 42",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "413c8b50-96bf-4457-82f2-54dfa8685f53",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 43",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "413c8b50-96bf-4457-82f2-54dfa8685f53",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 44",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "413c8b50-96bf-4457-82f2-54dfa8685f53",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 45",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "45cc0b3a-0adb-4dcc-8f54-4ba3d2cc274e",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 46",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "45cc0b3a-0adb-4dcc-8f54-4ba3d2cc274e",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 47",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "45cc0b3a-0adb-4dcc-8f54-4ba3d2cc274e",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 48",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "4685eb2a-5ddb-4dc6-9e53-f0c90d6124c1",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 49",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "4685eb2a-5ddb-4dc6-9e53-f0c90d6124c1",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 50",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "4685eb2a-5ddb-4dc6-9e53-f0c90d6124c1",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 51",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "48c2c901-72e6-46d4-ac78-169d73264cbf",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 52",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "48c2c901-72e6-46d4-ac78-169d73264cbf",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 53",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "48c2c901-72e6-46d4-ac78-169d73264cbf",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 54",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "52816135-d3bc-46bc-a915-09886a2e2b2e",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 55",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "52816135-d3bc-46bc-a915-09886a2e2b2e",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 56",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "52816135-d3bc-46bc-a915-09886a2e2b2e",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 57",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "55ca7a9e-cf90-49df-b14a-9346c59b73b9",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 58",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "55ca7a9e-cf90-49df-b14a-9346c59b73b9",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 59",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "55ca7a9e-cf90-49df-b14a-9346c59b73b9",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 60",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "5eaa121d-4362-444d-8219-29b02c35303a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 61",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "5eaa121d-4362-444d-8219-29b02c35303a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 62",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "5eaa121d-4362-444d-8219-29b02c35303a",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Marseille-@SiNAVM § 63",
-      "server": "172.252.236.213",
-      "server_port": 53861,
-      "password": "6bf726db-fb0b-405b-899a-3e263f092eda",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Kyiv-@SiNAVM § 64",
-      "server": "185.126.255.78",
-      "server_port": 45070,
-      "password": "6bf726db-fb0b-405b-899a-3e263f092eda",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-    {
-      "type": "hysteria2",
-      "tag": "Como-@SiNAVM § 65",
-      "server": "23.132.228.217",
-      "server_port": 54562,
-      "password": "6bf726db-fb0b-405b-899a-3e263f092eda",
-      "tls": {
-        "enabled": true,
-        "server_name": "dxobg4azmk.gafnode.sbs"
-      }
-    },
-
   ],
   "route": {
     "rules": [
