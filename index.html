@@ -1,181 +1,206 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="3;url=sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#👊🏼@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
-    <title>کانفیگ ساین باکس SiNAVM</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="3;url=sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#👊🏼@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+<title>کانفیگ سینگ باکس شماره ١</title>
+<style>
+    body {
+        font-family: 'Tahoma', sans-serif;
+        text-align: center;
+        direction: rtl;
+        background: linear-gradient(135deg, #0d0d0d, #121212);
+        color: #ffffff;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+    }
 
-        body {
-            font-family: 'Tahoma', sans-serif;
-            text-align: center;
-            direction: rtl;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
 
-        .redirect-link {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00d9ff;
-            text-decoration: none;
-            transition: 0.3s;
-            display: block;
-            margin-bottom: 20px;
-        }
-        .redirect-link:hover {
-            color: #ffffff;
-            text-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
-        }
+    .header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        opacity: 0;
+        transform: translateY(-30px);
+        animation: fadeSlideIn 1s forwards;
+    }
+    .header:first-child { animation-delay: 0.2s; }
+    .header:last-child { animation-delay: 0.4s; }
+    .header a { text-decoration: none; color: #ffcc00; }
+    .header a:hover { text-decoration: underline; color: #ffd700; }
 
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            max-width: 80px;
-            margin-left: 10px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
-        }
+    .status-text {
+        font-size: 20px;
+        margin-bottom: 10px;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: slideInOnce 1s forwards 0.6s;
+    }
+    .info-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: slideInOnce 1s forwards 0.8s;
+    }
 
-        .header {
-            font-size: 26px;
-            font-weight: bold;
-            color: #fff;
-        }
+    @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideInOnce {
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .header a {
-            text-decoration: none;
-            color: #ffcc00;
-        }
+    .redirect-link {
+        font-size: 22px;
+        font-weight: bold;
+        color: #00d9ff;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: slideInOnce 1s forwards 1s;
+        transition: all 0.4s ease-in-out;
+    }
+    .redirect-link:hover {
+        color: #ffffff;
+        text-shadow: 0 0 20px rgba(0,217,255,1),0 0 40px rgba(0,136,204,0.6);
+        transform: scale(1.07) rotate(-1deg);
+    }
 
-        .header a:hover {
-            text-decoration: underline;
-            color: #ffd700;
-        }
+    .left-container {
+        position: fixed;
+        bottom: 70px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        z-index: 10;
+    }
 
-        .telegram-box {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 25px;
-            background: linear-gradient(135deg, #00d9ff, #0088cc);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
-            transition: 0.3s;
-        }
-        .telegram-box:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.9);
-        }
-        .telegram-box img {
-            width: 32px;
-            height: 32px;
-        }
+    .telegram-box, .github-box, .visit-box {
+        border-radius: 10px;
+        font-weight: bold;
+        text-align: center;
+        width: 140px;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
 
+    /* Telegram */
+    .telegram-box {
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(270deg, #00d9ff, #0088cc, #00d9ff);
+        background-size: 600% 600%;
+        color: white;
+        animation: pulseGradient 3s ease infinite;
+        box-shadow: 0 0 10px rgba(0,217,255,0.6), 0 0 20px rgba(0,136,204,0.3);
+    }
+    .telegram-box img { width: 22px; height: 22px; margin-left: 5px; }
+    .telegram-box:hover { transform: scale(1.12) rotate(-2deg); box-shadow: 0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,0.8); }
 
-        .visit-container {
-            margin-top: 30px;
-            width: 90%;
-            max-width: 400px;
-        }
-        .visit-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            margin-top: 15px;
-            font-size: 22px;
-            border-radius: 15px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), 
-                        -5px -5px 15px rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease-in-out;
-        }
-        .visit-box:hover {
-            transform: scale(1.05);
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5), 
-                        -5px -5px 20px rgba(255, 255, 255, 0.2);
-        }
+    /* Github */
+    .github-box {
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(270deg, #6e5494, #9b59b6, #6e5494);
+        background-size: 600% 600%;
+        color: white;
+        animation: pulseGradient 3s ease infinite;
+        box-shadow: 0 0 10px rgba(155,89,182,0.6),0 0 20px rgba(110,84,148,0.3);
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .github-box img { width: 22px; height: 22px; margin-left: 5px; }
+    .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,0.8); }
 
-        .footer {
-            margin-top: 30px;
-            font-size: 18px;
-        }
-        .footer a {
-            color: #00d9ff;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    /* Visit count */
+    .visit-box {
+        background: rgba(0,0,0,0.5);
+        color: white;
+        padding: 6px 12px;
+        font-size: 14px;
+        box-shadow: 0 0 5px rgba(0,255,255,0.3);
+        animation: pulseGradient 4s ease infinite;
+    }
+    .visit-box:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.7); }
+
+    @keyframes pulseGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .footer { background: rgba(0,0,0,0.7); padding: 10px; font-size: 16px; text-align: center; color: #bbb; margin-top: auto; }
+    .footer a { color: #00d9ff; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+        .redirect-link { font-size: 18px; }
+        .header { font-size: 20px; }
+        .status-text { font-size: 18px; }
+        .info-text { font-size: 14px; }
+        .telegram-box, .github-box, .visit-box { width: 120px; font-size: 13px; }
+        .telegram-box img, .github-box img { width: 18px; height: 18px; }
+    }
+    @media (max-width: 480px) {
+        body { padding: 10px; }
+        .redirect-link { font-size: 16px; }
+        .header { font-size: 18px; }
+        .status-text { font-size: 16px; }
+        .info-text { font-size: 14px; }
+        .telegram-box, .github-box, .visit-box { width: 110px; font-size: 12px; padding: 6px; }
+    }
+</style>
 </head>
 <body>
-        <div class="header">
-            کانفیگ ساین باکس 
+<div class="content">
+    <div class="header">کانال تلگرامی <a href="https://T.me/sinavm" target="_blank">SiNAVM</a></div>
+    <div class="header">کانفیگ سینگ باکس شماره ١</div>
 
-<div href class="header"> کانال تلگرامی 
- <a href="https://T.me/sinavm" target="_blank">SiNAVM</a>
-    </div>
-    
-    </div>
-    <h1>در حال انتقال کانفیگ...</h1>
-    <p>اگر انتقال خودکار انجام نشد، روی لینک زیر کلیک کنید:</p>
+    <div class="status-text">در حال انتقال کانفیگ...</div>
+    <div class="info-text">اگر بعد از ٣ ثانیه انجام نشد، روی لینک زیر کلیک کنید:</div>
+
     <a class="redirect-link" href="sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#👊🏼@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
-        ورود به پروفایل Sing-Box
+        وارد کردن دستی کانفیگ
     </a>
-    <p>یادتون نره برنامه sing-box رو نصب کرده باشید</p>
-    <div class="visit-container">
-        <div class="visit-box">
-            بازدید شما: <span id="user-visit-count">0</span>
-        </div>
-        <div class="visit-box">
-            بازدید کل: <span id="total-visit-count">...</span>
-        </div>
-    </div>
+</div>
 
-    <div class="footer">
-        طراحی توسط <a href="https://T.me/SinaVM" target="_blank">@SiNAVM</a>
-    </div>
+<div class="left-container">
     <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="Telegram Logo">
+        <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
         کانال تلگرام
     </a>
-    <script>
-        let visits = localStorage.getItem("visitCount") || 0;
-        visits++;
-        localStorage.setItem("visitCount", visits);
-        document.getElementById("user-visit-count").innerText = visits;
 
-        fetch('https://page-views.count1.workers.dev')
-            .then(response => response.text())
-            .then(data => {
-                let countElement = document.getElementById("total-visit-count");
-                if (countElement) {
-                    countElement.innerText = data;
-                } else {
-                    console.error("Error updating total visit count.");
-                }
-            })
-            .catch(error => {
-                console.error("Error fetching total visit count:", error);
-            });
-    </script>
+    <a class="github-box" href="https://github.com/sinavm" target="_blank">
+        <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="Github Logo">
+        Github
+    </a>
 
+    <div class="visit-box">بازدید کل: <span id="total-visit-count">...</span></div>
+</div>
+
+<div class="footer">
+    طراحی و توسعه توسط <a href="https://T.me/SinaVM" target="_blank">@SiNAVM</a>
+</div>
+
+<script>
+fetch('https://page-views.count1.workers.dev')
+    .then(r => r.text())
+    .then(data => { document.getElementById("total-visit-count").innerText = data; })
+    .catch(e => console.error(e));
+</script>
 </body>
 </html>
