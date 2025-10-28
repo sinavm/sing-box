@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="3;url=sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#🌹@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
-<title>کانفیگ سینگ باکس گُل🌹</title>
+<meta http-equiv="refresh" content="3;url=sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#🫂@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+<title>کانفیگ سینگ باکس بغل🫂</title>
 <style>
     body {
         font-family: 'Tahoma', sans-serif;
@@ -82,7 +82,7 @@
 
     .left-container {
         position: fixed;
-        bottom: 70px;
+        bottom: 140px;
         left: 10px;
         display: flex;
         flex-direction: column;
@@ -100,7 +100,6 @@
         transition: all 0.3s ease;
     }
 
-    /* Telegram */
     .telegram-box {
         display: flex; align-items: center; justify-content: center;
         background: linear-gradient(270deg, #00d9ff, #0088cc, #00d9ff);
@@ -124,7 +123,7 @@
         text-decoration: none;
     }
     .github-box img { width: 22px; height: 22px; margin-left: 5px; }
-    .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,0.8); }
+    .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1), 0 0 50px rgba(110,84,148,0.8); }
 
     /* Visit count */
     .visit-box {
@@ -143,9 +142,49 @@
         100% { background-position: 0% 50%; }
     }
 
-    .footer { background: rgba(0,0,0,0.7); padding: 10px; font-size: 16px; text-align: center; color: #bbb; margin-top: auto; }
-    .footer a { color: #00d9ff; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
+
+    .footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #ccc;
+        text-align: center;
+        padding: 15px 10px 10px;
+        background: rgba(0, 0, 0, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .footer a {
+        color: #ffcc00;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: 500;
+    }
+    .footer a:hover {
+        text-decoration: underline;
+        color: #ffd700;
+    }
+
+
+    .footer-divider {
+        width: 60px;
+        height: 1px;
+        background: #555;
+        margin: 12px auto;
+        opacity: 0.6;
+    }
+
+    .developer-credit {
+        font-size: 13px;
+        color: #aaa;
+        margin-top: 8px;
+    }
+    .developer-credit a {
+        color: #aaa;
+        font-weight: normal;
+    }
+    .developer-credit a:hover {
+        color: #ccc;
+        text-decoration: underline;
+    }
 
     @media (max-width: 768px) {
         .redirect-link { font-size: 18px; }
@@ -154,6 +193,8 @@
         .info-text { font-size: 14px; }
         .telegram-box, .github-box, .visit-box { width: 120px; font-size: 13px; }
         .telegram-box img, .github-box img { width: 18px; height: 18px; }
+        .footer { font-size: 13px; padding: 12px 8px 8px; }
+        .footer a { margin: 0 8px; }
     }
     @media (max-width: 480px) {
         body { padding: 10px; }
@@ -162,24 +203,133 @@
         .status-text { font-size: 16px; }
         .info-text { font-size: 14px; }
         .telegram-box, .github-box, .visit-box { width: 110px; font-size: 12px; padding: 6px; }
+        .footer { font-size: 12px; }
+        .footer a { margin: 0 6px; }
+    }
+
+
+    .right-container {
+        position: fixed;
+        top: 72%;
+        right: 10px;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .singbox-install-box {
+        width: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(270deg, #ff4500, #ff8c00, #ff4500);
+        background-size: 600% 600%;
+        color: white;
+        animation: pulseGradient 3s ease infinite;
+        box-shadow: 0 0 10px rgba(255,69,0,0.6), 0 0 20px rgba(255,140,0,0.3);
+        cursor: pointer;
+        position: relative;
+        border-radius: 50px;
+        font-weight: bold;
+        padding: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .singbox-install-box:hover {
+        transform: scale(1.12) rotate(-2deg);
+        box-shadow: 0 0 25px rgba(255,69,0,1), 0 0 50px rgba(255,140,0,0.8);
+    }
+
+    .singbox-install-box img {
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
+    }
+
+    .singbox-dropdown {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 1001;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .singbox-dropdown.show {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .singbox-link {
+        border-radius: 30px;
+        font-weight: bold;
+        text-align: center;
+        width: 120px;
+        padding: 10px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    .singbox-dropdown.show .singbox-link {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .singbox-link.android { 
+        background: linear-gradient(270deg, #00cc00, #009900, #00cc00); 
+        transition-delay: 0.1s;
+    }
+    .singbox-link.ios { 
+        background: linear-gradient(270deg, #1e90ff, #00b7eb, #1e90ff); 
+        transition-delay: 0.2s;
+    }
+
+    .singbox-link img { width: 15px; height: 15px; margin-left: 5px; }
+    .singbox-link:hover { 
+        transform: scale(1.12) rotate(2deg); 
+        box-shadow: 0 0 25px rgba(255,255,255,0.6); 
+    }
+
+
+    @keyframes fadeInSlide {
+        to { opacity: 1; transform: translateX(0); }
     }
 </style>
 </head>
-<body>
+<body onclick="closeDropdown(event)">
+
 <div class="content">
-    <div class="header">کانال تلگرامی <a href="https://T.me/sinavm" target="_blank">SiNAVM</a></div>
-    <div class="header">کانفیگ سینگ باکس گُل🌹</div>
+    <div class="header">کانال تلگرامی <a href="https://t.me/sinavm" target="_blank">SiNAVM</a></div>
+    <div class="header">کانفیگ سینگ باکس بغل🫂</div>
 
     <div class="status-text">در حال انتقال کانفیگ...</div>
     <div class="info-text">اگر بعد از ٣ ثانیه انجام نشد، روی لینک زیر کلیک کنید:</div>
 
-    <a class="redirect-link" href="sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#🌹@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+    <a class="redirect-link" href="sing-box://import-remote-profile?url=https://raw.githubusercontent.com/sinavm/sing-box/heads/main/@SiNAVM#🫂@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
         وارد کردن دستی کانفیگ
     </a>
 </div>
 
 <div class="left-container">
-    <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
+    <a class="telegram-box" href="https://t.me/sinavm" target="_blank">
         <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
         کانال تلگرام
     </a>
@@ -192,8 +342,33 @@
     <div class="visit-box">بازدید کل: <span id="total-visit-count">...</span></div>
 </div>
 
+<div class="right-container">
+    <div class="singbox-install-box" onclick="toggleDropdown('singboxDropdown', event)">
+        <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box Logo">
+        نصب sing-box
+    </div>
+    <div class="singbox-dropdown" id="singboxDropdown">
+        <a class="singbox-link ios" href="https://apps.apple.com/app/id6673731168">
+            <img src="https://www.apple.com/newsroom/images/logos/quick-reads-logos/Apple-App-Store.jpg.square_social.jpg" alt="iOS Logo">
+            آیفون
+        </a>
+        <a class="singbox-link android" href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa&pcampaignid=web_share">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDHvnyoyWI-FlgTfOWRoJjazD3ke1Q6hOgfQ&s" alt="Android Logo">
+            اندروید
+        </a>
+    </div>
+</div>
+
+
 <div class="footer">
-    طراحی و توسعه توسط <a href="https://T.me/SinaVM" target="_blank">@SiNAVM</a>
+    <a href="https://sinavm.github.io/sinavm/legal_pages/about.html">درباره ما</a> |
+    <a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html">سیاست حریم خصوصی</a> |
+    <a href="https://sinavm.github.io/sinavm/legal_pages/terms.html">شرایط استفاده</a>
+
+    <div class="footer-divider"></div>
+    <div class="developer-credit">
+        طراحی و توسعه توسط <a href="https://t.me/SinaVM" target="_blank">@SiNAVM</a>
+    </div>
 </div>
 
 <script>
@@ -201,6 +376,23 @@ fetch('https://page-views.count1.workers.dev')
     .then(r => r.text())
     .then(data => { document.getElementById("total-visit-count").innerText = data; })
     .catch(e => console.error(e));
+
+function toggleDropdown(id, event) {
+    event.stopPropagation();
+    const dropdown = document.getElementById(id);
+    const allDropdowns = document.querySelectorAll('.singbox-dropdown');
+    allDropdowns.forEach(link => {
+        if (link.id !== id) link.classList.remove('show');
+    });
+    dropdown.classList.toggle('show');
+}
+
+function closeDropdown(event) {
+    const dropdowns = document.querySelectorAll('.singbox-dropdown');
+    if (!event.target.closest('.singbox-install-box') && !event.target.closest('.singbox-dropdown')) {
+        dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+    }
+}
 </script>
 </body>
 </html>
