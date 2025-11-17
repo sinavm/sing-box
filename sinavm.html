@@ -3,204 +3,522 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="3;url=sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1bpZKIEX24ji69P3k3Usu1ArC5uOh9riN#5️⃣@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
-<title>کانفیگ سینگ باکس پروژه SiNAVM</title>
+<meta name="description" content="کانفیگ رایگان سینگ باکس، فیلترشکن‌های رایگان و اپ‌های پریمیوم مودشده، SiNAVM، سینا وی ام، @sinavm، sing box رایگان، کانفیگ sing box، ابزار جمع آوری و تبدیل کانفیگ‌های VPN، V2Ray، Hiddify، Streisand، عبور از اینترنت ملی">
+<meta name="keywords" content="SiNAVM, sinavm, @sinavm, سینا وی ام, سیناوی ام, simavm, سینگ باکس, sing box, sing-box, کانفیگ سینگ باکس, کانفیگ sing box, sing box رایگان, فیلترشکن رایگان, VPN رایگان, V2Ray, Hiddify, Streisand, Amnezia, ابزار VPN, کانفیگ VPN, اینترنت آزاد, عبور از فیلترینگ">
+<meta name="robots" content="index, follow">
+<meta name="author" content="SiNAVM">
+<meta http-equiv="refresh" content="3;url=sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1JYqzLGgsju3C5ST7kbY9JY0EqbmflXKW#❤️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+<title>کانفیگ سینگ باکس قلب❤️ | SiNAVM - فیلترشکن رایگان و کانفیگ‌های VPN</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-    body {
-        font-family: 'Tahoma', sans-serif;
-        text-align: center;
-        direction: rtl;
-        background: linear-gradient(135deg, #0d0d0d, #121212);
-        color: #ffffff;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow-x: hidden;
+    :root {
+        --primary: #00d9ff;
+        --accent: #ffcc00;
+        --bg-dark: #0a0a0a;
+        --card-bg: rgba(20,20,20,0.6);
+        --text: #f0f0f0;
+        --vip-grad: linear-gradient(135deg, #8B5CF6, #EC4899);
     }
 
-    .content {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: relative;
+    * { box-sizing: border-box; margin:0; padding:0; }
+    html, body {
+        height: 100%;
+        overflow: hidden;
     }
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        direction: rtl;
+        background: var(--bg-dark);
+        color: var(--text);
+        position: relative;
+        background-image: 
+            radial-gradient(circle at 20% 80%, rgba(0,217,255,0.15) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255,204,0,0.15) 0%, transparent 50%);
+    }
+
+    /* Animated Background Particles */
+    .particles { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+    .particle { position: absolute; background: var(--primary); border-radius:50%; opacity:0.6; animation: float 15s infinite linear; }
+    @keyframes float { 0%{transform:translateY(100vh) rotate(0deg); opacity:0;} 10%{opacity:0.6;} 90%{opacity:0.6;} 100%{transform:translateY(-100px) rotate(360deg); opacity:0;} }
+
+    .content { 
+        position: relative; 
+        z-index: 2; 
+        display:flex; 
+        flex-direction:column; 
+        align-items:center; 
+        justify-content:center; 
+        min-height:100vh; 
+        padding:20px; 
+    }
+
 
     .header {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 5px;
-        opacity: 0;
-        transform: translateY(-30px);
-        animation: fadeSlideIn 1s forwards;
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(1.8rem, 5vw, 2.8rem);
+        font-weight: 700;
+        background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 20px rgba(0,217,255,0.5);
+        margin-bottom: 8px;
+        animation: neonPulse 2s ease-in-out infinite alternate;
+        opacity:0; transform: translateY(-40px);
     }
-    .header:first-child { animation-delay: 0.2s; }
-    .header:last-child { animation-delay: 0.4s; }
-    .header a { text-decoration: none; color: #ffcc00; }
-    .header a:hover { text-decoration: underline; color: #ffd700; }
+    .header:nth-child(1) { animation: fadeInDown 1s forwards 0.3s, neonPulse 2s ease-in-out infinite alternate; }
+    .header:nth-child(2) { animation: fadeInDown 1s forwards 0.5s, neonPulse 2s ease-in-out infinite alternate 0.3s; }
+
+    @keyframes neonPulse { from { text-shadow: 0 0 20px rgba(0,217,255,0.5); } to { text-shadow: 0 0 40px rgba(0,217,255,0.8), 0 0 60px rgba(255,204,0,0.5); } }
+    @keyframes fadeInDown { to { opacity:1; transform:translateY(0); } }
 
     .status-text {
-        font-size: 20px;
-        margin-bottom: 10px;
-        opacity: 0;
-        transform: translateY(-50px);
-        animation: slideInOnce 1s forwards 0.6s;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        margin: 12px 0;
+        background: linear-gradient(90deg, #fff, var(--primary));
+        -webkit-background-clip: text; color:transparent;
+        animation: slideIn 1s forwards 0.7s;
+        opacity:0; transform: translateY(-30px);
     }
-    .info-text {
-        font-size: 16px;
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(-50px);
-        animation: slideInOnce 1s forwards 0.8s;
-    }
+    .info-text { font-size: clamp(1rem, 2.5vw, 1.2rem); margin-bottom:20px; animation: slideIn 1s forwards 0.9s; opacity:0; transform: translateY(-30px); }
 
-    @keyframes fadeSlideIn { to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideInOnce {
-        to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes slideIn { to { opacity:1; transform:translateY(0); } }
+
 
     .redirect-link {
-        font-size: 22px;
-        font-weight: bold;
-        color: #00d9ff;
+        display: inline-block;
+        font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+        font-weight: 700;
+        padding: 16px 36px;
+        margin: 20px 0;
+        background: linear-gradient(45deg, #00d9ff, #0088cc);
+        color: #fff;
+        border-radius: 50px;
         text-decoration: none;
-        display: block;
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(-50px);
-        animation: slideInOnce 1s forwards 1s;
-        transition: all 0.4s ease-in-out;
+        box-shadow: 0 0 30px rgba(0,217,255,0.6);
+        position: relative;
+        overflow: hidden;
+        animation: slideIn 1s forwards 1.1s, btnPulse 2s infinite;
+        opacity:0; transform: translateY(-30px);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+    .redirect-link::before {
+        content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.7s;
+    }
+    .redirect-link:hover::before { left:100%; }
     .redirect-link:hover {
-        color: #ffffff;
-        text-shadow: 0 0 20px rgba(0,217,255,1),0 0 40px rgba(0,136,204,0.6);
-        transform: scale(1.07) rotate(-1deg);
+        transform: translateY(-5px) scale(1.08);
+        box-shadow: 0 0 50px rgba(0,217,255,1), 0 0 80px rgba(0,136,204,0.6);
+        background: linear-gradient(45deg, #00ffff, #00b7eb);
+    }
+    @keyframes btnPulse { 0%,100% { box-shadow: 0 0 30px rgba(0,217,255,0.6); } 50% { box-shadow: 0 0 50px rgba(0,217,255,1); } }
+
+
+    .side-panel {
+        position: fixed; z-index:10; display:flex; flex-direction:column; gap:12px; animation: floatIn 1s forwards;
+    }
+    .left-panel { left:12px; bottom:120px; animation-delay:1.3s; opacity:0; transform:translateX(-50px); }
+    .right-panel { right:12px; top:50%; transform:translateY(-50%); animation-delay:1.5s; opacity:0; transform:translateX(50px) translateY(-50%); }
+    @keyframes floatIn { to { opacity:1; transform:translateX(0) translateY(-50%); } }
+
+    .panel-btn {
+        width: 145px; padding:10px; border-radius:50px; font-weight:700; display:flex; align-items:center; justify-content:center;
+        background-size: 300% 300%; animation: gradMove 4s ease infinite; color:#fff; text-decoration:none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5); transition: all 0.3s ease; position:relative; overflow:hidden;
+    }
+    .panel-btn img { width:24px; height:24px; margin-left:6px; filter: drop-shadow(0 0 5px #fff); }
+    .panel-btn:hover { transform: scale(1.15) rotate(3deg); box-shadow: 0 0 30px rgba(255,255,255,0.6); }
+
+    .telegram-btn { background: linear-gradient(45deg, #00d9ff, #0088cc, #00ffff); }
+    .github-btn   { background: linear-gradient(45deg, #9b59b6, #8e44ad, #9b59b6); }
+    .visit-btn    { background: rgba(0,0,0,0.5); font-size:14px; box-shadow:0 0 10px rgba(0,255,255,0.4); animation: gradMove 5s ease infinite; }
+    @keyframes gradMove { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+
+
+    .install-box { cursor:pointer; }
+    .dropdown {
+        position: absolute; top:100%; right:0; margin-top:8px; background:rgba(255,255,255,0.1); backdrop-filter:blur(12px);
+        border-radius:20px; padding:12px; display:none; flex-direction:column; gap:10px; box-shadow:0 0 25px rgba(0,0,0,0.5);
+        opacity:0; transform:translateY(-15px); transition:all 0.4s ease;
+    }
+    .dropdown.show { display:flex; opacity:1; transform:translateY(0); }
+    .drop-link {
+        padding:10px 16px; border-radius:30px; color:#fff; text-decoration:none; font-weight:600; display:flex; align-items:center; justify-content:center;
+        transition:all 0.3s; opacity:0; transform:translateX(20px);
+    }
+    .dropdown.show .drop-link { opacity:1; transform:translateX(0); }
+    .drop-link.android { background:linear-gradient(45deg, #00cc00, #009900); }
+    .drop-link.ios     { background:linear-gradient(45deg, #1e90ff, #00b7eb); }
+    .drop-link img { width:18px; height:18px; margin-left:6px; }
+    .drop-link:hover { transform:scale(1.1); box-shadow:0 0 20px rgba(255,255,255,0.5); }
+
+
+    .vip-section {
+        margin:50px auto; max-width:92%; background:var(--card-bg); border-radius:30px; padding:35px;
+        box-shadow:0 0 40px rgba(139,92,246,0.3); border:2px solid rgba(255,204,0,0.25); backdrop-filter:blur(20px);
+        position:relative; overflow:hidden; animation: fadeInUp 1.2s forwards 1.6s; opacity:0; transform:translateY(40px);
+    }
+    .vip-section::before {
+        content:''; position:absolute; top:0; left:0; right:0; height:5px;
+        background:linear-gradient(90deg, var(--accent), #ffd700, var(--accent)); animation:gradMove 3s ease infinite;
+    }
+    .vip-section h2 {
+        font-family:'Orbitron',sans-serif; font-size:clamp(1.8rem,4vw,2.4rem); text-align:center; margin-bottom:30px;
+        background:linear-gradient(90deg, #ffcc00, #ffd700); -webkit-background-clip:text; color:transparent;
+        position:relative;
+    }
+    .vip-section h2::after {
+        content:''; position:absolute; bottom:-12px; left:50%; transform:translateX(-50%);
+        width:120px; height:5px; background:var(--accent); border-radius:3px; box-shadow:0 0 20px rgba(255,204,0,0.7);
     }
 
-    .left-container {
-        position: fixed;
-        bottom: 70px;
-        left: 10px;
-        display: flex;
+    .vip-item { margin-bottom:22px; border-radius:25px; overflow:hidden; background:rgba(30,30,30,0.7); border:1px solid rgba(255,204,0,0.15);
+        box-shadow:0 8px 30px rgba(0,0,0,0.3); transition:transform 0.5s ease; }
+    .vip-item:hover { transform:translateY(-8px); box-shadow:0 15px 50px rgba(255,204,0,0.35); }
+
+    .vip-question {
+        padding:20px 28px; font-size:clamp(1.1rem,2.5vw,1.35rem); font-weight:700; cursor:pointer;
+        background:var(--vip-grad); color:#fff; display:flex; justify-content:space-between; align-items:center;
+        position:relative; overflow:hidden; transition:all 0.4s ease;
+    }
+    .vip-question i { font-size:22px; transition:transform 0.4s; color:#ffd700; }
+    .vip-question.open i { transform:rotate(90deg); }
+    .vip-question:hover { background:linear-gradient(135deg, #A78BFA, #EC4899); transform:scale(1.03); }
+
+    .vip-answer {
+        display:none; padding:28px; background:rgba(20,20,20,0.95); border-top:2px dashed rgba(255,204,0,0.3);
+        animation:expand 0.6s ease forwards; line-height:1.9; font-size:clamp(0.95rem,2.2vw,1.1rem);
+    }
+    .vip-answer.show { display:block; }
+    @keyframes expand { from { max-height:0; opacity:0; padding-top:0; padding-bottom:0; } to { max-height:800px; opacity:1; } }
+
+    .vip-highlight {
+        background:linear-gradient(135deg, rgba(139,92,246,0.3), rgba(236,72,153,0.2)); padding:20px; border-radius:20px;
+        margin:15px 0; border:2px dashed rgba(255,215,0,0.6); position:relative; overflow:hidden;
+        animation: vipGlow 2.5s ease infinite alternate;
+    }
+    .vip-highlight::before {
+        content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+        background:radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%); animation:spin 30s linear infinite;
+    }
+    @keyframes vipGlow { from { box-shadow:0 0 25px rgba(139,92,246,0.7); } to { box-shadow:0 0 40px rgba(236,72,153,0.5); } }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    .vip-highlight strong { color:#ffd700; font-size:1.2rem; display:block; margin-bottom:10px; text-shadow:0 0 12px rgba(255,215,0,0.6); }
+    .vip-highlight em { display:block; margin-top:14px; font-style:italic; background:rgba(255,255,255,0.12); padding:8px 12px; border-radius:12px; }
+
+    .vip-button {
+        display:inline-flex; align-items:center; justify-content:center; margin-top:5px; padding:15px 32px; border-radius:40px;
+        background:linear-gradient(135deg, #1f1f1f, #333); color:#ffd700; font-weight:700; text-decoration:none;
+        box-shadow:0 10px 30px rgba(255,204,0,0.45); position:relative; overflow:hidden; transition:all 0.4s ease;
+    }
+    .vip-button::before { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition:left 0.7s; }
+    .vip-button:hover::before { left:100%; }
+    .vip-button:hover { transform:translateY(-4px) scale(1.06); box-shadow:0 15px 40px rgba(255,204,0,0.65); background:linear-gradient(135deg, #333, #1f1f1f); }
+    .vip-button i { margin-right:12px; font-size:20px; }
+
+    /* VIP Standalone Button – حالا به عنوان تریگر برای نمایش لیست */
+    .vip-standalone {
+        margin: 45px auto 35px;
+        display: block;
+        max-width: 360px;
+        background: var(--vip-grad);
+        border-radius: 50px;
+        padding: 18px 50px;
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+        position: relative;
+        overflow: hidden;
+        animation: slideIn 1s forwards 1.2s;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.4s ease;
+        cursor: pointer;
+    }
+    .vip-standalone::before {
+        content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.7s;
+    }
+    .vip-standalone:hover::before { left: 100%; }
+    .vip-standalone:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 0 50px rgba(139, 92, 246, 1);
+        background: linear-gradient(135deg, #EC4899, #8B5CF6);
+    }
+    .vip-standalone i { margin-right: 12px; font-size: 22px; }
+
+
+    .vip-services-list {
+        display: none;
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        z-index: 10;
+        gap: 14px;
+        margin: -20px auto;
+        max-width: 380px;
+        padding: 20px;
+        background: rgba(30,30,30,0.8);
+        border-radius: 20px;
+        border: 1px dashed rgba(255,204,0,0.4);
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 0.6s ease forwards;
     }
+    .vip-services-list.show { display: flex; }
 
-    .telegram-box, .github-box, .visit-box {
-        border-radius: 10px;
-        font-weight: bold;
+    .service-item {
+        background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+        padding: 14px 18px;
+        border-radius: 16px;
+        color: #ffd700;
+        font-weight: 600;
         text-align: center;
-        width: 140px;
-        padding: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         transition: all 0.3s ease;
     }
-
-    /* Telegram */
-    .telegram-box {
-        display: flex; align-items: center; justify-content: center;
-        background: linear-gradient(270deg, #00d9ff, #0088cc, #00d9ff);
-        background-size: 600% 600%;
-        color: white;
-        animation: pulseGradient 3s ease infinite;
-        box-shadow: 0 0 10px rgba(0,217,255,0.6), 0 0 20px rgba(0,136,204,0.3);
+    .service-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+        background: linear-gradient(135deg, #2a1a1a, #3a2a2a);
     }
-    .telegram-box img { width: 22px; height: 22px; margin-left: 5px; }
-    .telegram-box:hover { transform: scale(1.12) rotate(-2deg); box-shadow: 0 0 25px rgba(0,217,255,1),0 0 50px rgba(0,136,204,0.8); }
 
-    /* Github */
-    .github-box {
-        display: flex; align-items: center; justify-content: center;
-        background: linear-gradient(270deg, #6e5494, #9b59b6, #6e5494);
-        background-size: 600% 600%;
-        color: white;
-        animation: pulseGradient 3s ease infinite;
-        box-shadow: 0 0 10px rgba(155,89,182,0.6),0 0 20px rgba(110,84,148,0.3);
-        cursor: pointer;
+
+    .install-box {
+        width: 170px !important;
+        padding: 12px 10px !important;
+    }
+
+
+    .right-panel {
+        top: auto;
+        bottom: 250px;
+        transform: translateY(0);
+    }
+    @keyframes floatIn { to { opacity:1; transform:translateX(0); } }
+
+
+    .footer {
+        margin: 40px auto 20px;
+        padding: 18px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(10,10,10,0.85), rgba(20,20,20,0.85));
+        border-top: 1px solid rgba(0,217,255,0.2);
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 -5px 20px rgba(0,217,255,0.15);
+        animation: fadeInUp 1s forwards 1.8s;
+        opacity: 0;
+        position: relative;
+        overflow: hidden;
+        max-width: 92%;
+        border-radius: 20px;
+    }
+    .footer::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 2px;
+        background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        animation: footerScan 3s linear infinite;
+    }
+    @keyframes footerScan { to { left: 100%; } }
+    .footer a {
+        color: var(--accent);
+        margin: 0 14px;
         text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
     }
-    .github-box img { width: 22px; height: 22px; margin-left: 5px; }
-    .github-box:hover { transform: scale(1.12) rotate(2deg); box-shadow: 0 0 25px rgba(155,89,182,1),0 0 50px rgba(110,84,148,0.8); }
-
-    /* Visit count */
-    .visit-box {
-        background: rgba(0,0,0,0.5);
-        color: white;
-        padding: 6px 12px;
-        font-size: 14px;
-        box-shadow: 0 0 5px rgba(0,255,255,0.3);
-        animation: pulseGradient 4s ease infinite;
+    .footer a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px; left: 0;
+        width: 0; height: 2px;
+        background: var(--primary);
+        transition: width 0.4s ease;
     }
-    .visit-box:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(0,255,255,0.7); }
-
-    @keyframes pulseGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    .footer a:hover { color: #ffd700; }
+    .footer a:hover::after { width: 100%; }
+    .footer .footer-divider {
+        width: 120px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,204,0,0.6), transparent);
+        margin: 14px auto;
+        box-shadow: 0 0 8px rgba(255,204,0,0.4);
     }
-
-    .footer { background: rgba(0,0,0,0.7); padding: 10px; font-size: 16px; text-align: center; color: #bbb; margin-top: auto; }
-    .footer a { color: #00d9ff; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
-
-    @media (max-width: 768px) {
-        .redirect-link { font-size: 18px; }
-        .header { font-size: 20px; }
-        .status-text { font-size: 18px; }
-        .info-text { font-size: 14px; }
-        .telegram-box, .github-box, .visit-box { width: 120px; font-size: 13px; }
-        .telegram-box img, .github-box img { width: 18px; height: 18px; }
+    .footer .developer-credit {
+        font-size: 0.8rem;
+        color: #aaa;
+        margin-top: 8px;
     }
-    @media (max-width: 480px) {
-        body { padding: 10px; }
-        .redirect-link { font-size: 16px; }
-        .header { font-size: 18px; }
-        .status-text { font-size: 16px; }
-        .info-text { font-size: 14px; }
-        .telegram-box, .github-box, .visit-box { width: 110px; font-size: 12px; padding: 6px; }
+    .footer .developer-credit a { color: #ccc; font-weight: 600; }
+    .footer .developer-credit a:hover { color: #fff; text-decoration: underline; }
+
+
+    @media (max-width:768px) {
+        .panel-btn { width:125px; font-size:13px; }
+        .panel-btn img { width:20px; height:20px; }
+        .vip-section { padding:25px; }
+        .redirect-link { padding:14px 30px; }
+        .vip-standalone { padding: 16px 40px; font-size: 1.3rem; max-width: 320px; }
+        .install-box { width: 150px !important; }
+        .footer { font-size: 0.85rem; padding: 16px; }
+        .footer a { margin: 0 10px; }
+    }
+    @media (max-width:480px) {
+        .side-panel { gap:8px; }
+        .panel-btn { width:110px; padding:8px; font-size:12px; }
+        .panel-btn img { width:18px; height:18px; }
+        .vip-question { padding:16px 20px; }
+        .vip-answer { padding:20px; }
+        .vip-standalone { padding: 14px 30px; font-size: 1.15rem; max-width: 280px; }
+        .install-box { width: 135px !important; }
+        .footer { font-size: 0.8rem; padding: 14px; }
+        .footer a { margin: 0 8px; display: block; margin-bottom: 6px; }
+        .footer a:last-child { margin-bottom: 0; }
     }
 </style>
 </head>
 <body>
+
+
+<div class="particles" id="particles"></div>
+
 <div class="content">
-    <div class="header">کانال تلگرامی <a href="https://T.me/sinavm" target="_blank">SiNAVM</a></div>
-    <div class="header">کانفیگ سینگ باکس شماره 5️⃣</div>
 
-    <div class="status-text">در حال انتقال کانفیگ...</div>
-    <div class="info-text">اگر بعد از ٣ ثانیه انجام نشد، روی لینک زیر کلیک کنید:</div>
+    <div class="header">کانال تلگرامی <a href="https://t.me/sinavm" target="_blank" style="color:transparent;">SiNAVM</a></div>
+    <div class="header">کانفیگ سینگ باکس قلب❤️</div>
 
-    <a class="redirect-link" href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1bpZKIEX24ji69P3k3Usu1ArC5uOh9riN#5️⃣@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
-        وارد کردن دستی کانفیگ
+    <div class="status-text">در حال انتقال کانفیگ به دستگاه شما...</div>
+    <div class="info-text">اگر بعد از ۳ ثانیه منتقل نشدید، روی دکمه زیر کلیک کنید:</div>
+
+    <a class="redirect-link" href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1JYqzLGgsju3C5ST7kbY9JY0EqbmflXKW#❤️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام">
+        <i class="fas fa-download"></i> وارد کردن دستی کانفیگ
     </a>
+
+
+    <div class="vip-standalone" onclick="toggleVipServices()">
+        <i class="fas fa-crown"></i> دریافت سرویس VIP
+    </div>
+
+    <!-- لیست سرویس‌های VIP – مخفی در ابتدا -->
+    <div class="vip-services-list" id="vipServicesList">
+        <div class="service-item"> سینگ باکس ، v2ray ، وایرگارد و..</div>
+        <div class="service-item">سرورها و کانفیگهای متنوع </div>
+        
+        <a href="https://t.me/sinvt" target="_blank" class="vip-button">
+            <i class="fab fa-telegram-plane"></i> ارتباط با ادمین جهت خرید
+        </a>
+    </div>
+
+
+    <div class="vip-section">
+        <h2><i class="fas fa-crown"></i> سرویس VIP SiNAVM</h2>
+
+        <div class="vip-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <div class="vip-question" onclick="toggleVip(this)" itemprop="name">
+                دریافت سرویس‌های VIP چطوره؟
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="vip-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="vip-highlight" itemprop="text">
+                    <strong>سطح حرفه‌ای اینترنت آزاد – بدون قطعی!</strong><br>
+                    • <strong>سینگ باکس:</strong> پنج پروتکل ‌وشصت سرور در یک کانفیگ<br>
+                    • <strong>V2Ray:</strong> پایداری مناسب بهمراه آپ تایم عالی  <br>
+                    • <strong>وایرگارد:</strong> با خرید یک اشتراک شش سرور دریافت کنید<br>
+                    <em>مناسب استریمرها، گیمرها و حرفه‌ای‌ها!</em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <a href="https://sinavm.github.io/sinavm/legal_pages/about.html">درباره ما</a> |
+        <a href="https://sinavm.github.io/sinavm/legal_pages/privacy.html">سیاست حریم خصوصی</a> |
+        <a href="https://sinavm.github.io/sinavm/legal_pages/terms.html">شرایط استفاده</a>
+        <div class="footer-divider"></div>
+        <div class="developer-credit">
+            توسعه توسط <a href="https://t.me/SinaVM" target="_blank">@SiNAVM</a> با ❤️ و پایتون
+        </div>
+    </div>
 </div>
 
-<div class="left-container">
-    <a class="telegram-box" href="https://T.me/sinavm" target="_blank">
-        <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram Logo">
-        کانال تلگرام
-    </a>
 
-    <a class="github-box" href="https://github.com/sinavm" target="_blank">
-        <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="Github Logo">
-        Github
+<div class="side-panel left-panel">
+    <a class="panel-btn telegram-btn" href="https://t.me/sinavm" target="_blank">
+        <img src="https://sinavm.github.io/sinavm/logo/telegram.png" alt="Telegram"> کانال تلگرام
     </a>
-
-    <div class="visit-box">بازدید کل: <span id="total-visit-count">...</span></div>
+    <a class="panel-btn github-btn" href="https://github.com/sinavm" target="_blank">
+        <img src="https://sinavm.github.io/sinavm/logo/github-mark.png" alt="GitHub"> گیت‌هاب
+    </a>
+    <div class="panel-btn visit-btn">بازدید: <span id="total-visit-count">...</span></div>
 </div>
 
-<div class="footer">
-    طراحی و توسعه توسط <a href="https://T.me/SinaVM" target="_blank">@SiNAVM</a>
+<!-- Right Panel -->
+<div class="side-panel right-panel">
+    <div class="panel-btn install-box" style="background:linear-gradient(45deg,#ff4500,#ff8c00);" onclick="toggleDrop(event)">
+        <img src="https://sinavm.github.io/sinavm/logo/singbox.png" alt="Sing-Box"> نصب Sing-Box
+    </div>
+    <div class="dropdown" id="installDrop">
+        <a class="drop-link ios" href="https://apps.apple.com/app/id6673731168">
+            <img src="https://www.apple.com/newsroom/images/logos/quick-reads-logos/Apple-App-Store.jpg.square_social.jpg" alt="iOS"> آیفون
+        </a>
+        <a class="drop-link android" href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa&pcampaignid=web_share">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Android" style="height:18px;"> اندروید
+        </a>
+    </div>
 </div>
 
 <script>
+
 fetch('https://page-views.count1.workers.dev')
-    .then(r => r.text())
-    .then(data => { document.getElementById("total-visit-count").innerText = data; })
-    .catch(e => console.error(e));
+  .then(r => r.text())
+  .then(d => document.getElementById('total-visit-count').innerText = d);
+
+
+function toggleDrop(e) {
+    e.stopPropagation();
+    const drop = document.getElementById('installDrop');
+    drop.classList.toggle('show');
+}
+document.body.onclick = e => {
+    if (!e.target.closest('.install-box') && !e.target.closest('.dropdown')) {
+        document.getElementById('installDrop').classList.remove('show');
+    }
+};
+
+
+function toggleVip(el) {
+    el.classList.toggle('open');
+    const ans = el.nextElementSibling;
+    ans.classList.toggle('show');
+}
+
+
+function toggleVipServices() {
+    const list = document.getElementById('vipServicesList');
+    list.classList.toggle('show');
+}
+
+
+const parts = document.getElementById('particles');
+for(let i=0; i<60; i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.width = p.style.height = Math.random()*6 + 3 + 'px';
+    p.style.left = Math.random()*100 + '%';
+    p.style.animationDelay = Math.random()*15 + 's';
+    p.style.animationDuration = (Math.random()*20 + 15) + 's';
+    parts.appendChild(p);
+}
 </script>
 </body>
 </html>
