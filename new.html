@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#0f172a">
     <title>SiNAVM | اتصال هوشمند</title>
     
-    <!-- Fonts & Icons -->
+
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -39,7 +39,7 @@
             position: relative;
         }
 
-        /* --- Background Aurora Effect --- */
+
         .aurora-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -64,7 +64,7 @@
             66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
-        /* --- Main Container --- */
+
         .container {
             width: 90%;
             max-width: 480px;
@@ -75,7 +75,7 @@
             gap: 24px;
         }
 
-        /* --- Glass Cards --- */
+
         .card {
             background: var(--glass);
             backdrop-filter: blur(16px);
@@ -88,7 +88,7 @@
         }
         .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); border-color: rgba(255,255,255,0.15); }
 
-        /* --- Hero Section --- */
+
         .hero { text-align: center; padding-top: 10px; }
         .brand-badge {
             display: inline-block;
@@ -113,7 +113,7 @@
         }
         .hero p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
 
-        /* --- Action Button (The Star) --- */
+
         .action-btn-wrapper { position: relative; margin: 0 auto; width: 100%; }
         .action-btn {
             display: flex;
@@ -142,7 +142,7 @@
         .action-btn:hover { transform: scale(1.02); box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.5); }
         .action-btn:hover::before { left: 100%; }
 
-        /* --- Progress Bar --- */
+
         .loader-container {
             margin-top: 15px;
             height: 4px;
@@ -160,7 +160,7 @@
         }
         @keyframes loadProgress { 0% { width: 0; } 100% { width: 100%; } }
 
-        /* --- VIP Section --- */
+
         .vip-card {
             border: 1px solid rgba(236, 72, 153, 0.3);
             background: linear-gradient(145deg, rgba(236, 72, 153, 0.05), rgba(99, 102, 241, 0.05));
@@ -193,7 +193,7 @@
             padding: 4px 10px; border-radius: 8px; margin: 2px; font-size: 0.8rem; color: var(--cyan);
         }
 
-        /* --- Grid Links --- */
+
         .grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .mini-card {
             background: var(--glass);
@@ -214,12 +214,12 @@
         .mini-card i { font-size: 1.5rem; margin-bottom: 5px; background: linear-gradient(to bottom, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .mini-card span { font-size: 0.9rem; font-weight: 500; }
         
-        /* --- Footer --- */
+
         .footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
         .footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; }
         .footer a:hover { color: var(--primary); }
 
-        /* --- Notification --- */
+
         .toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
             background: rgba(15, 23, 42, 0.9); border: 1px solid var(--primary);
@@ -235,7 +235,7 @@
 </head>
 <body>
 
-    <!-- Background Animation -->
+
     <div class="aurora-bg">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -243,7 +243,7 @@
     </div>
 
     <div class="container">
-        <!-- Hero Section -->
+
         <div class="card hero">
             <span class="brand-badge">SiNAVM PRO</span>
             <h1>اتصال ایمن و سریع</h1>
@@ -252,7 +252,7 @@
             <div class="action-btn-wrapper">
                 <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=10-GPvMurl36d7CJ9quI2WZZWUEaV-5hg#🙎🏻‍♀️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام" class="action-btn" id="mainBtn">
                     <i class="fas fa-bolt"></i>
-                    افزودن کانفیگ به برنامه
+                    افزودن دستی کانفیگ  
                 </a>
             </div>
 
@@ -264,7 +264,7 @@
             </div>
         </div>
 
-        <!-- VIP Services Card -->
+
         <div class="card vip-card">
             <div class="vip-header" onclick="toggleVip()">
                 <div class="vip-title">
@@ -287,7 +287,7 @@
             </div>
         </div>
 
-        <!-- Quick Links Grid -->
+
         <div class="grid-links">
             <a href="https://t.me/sinavm" target="_blank" class="mini-card">
                 <i class="fab fa-telegram-plane"></i>
@@ -299,7 +299,7 @@
             </a>
         </div>
 
-        <!-- Install App Section -->
+
         <div class="card" style="padding: 15px;">
             <div style="font-size: 0.9rem; margin-bottom: 12px; text-align: center; color: var(--text-muted);">اپلیکیشن ندارید؟ دانلود کنید:</div>
             <div class="grid-links">
@@ -314,7 +314,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
+
         <div class="footer">
             Design & Config by <a href="https://t.me/sinavm">SiNAVM</a>
             <br>
@@ -322,19 +322,18 @@
         </div>
     </div>
 
-    <!-- Toast Notification -->
+
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span>لینک کپی شد!</span>
     </div>
 
     <script>
-        // Auto Redirect Logic
+
         setTimeout(() => {
-            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=10-GPvMurl36d7CJ9quI2WZZWUEaV-5hg#🙎🏻‍♀️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام";
+            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1q1LrstTAuloTMAYqvnAdGl92Jkr9dJHh#🖤@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام";
         }, 2500);
 
-        // VIP Toggle
         function toggleVip() {
             const content = document.getElementById('vipContent');
             const icon = document.getElementById('vipIcon');
@@ -342,23 +341,21 @@
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        // Deep Link Handler for iOS
+
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         if (isIOS) {
             document.getElementById('mainBtn').addEventListener('click', (e) => {
                 setTimeout(() => {
-                    // Fallback logic if needed, currently direct link is safest
+
                 }, 1000);
             });
         }
 
-        // Visit Counter
         fetch('https://page-views.count1.workers.dev')
             .then(r => r.text())
             .then(d => document.getElementById('visit-count').innerText = 'Visits: ' + d)
             .catch(e => console.log('Counter error'));
 
-        // Prevent Right Click (Optional, adds to "App" feel)
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
