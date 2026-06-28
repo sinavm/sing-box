@@ -32,13 +32,42 @@
             color: var(--text-main);
             min-height: 100vh;
             overflow-x: hidden;
+            padding-top: 70px; /* فضای برای نوار بالا */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             position: relative;
         }
 
+        /* نوار بالای صفحه (صفحه اصلی) */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .home-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+        .home-link:hover {
+            color: var(--accent);
+        }
 
         .aurora-bg {
             position: fixed;
@@ -64,7 +93,6 @@
             66% { transform: translate(-20px, 20px) scale(0.95); }
         }
 
-
         .container {
             width: 90%;
             max-width: 480px;
@@ -74,7 +102,6 @@
             flex-direction: column;
             gap: 24px;
         }
-
 
         .card {
             background: var(--glass);
@@ -88,7 +115,7 @@
         }
         .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); border-color: rgba(255,255,255,0.15); }
 
-
+        /* بقیه استایل‌ها بدون تغییر */
         .hero { text-align: center; padding-top: 10px; }
         .brand-badge {
             display: inline-block;
@@ -112,7 +139,6 @@
             margin-bottom: 10px;
         }
         .hero p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
-
 
         .action-btn-wrapper { position: relative; margin: 0 auto; width: 100%; }
         .action-btn {
@@ -142,7 +168,6 @@
         .action-btn:hover { transform: scale(1.02); box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.5); }
         .action-btn:hover::before { left: 100%; }
 
-
         .loader-container {
             margin-top: 15px;
             height: 4px;
@@ -159,7 +184,6 @@
             border-radius: 4px;
         }
         @keyframes loadProgress { 0% { width: 0; } 100% { width: 100%; } }
-
 
         .vip-card {
             border: 1px solid rgba(236, 72, 153, 0.3);
@@ -193,7 +217,6 @@
             padding: 4px 10px; border-radius: 8px; margin: 2px; font-size: 0.8rem; color: var(--cyan);
         }
 
-
         .grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .mini-card {
             background: var(--glass);
@@ -213,12 +236,10 @@
         .mini-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
         .mini-card i { font-size: 1.5rem; margin-bottom: 5px; background: linear-gradient(to bottom, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .mini-card span { font-size: 0.9rem; font-weight: 500; }
-        
 
         .footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
         .footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; }
         .footer a:hover { color: var(--primary); }
-
 
         .toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
@@ -230,11 +251,17 @@
         }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
         .toast i { color: #4ade80; }
-
     </style>
 </head>
 <body>
 
+    <!-- نوار صفحه اصلی -->
+    <div class="top-bar">
+        <a href="https://sinavm.github.io/sinavm/" class="home-link">
+            <i class="fas fa-home"></i>
+            <span>صفحه اصلی SiNAVM</span>
+        </a>
+    </div>
 
     <div class="aurora-bg">
         <div class="orb orb-1"></div>
@@ -250,7 +277,7 @@
             <p>نسل جدید کانفیگ‌های هوشمند Sing-box</p>
             
             <div class="action-btn-wrapper">
-                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1yL4cAXmEiKyiKOo1xIiclV21ZGDbbxtf#👧@𝗦𝗶𝗡𝗔𝗩𝗠 بیاد‌ روبینا‌ امینیان" class="action-btn" id="mainBtn">
+                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1WgE51FAFNij8isRSCimtPEAUAkUdKRh_#🎂@𝗦𝗶𝗡𝗔𝗩𝗠 بیاد‌ روبینا‌ امینیان" class="action-btn" id="mainBtn">
                     <i class="fas fa-bolt"></i>
                     افزودن دستی کانفیگ  
                 </a>
@@ -263,7 +290,6 @@
                 <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> در حال ایجاد کانفیگ شما...
             </div>
         </div>
-
 
         <div class="card vip-card">
             <div class="vip-header" onclick="toggleVip()">
@@ -287,7 +313,6 @@
             </div>
         </div>
 
-
         <div class="grid-links">
             <a href="https://t.me/sinavm" target="_blank" class="mini-card">
                 <i class="fab fa-telegram-plane"></i>
@@ -298,7 +323,6 @@
                 <span>گیت‌هاب</span>
             </a>
         </div>
-
 
         <div class="card" style="padding: 15px;">
             <div style="font-size: 0.9rem; margin-bottom: 12px; text-align: center; color: var(--text-muted);">اپلیکیشن ندارید؟ دانلود کنید:</div>
@@ -314,7 +338,6 @@
             </div>
         </div>
 
-
         <div class="footer">
             Design & Config by <a href="https://t.me/sinavm">SiNAVM</a>
             <br>
@@ -322,16 +345,14 @@
         </div>
     </div>
 
-
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span>لینک کپی شد!</span>
     </div>
 
     <script>
-
         setTimeout(() => {
-            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1yL4cAXmEiKyiKOo1xIiclV21ZGDbbxtf#👧@𝗦𝗶𝗡𝗔𝗩𝗠 بیاد‌ روبینا امینیان";
+            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1WgE51FAFNij8isRSCimtPEAUAkUdKRh_#🎂@𝗦𝗶𝗡𝗔𝗩𝗠 بیاد‌ روبینا امینیان";
         }, 2500);
 
         function toggleVip() {
@@ -341,13 +362,10 @@
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         if (isIOS) {
             document.getElementById('mainBtn').addEventListener('click', (e) => {
-                setTimeout(() => {
-
-                }, 1000);
+                setTimeout(() => {}, 1000);
             });
         }
 
