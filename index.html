@@ -384,7 +384,22 @@
         function getDeepLink() {
             const baseUrl = configLinks[device] || configLinks.ios;
             // Keep exact format as original (url + #name fragment for profile name)
-            return `sing-box://import-remote-profile?url=${baseUrl}#⚽️@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
+            return `sing-box://import-remote-profile?url=${baseUrl}#🆕@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
+        }
+
+        // Open deep link via hidden iframe so the current page stays open
+        function openConfigLink() {
+            const link = getDeepLink();
+            const iframe = document.createElement('iframe');
+            iframe.style.cssText = 'display:none;width:0;height:0;border:0;';
+            iframe.src = link;
+            document.body.appendChild(iframe);
+            // Clean up iframe after a short delay
+            setTimeout(() => {
+                if (iframe && iframe.parentNode) {
+                    iframe.parentNode.removeChild(iframe);
+                }
+            }, 2000);
         }
 
         let autoCancelled = false;
@@ -395,7 +410,7 @@
             mainBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 autoCancelled = true;
-                window.location.href = getDeepLink();
+                openConfigLink();
             });
 
             // Desktop disable
@@ -414,7 +429,7 @@
                 document.visibilityState === 'visible'
             ) {
                 autoCancelled = true;
-                window.location.href = getDeepLink();
+                openConfigLink();
             }
         }, 2500);
 
