@@ -114,7 +114,6 @@
         }
         .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); border-color: rgba(255,255,255,0.15); }
 
-        /* بقیه استایل‌ها بدون تغییر */
         .hero { text-align: center; padding-top: 10px; }
         .brand-badge {
             display: inline-block;
@@ -306,22 +305,9 @@
                     <span class="vip-tag">بدون قطعی</span>
                     <span class="vip-tag">پشتیبانی ۲۴/۷</span>
                 </div>
-
-                <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <a href="https://t.me/sinvt" target="_blank" 
-                       style="flex: 1; min-width: 140px; background: rgba(236,72,153,0.12); color: #fff; padding: 11px 14px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(236,72,153,0.35); transition: all 0.2s;">
-                        <i class="fab fa-telegram-plane" style="font-size: 1.1rem;"></i> 
-                        <span>پیام به من</span>
-                    </a>
-                    <a href="https://t.me/sinavmbot" target="_blank" 
-                       style="flex: 1; min-width: 140px; background: rgba(99,102,241,0.12); color: #fff; padding: 11px 14px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(99,102,241,0.35); transition: all 0.2s;">
-                        <i class="fas fa-robot" style="font-size: 1.1rem;"></i> 
-                        <span>ربات خرید</span>
-                    </a>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.72rem; color: var(--text-muted); text-align: center;">
-                    پشتیبانی مستقیم • خرید سریع • پاسخگویی ۲۴ ساعته
-                </div>
+                <a href="https://t.me/sinvt" target="_blank" style="display: block; margin-top: 15px; color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem;">
+                    مشاهده پلن‌ها و خرید <i class="fas fa-arrow-left" style="margin-right: 5px;"></i>
+                </a>
             </div>
         </div>
 
@@ -363,15 +349,12 @@
     </div>
 
     <script>
-        // ===================== Device & State =====================
+        // ===================== Device Detection =====================
         const device = (() => {
             const ua = navigator.userAgent || '';
-            const platform = navigator.platform || '';
-            const maxTouchPoints = navigator.maxTouchPoints || 0;
             if (/Android/i.test(ua)) return 'android';
             const isIOS = /iPad|iPhone|iPod/.test(ua) || 
-                         (/Macintosh/i.test(ua) && maxTouchPoints > 1) ||
-                         (navigator.standalone !== undefined);
+                         (/Macintosh/i.test(ua) && (navigator.maxTouchPoints || 0) > 1);
             return isIOS ? 'ios' : 'desktop';
         })();
 
@@ -383,28 +366,24 @@
 
         function getDeepLink() {
             const baseUrl = configLinks[device] || configLinks.ios;
-            // Keep exact format as original (url + #name fragment for profile name)
             return `sing-box://import-remote-profile?url=${baseUrl}#🆕@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
         }
 
-        // Open deep link via hidden iframe so the current page stays open
+        // Open deep link via hidden iframe → page stays open + works better on Android
         function openConfigLink() {
             const link = getDeepLink();
             const iframe = document.createElement('iframe');
             iframe.style.cssText = 'display:none;width:0;height:0;border:0;';
             iframe.src = link;
             document.body.appendChild(iframe);
-            // Clean up iframe after a short delay
             setTimeout(() => {
-                if (iframe && iframe.parentNode) {
-                    iframe.parentNode.removeChild(iframe);
-                }
+                if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
             }, 2000);
         }
 
         let autoCancelled = false;
 
-        // ===================== Main Button (Deep Link) =====================
+        // ===================== Main Button =====================
         const mainBtn = document.getElementById('mainBtn');
         if (mainBtn) {
             mainBtn.addEventListener('click', (e) => {
@@ -413,7 +392,7 @@
                 openConfigLink();
             });
 
-            // Desktop disable
+            // Disable on desktop
             if (device === 'desktop') {
                 mainBtn.style.opacity = "0.6";
                 mainBtn.style.pointerEvents = "none";
@@ -421,13 +400,9 @@
             }
         }
 
-        // ===================== Auto Open with safeguards =====================
+        // ===================== Auto Open (works on both Android & iOS) =====================
         setTimeout(() => {
-            if (
-                !autoCancelled &&
-                device !== 'desktop' &&
-                document.visibilityState === 'visible'
-            ) {
+            if (!autoCancelled && device !== 'desktop' && document.visibilityState === 'visible') {
                 autoCancelled = true;
                 openConfigLink();
             }
@@ -442,22 +417,13 @@
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        // ===================== Visit Counter with timeout =====================
+        // ===================== Visit Counter =====================
         const visitEl = document.getElementById('visit-count');
         if (visitEl) {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
-
-            fetch('https://page-views.count1.workers.dev', { signal: controller.signal })
+            fetch('https://page-views.count1.workers.dev')
                 .then(r => r.text())
-                .then(d => {
-                    clearTimeout(timeoutId);
-                    visitEl.innerText = 'Visits: ' + d;
-                })
-                .catch(() => {
-                    clearTimeout(timeoutId);
-                    visitEl.innerText = 'Visits: --';
-                });
+                .then(d => visitEl.innerText = 'Visits: ' + d)
+                .catch(() => visitEl.innerText = 'Visits: --');
         }
 
         // Prevent right-click
