@@ -276,10 +276,10 @@
             <p>نسل جدید کانفیگ‌های هوشمند Sing-box</p>
             
             <div class="action-btn-wrapper">
-                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1BnDosiRFyxY91g7rPvAVNoNmCpIKVyOI#⚽️@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام" class="action-btn" id="mainBtn">
+                <button class="action-btn" id="mainBtn" type="button">
                     <i class="fas fa-bolt"></i>
                     افزودن دستی کانفیگ  
-                </a>
+                </button>
             </div>
 
             <div class="loader-container">
@@ -306,9 +306,22 @@
                     <span class="vip-tag">بدون قطعی</span>
                     <span class="vip-tag">پشتیبانی ۲۴/۷</span>
                 </div>
-                <a href="https://t.me/sinvt" target="_blank" style="display: block; margin-top: 15px; color: var(--accent); text-decoration: none; font-weight: 700; font-size: 0.9rem;">
-                    مشاهده پلن‌ها و خرید <i class="fas fa-arrow-left" style="margin-right: 5px;"></i>
-                </a>
+
+                <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://t.me/sinvt" target="_blank" 
+                       style="flex: 1; min-width: 140px; background: rgba(236,72,153,0.12); color: #fff; padding: 11px 14px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(236,72,153,0.35); transition: all 0.2s;">
+                        <i class="fab fa-telegram-plane" style="font-size: 1.1rem;"></i> 
+                        <span>پیام به من</span>
+                    </a>
+                    <a href="https://t.me/sinavmbot" target="_blank" 
+                       style="flex: 1; min-width: 140px; background: rgba(99,102,241,0.12); color: #fff; padding: 11px 14px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(99,102,241,0.35); transition: all 0.2s;">
+                        <i class="fas fa-robot" style="font-size: 1.1rem;"></i> 
+                        <span>ربات خرید</span>
+                    </a>
+                </div>
+                <div style="margin-top: 8px; font-size: 0.72rem; color: var(--text-muted); text-align: center;">
+                    پشتیبانی مستقیم • خرید سریع • پاسخگویی ۲۴ ساعته
+                </div>
             </div>
         </div>
 
@@ -350,29 +363,77 @@
     </div>
 
     <script>
+        // ===================== Device & State =====================
+        const device = (() => {
+            const ua = navigator.userAgent || '';
+            const platform = navigator.platform || '';
+            const maxTouchPoints = navigator.maxTouchPoints || 0;
+            if (/Android/i.test(ua)) return 'android';
+            const isIOS = /iPad|iPhone|iPod/.test(ua) || 
+                         (/Macintosh/i.test(ua) && maxTouchPoints > 1) ||
+                         (navigator.standalone !== undefined);
+            return isIOS ? 'ios' : 'desktop';
+        })();
+
+        let autoCancelled = false;
+
+        // ===================== Main Button (Deep Link) =====================
+        const mainBtn = document.getElementById('mainBtn');
+        if (mainBtn) {
+            mainBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                autoCancelled = true;
+                window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1BnDosiRFyxY91g7rPvAVNoNmCpIKVyOI#⚽️@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام";
+            });
+
+            // Desktop disable
+            if (device === 'desktop') {
+                mainBtn.style.opacity = "0.6";
+                mainBtn.style.pointerEvents = "none";
+                mainBtn.style.cursor = "not-allowed";
+            }
+        }
+
+        // ===================== Auto Open with safeguards =====================
         setTimeout(() => {
-            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1BnDosiRFyxY91g7rPvAVNoNmCpIKVyOI#⚽️@𝗦𝗶𝗡𝗔𝗩𝗠 ‌کانال تلگرام";
+            if (
+                !autoCancelled &&
+                device !== 'desktop' &&
+                document.visibilityState === 'visible'
+            ) {
+                autoCancelled = true;
+                window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1BnDosiRFyxY91g7rPvAVNoNmCpIKVyOI#⚽️@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام";
+            }
         }, 2500);
 
+        // ===================== VIP Toggle =====================
         function toggleVip() {
             const content = document.getElementById('vipContent');
             const icon = document.getElementById('vipIcon');
+            if (!content || !icon) return;
             content.classList.toggle('show');
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-            document.getElementById('mainBtn').addEventListener('click', (e) => {
-                setTimeout(() => {}, 1000);
-            });
+        // ===================== Visit Counter with timeout =====================
+        const visitEl = document.getElementById('visit-count');
+        if (visitEl) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+            fetch('https://page-views.count1.workers.dev', { signal: controller.signal })
+                .then(r => r.text())
+                .then(d => {
+                    clearTimeout(timeoutId);
+                    visitEl.innerText = 'Visits: ' + d;
+                })
+                .catch(() => {
+                    clearTimeout(timeoutId);
+                    visitEl.innerText = 'Visits: --';
+                });
         }
 
-        fetch('https://page-views.count1.workers.dev')
-            .then(r => r.text())
-            .then(d => document.getElementById('visit-count').innerText = 'Visits: ' + d)
-            .catch(e => console.log('Counter error'));
-
+        // Prevent right-click
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
