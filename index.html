@@ -1,440 +1,495 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="SiNAVM - نسل جدید اتصال آزاد. کانفیگ‌های اختصاصی Sing-box و V2Ray برای کاربران VIP و رایگان.">
-    <meta name="theme-color" content="#0f172a">
-    <title>SiNAVM | اتصال هوشمند</title>
-    
-
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-deep: #020617;
-            --primary: #6366f1;
-            --accent: #ec4899;
-            --cyan: #06b6d4;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.15);
+{
+  "log": {
+    "level": "panic",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1:443/dns-query",
+        "address_resolver": "dns_direct",
+        "strategy": "prefer_ipv4",
+        "detour": "@𝙎𝙞𝙉𝘼𝙑𝙈"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "local",
+        "strategy": "prefer_ipv4",
+        "detour": "@𝙎𝙞𝙉𝘼𝙑𝙈"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_direct"
+      }
+    ],
+    "final": "dns_proxy",
+    "independent_cache": true
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "ir.pool.ntp.org",
+    "server_port": 123,
+    "detour": "@𝙎𝙞𝙉𝘼𝙑𝙈"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "address": [
+        "172.19.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed",
+      "platform": {
+        "http_proxy": {
+          "enabled": false,
+          "server": "127.0.0.1",
+          "server_port": 20122
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-            padding-top: 70px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
+      },
+      "endpoint_independent_nat": true
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 20122,
+      "udp_fragment": true,
+      "tag": "mixed-in"
+    },
+    {
+      "type": "socks",
+      "listen": "127.0.0.1",
+      "listen_port": 20220,
+      "udp_fragment": true,
+      "tag": "socks-in"
+    },
+    {
+      "type": "http",
+      "listen": "127.0.0.1",
+      "listen_port": 20221,
+      "udp_fragment": true,
+      "tag": "http-in"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "انتخابگر دستی",
+      "outbounds": [
+        "@𝙎𝙞𝙉𝘼𝙑𝙈",
+        "FREE5-🇹🇷@SiNAVM-🇹🇷@SiNAVMکانال_تلگرامی § 0",
+        "FREE5-🇹🇷@SiNAVM § 1",
+        "FREE5-🇹🇷@SiNAVM § 2",
+        "FREE5-🇹🇷@SiNAVM § 3",
+        "FREE7-🇹🇷@SiNAVM",
+        "FREE7-🇹🇷@SiNAVM § 1",
+        "FREE7-🇹🇷@SiNAVM § 2",
+        "FREE7-🇹🇷@SiNAVM § 3",
+        "FREE2-🇹🇷 (clone) § 4",
+        "FREE2-🇹🇷 (clone) § 5",
+        "FREE2-🇹🇷 (clone) § 6",
+        "FREE2-🇹🇷 (clone) § 7"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "@𝙎𝙞𝙉𝘼𝙑𝙈",
+      "outbounds": [
+        "FREE5-🇹🇷@SiNAVM-🇹🇷@SiNAVMکانال_تلگرامی § 0",
+        "FREE5-🇹🇷@SiNAVM § 1",
+        "FREE5-🇹🇷@SiNAVM § 2",
+        "FREE5-🇹🇷@SiNAVM § 3",
+        "FREE7-🇹🇷@SiNAVM",
+        "FREE7-🇹🇷@SiNAVM § 1",
+        "FREE7-🇹🇷@SiNAVM § 2",
+        "FREE7-🇹🇷@SiNAVM § 3",
+        "FREE2-🇹🇷 (clone) § 4",
+        "FREE2-🇹🇷 (clone) § 5",
+        "FREE2-🇹🇷 (clone) § 6",
+        "FREE2-🇹🇷 (clone) § 7"
+      ],
+      "url": "https://whoer.net",
+      "interval": "3m0s",
+      "tolerance": 50,
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "vless",
+      "tag": "FREE5-🇹🇷@SiNAVM-🇹🇷@SiNAVMکانال_تلگرامی § 0",
+      "server": "198.202.211.1",
+      "server_port": 443,
+      "uuid": "e75fbda3-16f8-4016-b2ea-100b7eee50d3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm5.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 55px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm5.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE5-🇹🇷@SiNAVM § 1",
+      "server": "188.114.97.4",
+      "server_port": 443,
+      "uuid": "e75fbda3-16f8-4016-b2ea-100b7eee50d3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm5.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .home-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm5.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE5-🇹🇷@SiNAVM § 2",
+      "server": "104.26.14.85",
+      "server_port": 443,
+      "uuid": "e75fbda3-16f8-4016-b2ea-100b7eee50d3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm5.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .home-link:hover {
-            color: var(--accent);
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm5.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE5-🇹🇷@SiNAVM § 3",
+      "server": "104.26.0.7",
+      "server_port": 443,
+      "uuid": "e75fbda3-16f8-4016-b2ea-100b7eee50d3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm5.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-
-        .aurora-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-deep) 60%);
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm5.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE7-🇹🇷@SiNAVM",
+      "server": "198.202.211.1",
+      "server_port": 443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: floatOrb 20s infinite ease-in-out;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE7-🇹🇷@SiNAVM § 1",
+      "server": "104.26.14.85",
+      "server_port": 443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--primary); animation-delay: 0s; }
-        .orb-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: var(--accent); animation-delay: -5s; }
-        .orb-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: var(--cyan); opacity: 0.2; animation-delay: -10s; }
-
-        @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE7-🇹🇷@SiNAVM § 2",
+      "server": "188.114.97.4",
+      "server_port": 443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-
-        .container {
-            width: 90%;
-            max-width: 480px;
-            z-index: 10;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE7-🇹🇷@SiNAVM § 3",
+      "server": "104.26.0.7",
+      "server_port": 443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE2-🇹🇷 (clone) § 4",
+      "server": "104.26.0.7",
+      "server_port": 8443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-glow); border-color: rgba(255,255,255,0.15); }
-
-        /* بقیه استایل‌ها بدون تغییر */
-        .hero { text-align: center; padding-top: 10px; }
-        .brand-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 50px;
-            color: #818cf8;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE2-🇹🇷 (clone) § 5",
+      "server": "198.202.211.1",
+      "server_port": 8443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE2-🇹🇷 (clone) § 6",
+      "server": "104.26.14.85",
+      "server_port": 8443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .hero p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
-
-        .action-btn-wrapper { position: relative; margin: 0 auto; width: 100%; }
-        .action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 20px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.5);
-            border: 1px solid rgba(255,255,255,0.2);
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "vless",
+      "tag": "FREE2-🇹🇷 (clone) § 7",
+      "server": "188.114.97.4",
+      "server_port": 8443,
+      "uuid": "ddfd4560-61ff-4700-bb4d-61d0cdcd89f3",
+      "tls": {
+        "enabled": true,
+        "server_name": "sinavm4.soft10.ir",
+        "alpn": "http/1.1",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
         }
-        .action-btn i { margin-left: 10px; font-size: 1.4rem; }
-        .action-btn::before {
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
-        }
-        .action-btn:hover { transform: scale(1.02); box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.5); }
-        .action-btn:hover::before { left: 100%; }
-
-        .loader-container {
-            margin-top: 15px;
-            height: 4px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-        .loader-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--cyan), var(--primary));
-            animation: loadProgress 3s ease-out forwards;
-            border-radius: 4px;
-        }
-        @keyframes loadProgress { 0% { width: 0; } 100% { width: 100%; } }
-
-        .vip-card {
-            border: 1px solid rgba(236, 72, 153, 0.3);
-            background: linear-gradient(145deg, rgba(236, 72, 153, 0.05), rgba(99, 102, 241, 0.05));
-            position: relative;
-            overflow: hidden;
-        }
-        .vip-card::after {
-            content: 'PREMIUM';
-            position: absolute;
-            top: 15px; left: -30px;
-            background: var(--accent);
-            color: white;
-            font-size: 0.6rem;
-            font-weight: 800;
-            padding: 5px 30px;
-            transform: rotate(-45deg);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        .vip-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; cursor: pointer; }
-        .vip-title { font-size: 1.1rem; font-weight: 700; color: #fdfdfd; display: flex; align-items: center; gap: 10px; }
-        .vip-title i { color: #fbbf24; }
-        
-        .vip-content { 
-            max-height: 0; overflow: hidden; transition: max-height 0.5s ease; 
-            color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;
-        }
-        .vip-content.show { max-height: 200px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,0.1); }
-        .vip-tag { 
-            display: inline-block; background: rgba(255,255,255,0.05); 
-            padding: 4px 10px; border-radius: 8px; margin: 2px; font-size: 0.8rem; color: var(--cyan);
-        }
-
-        .grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .mini-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 16px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .mini-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-        .mini-card i { font-size: 1.5rem; margin-bottom: 5px; background: linear-gradient(to bottom, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .mini-card span { font-size: 0.9rem; font-weight: 500; }
-
-        .footer { text-align: center; margin-top: 20px; font-size: 0.8rem; color: rgba(255,255,255,0.3); }
-        .footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: 0.3s; }
-        .footer a:hover { color: var(--primary); }
-
-        .toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
-            background: rgba(15, 23, 42, 0.9); border: 1px solid var(--primary);
-            color: white; padding: 12px 24px; border-radius: 50px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            font-size: 0.9rem; z-index: 100; opacity: 0; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex; align-items: center; gap: 10px;
-        }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-        .toast i { color: #4ade80; }
-    </style>
-</head>
-<body>
-
-    <!-- نوار صفحه اصلی -->
-    <div class="top-bar">
-        <a href="https://sinavm.github.io/sinavm/" class="home-link">
-            <i class="fas fa-home"></i>
-            <span>صفحه اصلی SiNAVM</span>
-        </a>
-    </div>
-
-    <div class="aurora-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-
-    <div class="container">
-
-        <div class="card hero">
-            <span class="brand-badge">SiNAVM PRO</span>
-            <h1>اتصال ایمن و سریع</h1>
-            <p>نسل جدید کانفیگ‌های هوشمند Sing-box</p>
-            
-            <div class="action-btn-wrapper">
-                <button class="action-btn" id="mainBtn" type="button">
-                    <i class="fas fa-bolt"></i>
-                    افزودن دستی کانفیگ  
-                </button>
-            </div>
-
-            <div class="loader-container">
-                <div class="loader-bar"></div>
-            </div>
-            <div style="margin-top: 10px; font-size: 0.8rem; color: var(--cyan); opacity: 0.8;">
-                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> در حال ایجاد کانفیگ شما...
-            </div>
-        </div>
-
-        <div class="card vip-card">
-            <div class="vip-header" onclick="toggleVip()">
-                <div class="vip-title">
-                    <i class="fas fa-crown"></i>
-                    سرویس‌های VIP اختصاصی
-                </div>
-                <i class="fas fa-chevron-down" id="vipIcon" style="transition: 0.3s; font-size: 0.9rem;"></i>
-            </div>
-            <div class="vip-content" id="vipContent">
-                <p>با خرید اشتراک VIP به سرورهای اختصاصی و پرسرعت دسترسی پیدا کنید:</p>
-                <div style="margin: 10px 0;">
-                    <span class="vip-tag">پینگ پایین</span>
-                    <span class="vip-tag">IP ثابت</span>
-                    <span class="vip-tag">بدون قطعی</span>
-                    <span class="vip-tag">پشتیبانی ۲۴/۷</span>
-                </div>
-
-                <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <a href="https://t.me/sinvt" target="_blank" 
-                       style="flex: 1; min-width: 140px; background: rgba(236,72,153,0.12); color: #fff; padding: 11px 14px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(236,72,153,0.35); transition: all 0.2s;">
-                        <i class="fab fa-telegram-plane" style="font-size: 1.1rem;"></i> 
-                        <span>پیام به من</span>
-                    </a>
-                    <a href="https://t.me/sinavmbot" target="_blank" 
-                       style="flex: 1; min-width: 140px; background: rgba(99,102,241,0.12); color: #fff; padding: 11px 14px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 0.9rem; border: 1px solid rgba(99,102,241,0.35); transition: all 0.2s;">
-                        <i class="fas fa-robot" style="font-size: 1.1rem;"></i> 
-                        <span>ربات خرید</span>
-                    </a>
-                </div>
-                <div style="margin-top: 8px; font-size: 0.72rem; color: var(--text-muted); text-align: center;">
-                    پشتیبانی مستقیم • خرید سریع • پاسخگویی ۲۴ ساعته
-                </div>
-            </div>
-        </div>
-
-        <div class="grid-links">
-            <a href="https://t.me/sinavm" target="_blank" class="mini-card">
-                <i class="fab fa-telegram-plane"></i>
-                <span>کانال تلگرام</span>
-            </a>
-            <a href="https://github.com/sinavm" target="_blank" class="mini-card">
-                <i class="fab fa-github"></i>
-                <span>گیت‌هاب</span>
-            </a>
-        </div>
-
-        <div class="card" style="padding: 15px;">
-            <div style="font-size: 0.9rem; margin-bottom: 12px; text-align: center; color: var(--text-muted);">اپلیکیشن ندارید؟ دانلود کنید:</div>
-            <div class="grid-links">
-                <a href="https://apps.apple.com/app/id6673731168" class="mini-card" style="border-radius: 12px; padding: 10px;">
-                    <i class="fab fa-apple" style="font-size: 1.2rem;"></i>
-                    <span style="font-size: 0.8rem;">iOS</span>
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=io.nekohasekai.sfa" class="mini-card" style="border-radius: 12px; padding: 10px;">
-                    <i class="fab fa-android" style="font-size: 1.2rem; color: #3ddc84;"></i>
-                    <span style="font-size: 0.8rem;">Android</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="footer">
-            Design & Config by <a href="https://t.me/sinavm">SiNAVM</a>
-            <br>
-            <span id="visit-count" style="opacity: 0.5; font-size: 0.7rem;">Visits: Loading...</span>
-        </div>
-    </div>
-
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span>لینک کپی شد!</span>
-    </div>
-
-    <script>
-        // ===================== Device & State =====================
-        const device = (() => {
-            const ua = navigator.userAgent || '';
-            const platform = navigator.platform || '';
-            const maxTouchPoints = navigator.maxTouchPoints || 0;
-            if (/Android/i.test(ua)) return 'android';
-            const isIOS = /iPad|iPhone|iPod/.test(ua) || 
-                         (/Macintosh/i.test(ua) && maxTouchPoints > 1) ||
-                         (navigator.standalone !== undefined);
-            return isIOS ? 'ios' : 'desktop';
-        })();
-
-        let autoCancelled = false;
-
-        // ===================== Main Button (Deep Link) =====================
-        const mainBtn = document.getElementById('mainBtn');
-        if (mainBtn) {
-            mainBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                autoCancelled = true;
-                window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1BnDosiRFyxY91g7rPvAVNoNmCpIKVyOI#🆕@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام";
-            });
-
-            // Desktop disable
-            if (device === 'desktop') {
-                mainBtn.style.opacity = "0.6";
-                mainBtn.style.pointerEvents = "none";
-                mainBtn.style.cursor = "not-allowed";
-            }
-        }
-
-        // ===================== Auto Open with safeguards =====================
-        setTimeout(() => {
-            if (
-                !autoCancelled &&
-                device !== 'desktop' &&
-                document.visibilityState === 'visible'
-            ) {
-                autoCancelled = true;
-                window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1BnDosiRFyxY91g7rPvAVNoNmCpIKVyOI#🆕@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام";
-            }
-        }, 2500);
-
-        // ===================== VIP Toggle =====================
-        function toggleVip() {
-            const content = document.getElementById('vipContent');
-            const icon = document.getElementById('vipIcon');
-            if (!content || !icon) return;
-            content.classList.toggle('show');
-            icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-
-        // ===================== Visit Counter with timeout =====================
-        const visitEl = document.getElementById('visit-count');
-        if (visitEl) {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4000);
-
-            fetch('https://page-views.count1.workers.dev', { signal: controller.signal })
-                .then(r => r.text())
-                .then(d => {
-                    clearTimeout(timeoutId);
-                    visitEl.innerText = 'Visits: ' + d;
-                })
-                .catch(() => {
-                    clearTimeout(timeoutId);
-                    visitEl.innerText = 'Visits: --';
-                });
-        }
-
-        // Prevent right-click
-        document.addEventListener('contextmenu', event => event.preventDefault());
-    </script>
-</body>
-</html>
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/assignment----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM----SiNAVM",
+        "headers": {
+          "Host": "sinavm4.soft10.ir"
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "inbound": [
+          "tun-in",
+          "mixed-in",
+          "socks-in",
+          "http-in"
+        ],
+        "action": "sniff"
+      },
+      {
+        "inbound": [
+          "tun-in",
+          "mixed-in",
+          "socks-in",
+          "http-in"
+        ],
+        "action": "resolve",
+        "strategy": "ipv4_only"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "inbound": "dns-in"
+          },
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
+      },
+      {
+        "network": "tcp",
+        "port": 853,
+        "action": "reject"
+      },
+      {
+        "clash_mode": "@sinvt خرید اشتراک",
+        "outbound": "direct"
+      }
+    ],
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true,
+      "store_rdrc": true,
+      "rdrc_timeout": "168h0m0s"
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:20123",
+      "secret": "sinavm317a8047fbac2a2f0b2",
+      "default_mode": "@SiNAVM کانال تلگرام ",
+      "access_control_allow_origin": "*"
+    }
+  }
+}
