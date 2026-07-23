@@ -349,7 +349,7 @@
     </div>
 
     <script>
-        // ===================== Device Detection =====================
+
         const device = (() => {
             const ua = navigator.userAgent || '';
             if (/Android/i.test(ua)) return 'android';
@@ -358,18 +358,17 @@
             return isIOS ? 'ios' : 'desktop';
         })();
 
-        // ===================== Device-specific Config Links =====================
+
         const configLinks = {
-            android: 'https://drive.google.com/uc?id=13IF4hl7G6P7Bb4vX6QYcpACaxxZE1Yx_',
-            ios: 'https://drive.google.com/uc?id=1z5u7KsEaGcBmGGJBkKbUgdl3NqSpu4fk'
+            android: 'https://drive.google.com/uc?id=1IWR8qliMDogvpyunLW_MAOuPWlULgQgW',
+            ios: 'https://drive.google.com/uc?id=1gX88oT0tvlj5tGVnJT_Tq2fCsZEPl4G5'
         };
 
         function getDeepLink() {
             const baseUrl = configLinks[device] || configLinks.ios;
-            return `sing-box://import-remote-profile?url=${baseUrl}#🆕@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
+            return `sing-box://import-remote-profile?url=${baseUrl}#🇹🇷@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
         }
 
-        // Open deep link via hidden iframe → page stays open + works better on Android
         function openConfigLink() {
             const link = getDeepLink();
             const iframe = document.createElement('iframe');
@@ -383,7 +382,7 @@
 
         let autoCancelled = false;
 
-        // ===================== Main Button =====================
+
         const mainBtn = document.getElementById('mainBtn');
         if (mainBtn) {
             mainBtn.addEventListener('click', (e) => {
@@ -392,7 +391,6 @@
                 openConfigLink();
             });
 
-            // Disable on desktop
             if (device === 'desktop') {
                 mainBtn.style.opacity = "0.6";
                 mainBtn.style.pointerEvents = "none";
@@ -400,7 +398,6 @@
             }
         }
 
-        // ===================== Auto Open (works on both Android & iOS) =====================
         setTimeout(() => {
             if (!autoCancelled && device !== 'desktop' && document.visibilityState === 'visible') {
                 autoCancelled = true;
@@ -408,7 +405,7 @@
             }
         }, 2500);
 
-        // ===================== VIP Toggle =====================
+
         function toggleVip() {
             const content = document.getElementById('vipContent');
             const icon = document.getElementById('vipIcon');
@@ -417,7 +414,6 @@
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
 
-        // ===================== Visit Counter =====================
         const visitEl = document.getElementById('visit-count');
         if (visitEl) {
             fetch('https://page-views.count1.workers.dev')
@@ -426,7 +422,6 @@
                 .catch(() => visitEl.innerText = 'Visits: --');
         }
 
-        // Prevent right-click
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
