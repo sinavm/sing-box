@@ -444,6 +444,26 @@
     </div>
 
     <script>
+        const device = (() => {
+            const ua = navigator.userAgent;
+            if (/Android/i.test(ua)) return 'android';
+            const isIOS = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+            return isIOS ? 'ios' : 'desktop';
+        })();
+
+        const configLinks = {
+            android: 'https://drive.google.com/uc?id=1bcyaO0F3rjahiMAJI1J5n0_kGdnPK_g-',
+            ios: 'https://drive.google.com/uc?id=1orjt5FDJ_JhYVWXTooQ4iPtAoG7rcSeh'
+        };
+
+        function getDeepLink() {
+            const baseUrl = configLinks[device] || configLinks.ios;
+            return `sing-box://import-remote-profile?url=${baseUrl}#🕸️@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
+        }
+
+        const mainBtn = document.getElementById('mainBtn');
+        if (mainBtn) mainBtn.href = getDeepLink();
+
         // فعال‌سازی دکمه افزودن دستی پس از ۲٫۴ ثانیه
         window.setTimeout(() => {
             const mainBtn = document.getElementById('mainBtn');
@@ -464,9 +484,9 @@
             }
         }, 2400);
 
-        // هدایت خودکار مستقیم به Sing-box پس از ۲٫۵ ثانیه
+        // هدایت خودکار مستقیم به لینک متناسب با سیستم‌عامل پس از ۲٫۵ ثانیه
         window.setTimeout(() => {
-            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#🕸️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام";
+            window.location.href = getDeepLink();
         }, 2500);
 
         function toggleVip() {
