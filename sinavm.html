@@ -243,6 +243,18 @@
         }
         .action-btn:hover { transform: scale(1.02); box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.5); }
         .action-btn:hover::before { left: 100%; }
+        .action-btn.is-building {
+            background: linear-gradient(135deg, #475569, #64748b);
+            box-shadow: 0 10px 30px -10px rgba(100, 116, 139, 0.35);
+            cursor: wait;
+            pointer-events: none;
+        }
+        .action-btn.is-ready {
+            background: linear-gradient(135deg, #059669, #0d9488);
+            box-shadow: 0 10px 35px -10px rgba(16, 185, 129, 0.5);
+            cursor: pointer;
+            pointer-events: auto;
+        }
         .quick-actions {
             display: flex;
             gap: 10px;
@@ -370,9 +382,9 @@
             <div class="config-update-note" aria-label="زمان به‌روزرسانی کانفیگ‌ها">کانفیگ‌های این صفحه هر شش ساعت به‌روزرسانی می‌شوند.</div>
             
             <div class="action-btn-wrapper">
-                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#😎@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام" class="action-btn" id="mainBtn">
+                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#😎@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام" class="action-btn is-building" id="mainBtn" aria-disabled="true">
                     <i class="fas fa-bolt"></i>
-                    افزودن دستی کانفیگ
+                    <span id="mainBtnText">در حال ساخت کانفیگ ...</span>
                 </a>
             </div>
             <div class="quick-actions" aria-label="روش‌های دیگر دریافت کانفیگ">
@@ -388,7 +400,7 @@
                 <div class="loader-bar"></div>
             </div>
             <div style="margin-top: 10px; font-size: 0.8rem; color: var(--cyan); opacity: 0.8;">
-                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> در حال ایجاد کانفیگ شما...
+                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> <span id="configStatusText">در حال ایجاد کانفیگ شما...</span>
             </div>
         </div>
 
@@ -455,6 +467,26 @@
         const configUrl = 'https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy';
         const hiddifyDeepLink = 'hiddify://install-config?url=' +
             encodeURIComponent(configUrl) + '#' + encodeURIComponent('SiNAVM');
+
+        // پس از آماده‌سازی نمایشی، دکمه افزودن دستی فعال می‌شود.
+        window.setTimeout(() => {
+            const mainBtn = document.getElementById('mainBtn');
+            const mainBtnText = document.getElementById('mainBtnText');
+            const configStatusText = document.getElementById('configStatusText');
+            if (mainBtn && mainBtnText && configStatusText) {
+                mainBtnText.textContent = 'افزودن دستی';
+                mainBtn.classList.remove('is-building');
+                mainBtn.classList.add('is-ready');
+                mainBtn.setAttribute('aria-disabled', 'false');
+                configStatusText.textContent = 'اگر بصورت اتوماتیک کانفیگ وارد نشد روی افزودن دستی بزنید';
+                const statusIcon = configStatusText.previousElementSibling;
+                if (statusIcon) {
+                    statusIcon.classList.remove('fa-spin');
+                    statusIcon.classList.remove('fa-sync');
+                    statusIcon.classList.add('fa-circle-info');
+                }
+            }
+        }, 2400);
 
         // لینک اصلی Sing-box و لینک Hiddify با انتخاب کاربر اجرا می‌شوند.
         const copyHiddifyBtn = document.getElementById('copyHiddifyBtn');
