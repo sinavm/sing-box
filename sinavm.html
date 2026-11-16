@@ -199,7 +199,7 @@
             letter-spacing: 1px;
         }
         .hero h1 {
-            font-size: 2.1rem;
+            font-size: 1.7rem;
             font-weight: 900;
             line-height: 1.2;
             background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
@@ -401,25 +401,17 @@
             <div class="config-update-note" aria-label="زمان به‌روزرسانی کانفیگ‌ها">کانفیگ‌های این صفحه هر شش ساعت به‌روزرسانی می‌شوند.</div>
             
             <div class="action-btn-wrapper">
-                <button class="action-btn" id="mainBtn" type="button" disabled aria-describedby="configStatus">
-                    <i class="fas fa-spinner fa-spin" id="mainBtnIcon"></i>
-                    <span id="mainBtnText">در حال آماده‌سازی کانفیگ...</span>
-                </button>
-                <div class="quick-actions" aria-label="روش‌های دیگر دریافت کانفیگ">
-                    <button class="quick-action" id="hiddifyBtn" type="button" disabled>
-                        <i class="fas fa-shield-halved"></i><span>Hiddify</span>
-                    </button>
-                    <button class="quick-action" id="copyBtn" type="button" disabled>
-                        <i class="fas fa-copy"></i><span>کپی لینک</span>
-                    </button>
-                </div>
+                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#😎@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام" class="action-btn" id="mainBtn">
+                    <i class="fas fa-bolt"></i>
+                    افزودن دستی کانفیگ
+                </a>
             </div>
 
-            <div class="loader-container" id="loaderContainer">
-                <div class="loader-bar" id="loaderBar"></div>
+            <div class="loader-container">
+                <div class="loader-bar"></div>
             </div>
-            <div id="configStatus" role="status" aria-live="polite" style="margin-top: 10px; font-size: 0.82rem; color: var(--cyan); opacity: 0.9;">
-                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> در حال آماده‌سازی لینک دریافت...
+            <div style="margin-top: 10px; font-size: 0.8rem; color: var(--cyan); opacity: 0.8;">
+                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> در حال ایجاد کانفیگ شما...
             </div>
         </div>
 
@@ -483,117 +475,17 @@
     </div>
 
     <script>
+        const configDeepLink = 'sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#😎@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام';
 
-        const device = (() => {
-            const ua = navigator.userAgent '';
-            if (/Android/i.test(ua)) return 'android';
-            const isIOS = /iPad iPhone iPod/.test(ua) (/Macintosh/i.test(ua) && (navigator.maxTouchPoints 0) > 1);
-            return isIOS ? 'ios' : 'desktop';
-        })();
-
-        const configLinks = {
-            android: 'https://drive.google.com/uc?id=1yHwnUNOcCjMxvok8UHaboT0M2VM3FiNK',
-            ios: 'https://drive.google.com/uc?id=1Z9r3ctiqdg7rde4dMzm2Wm4D1KIGYDB_'
-        };
-
-        const configUrl = configLinks[device] configLinks.ios;
-        const profileName = 'SiNAVM';
-
-        function getSingBoxDeepLink() {
-            return 'sing-box://import-remote-profile?url=' +
-                encodeURIComponent(configUrl) + '#' + encodeURIComponent(profileName);
-        }
-
-        function getHiddifyDeepLink() {
-            return 'hiddify://install-config?url=' +
-                encodeURIComponent(configUrl) + '#' + encodeURIComponent(profileName);
-        }
-
-        function openApp(deepLink) {
-            window.location.href = deepLink;
-        }
-
-        const mainBtn = document.getElementById('mainBtn');
-        const mainBtnText = document.getElementById('mainBtnText');
-        const mainBtnIcon = document.getElementById('mainBtnIcon');
-        const hiddifyBtn = document.getElementById('hiddifyBtn');
-        const copyBtn = document.getElementById('copyBtn');
-        const configStatus = document.getElementById('configStatus');
-        const loaderContainer = document.getElementById('loaderContainer');
-
-        function markConfigReady() {
-            if (mainBtn) {
-                mainBtn.disabled = false;
-                mainBtn.setAttribute('aria-label', 'افزودن کانفیگ آماده به Sing-box');
-            }
-            if (mainBtnText) mainBtnText.textContent = 'کانفیگ آماده است — برای افزودن بزنید';
-            if (mainBtnIcon) {
-                mainBtnIcon.className = 'fas fa-plus-circle';
-            }
-            if (hiddifyBtn) hiddifyBtn.disabled = false;
-            if (copyBtn) copyBtn.disabled = false;
-            if (loaderContainer) loaderContainer.style.display = 'none';
-            if (configStatus) {
-                configStatus.innerHTML = '<i class="fas fa-circle-check" style="margin-left:5px;color:#4ade80;"></i> آماده شد! دکمه بزرگ برای Sing-box است. برای Hiddify یا کپی لینک از گزینه‌های کوچک استفاده کنید.';
-            }
-        }
-
-        if (mainBtn) {
-            mainBtn.addEventListener('click', () => {
-                if (mainBtn.disabled) return;
-                openApp(getSingBoxDeepLink());
-            });
-        }
-
-        if (hiddifyBtn) {
-            hiddifyBtn.addEventListener('click', () => {
-                if (hiddifyBtn.disabled) return;
-                openApp(getHiddifyDeepLink());
-            });
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            if (!toast) return;
-            const label = toast.querySelector('span');
-            if (label) label.textContent = message;
-            toast.classList.add('show');
-            window.clearTimeout(showToast.timeoutId);
-            showToast.timeoutId = window.setTimeout(() => toast.classList.remove('show'), 2600);
-        }
-
-        async function copyConfigLink() {
-            if (copyBtn.disabled) return;
-            try {
-                if (navigator.clipboard && window.isSecureContext) {
-                    await navigator.clipboard.writeText(configUrl);
-                } else {
-                    const field = document.createElement('textarea');
-                    field.value = configUrl;
-                    field.setAttribute('readonly', '');
-                    field.style.position = 'fixed';
-                    field.style.opacity = '0';
-                    document.body.appendChild(field);
-                    field.select();
-                    const copied = document.execCommand('copy');
-                    field.remove();
-                    if (!copied) throw new Error('Clipboard unavailable');
-                }
-                showToast('لینک کانفیگ کپی شد');
-            } catch (_) {
-                showToast('کپی خودکار انجام نشد. دوباره تلاش کنید');
-            }
-        }
-
-        if (copyBtn) copyBtn.addEventListener('click', copyConfigLink);
-
-        // لینک‌ها از قبل آماده‌اند. این مکث کوتاه فقط برای نمایش مرحله آماده‌سازی و راهنمایی کاربر است.
-        window.setTimeout(markConfigReady, 3000);
+        // همان روش تک‌لینکی صفحه iran.html؛ بدون تشخیص نوع دستگاه یا انتخاب چند لینک.
+        window.setTimeout(() => {
+            window.location.href = configDeepLink;
+        }, 2500);
 
         function toggleVip() {
             const content = document.getElementById('vipContent');
             const icon = document.getElementById('vipIcon');
-            if (!content !icon) return;
+            if (!content || !icon) return;
             content.classList.toggle('show');
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
