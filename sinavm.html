@@ -199,7 +199,7 @@
             letter-spacing: 1px;
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.1rem;
             font-weight: 900;
             line-height: 1.2;
             background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
@@ -208,6 +208,13 @@
             margin-bottom: 10px;
         }
         .hero p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
+        .config-update-note {
+            color: rgba(148, 163, 184, 0.78);
+            font-size: 0.72rem;
+            line-height: 1.7;
+            margin-top: -22px;
+            margin-bottom: 24px;
+        }
 
         .action-btn-wrapper { position: relative; margin: 0 auto; width: 100%; }
         .action-btn {
@@ -389,8 +396,9 @@
 
         <div class="card hero">
             <span class="brand-badge">SiNAVM PRO</span>
-            <h1>دسترسی هوشمند با SiNAVM</h1>
-            <p>پروفایل‌های آماده برای Sing-box و Hiddify</p>
+            <h1>دسترسی هوشمند با <a href="https://t.me/sinavm" target="_blank" rel="noopener noreferrer" aria-label="ورود به کانال تلگرام SiNAVM" style="color:inherit;text-decoration:none;-webkit-text-fill-color:inherit;">SiNAVM</a></h1>
+            <p>کانفیگ آماده برای Sing-box و Hiddify</p>
+            <div class="config-update-note" aria-label="زمان به‌روزرسانی کانفیگ‌ها">کانفیگ‌های این صفحه هر شش ساعت به‌روزرسانی می‌شوند.</div>
             
             <div class="action-btn-wrapper">
                 <button class="action-btn" id="mainBtn" type="button" disabled aria-describedby="configStatus">
