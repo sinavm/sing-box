@@ -234,6 +234,18 @@
         }
         .action-btn:hover { transform: scale(1.02); box-shadow: 0 20px 50px -10px rgba(236, 72, 153, 0.5); }
         .action-btn:hover::before { left: 100%; }
+        .action-btn.is-building {
+            background: linear-gradient(135deg, #475569, #64748b);
+            box-shadow: 0 10px 30px -10px rgba(100, 116, 139, 0.35);
+            cursor: wait;
+            pointer-events: none;
+        }
+        .action-btn.is-ready {
+            background: linear-gradient(135deg, #059669, #0d9488);
+            box-shadow: 0 10px 35px -10px rgba(16, 185, 129, 0.5);
+            cursor: pointer;
+            pointer-events: auto;
+        }
 
         .loader-container {
             margin-top: 15px;
@@ -357,17 +369,17 @@
             <p>نسل جدید کانفیگ‌های هوشمند Sing-box</p>
             
             <div class="action-btn-wrapper">
-                <button class="action-btn" id="mainBtn" type="button">
+                <a href="sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#🕸️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام" class="action-btn is-building" id="mainBtn" aria-disabled="true">
                     <i class="fas fa-bolt"></i>
-                    افزودن دستی کانفیگ  
-                </button>
+                    <span id="mainBtnText">در حال ساخت کانفیگ ...</span>
+                </a>
             </div>
 
             <div class="loader-container">
                 <div class="loader-bar"></div>
             </div>
             <div style="margin-top: 10px; font-size: 0.8rem; color: var(--cyan); opacity: 0.8;">
-                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> در حال ایجاد کانفیگ شما...
+                <i class="fas fa-sync fa-spin" style="margin-left:5px;"></i> <span id="configStatusText">در حال ایجاد کانفیگ شما...</span>
             </div>
         </div>
 
@@ -432,61 +444,30 @@
     </div>
 
     <script>
-
-        const device = (() => {
-            const ua = navigator.userAgent '';
-            if (/Android/i.test(ua)) return 'android';
-            const isIOS = /iPad iPhone iPod/.test(ua) (/Macintosh/i.test(ua) && (navigator.maxTouchPoints 0) > 1);
-            return isIOS ? 'ios' : 'desktop';
-        })();
-
-
-        const configLinks = {
-            android: 'https://drive.google.com/uc?id=1bcyaO0F3rjahiMAJI1J5n0_kGdnPK_g-',
-            ios: 'https://drive.google.com/uc?id=1orjt5FDJ_JhYVWXTooQ4iPtAoG7rcSeh'
-        };
-
-        function getDeepLink() {
-            const baseUrl = configLinks[device] configLinks.ios;
-            return `sing-box://import-remote-profile?url=${baseUrl}#🕊️@𝗦𝗶𝗡𝗔𝗩𝗠 کانال تلگرام`;
-        }
-
-        function openConfigLink() {
-            const link = getDeepLink();
-            const iframe = document.createElement('iframe');
-            iframe.style.cssText = 'display:none;width:0;height:0;border:0;';
-            iframe.src = link;
-            document.body.appendChild(iframe);
-            setTimeout(() => {
-                if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
-            }, 2000);
-        }
-
-        let autoCancelled = false;
-
-
-        const mainBtn = document.getElementById('mainBtn');
-        if (mainBtn) {
-            mainBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                autoCancelled = true;
-                openConfigLink();
-            });
-
-            if (device === 'desktop') {
-                mainBtn.style.opacity = "0.6";
-                mainBtn.style.pointerEvents = "none";
-                mainBtn.style.cursor = "not-allowed";
+        // فعال‌سازی دکمه افزودن دستی پس از ۲٫۴ ثانیه
+        window.setTimeout(() => {
+            const mainBtn = document.getElementById('mainBtn');
+            const mainBtnText = document.getElementById('mainBtnText');
+            const configStatusText = document.getElementById('configStatusText');
+            if (mainBtn && mainBtnText && configStatusText) {
+                mainBtnText.textContent = 'افزودن دستی';
+                mainBtn.classList.remove('is-building');
+                mainBtn.classList.add('is-ready');
+                mainBtn.setAttribute('aria-disabled', 'false');
+                configStatusText.textContent = 'اگر بصورت اتوماتیک کانفیگ وارد نشد روی افزودن دستی بزنید';
+                const statusIcon = configStatusText.previousElementSibling;
+                if (statusIcon) {
+                    statusIcon.classList.remove('fa-spin');
+                    statusIcon.classList.remove('fa-sync');
+                    statusIcon.classList.add('fa-circle-info');
+                }
             }
-        }
+        }, 2400);
 
-        setTimeout(() => {
-            if (!autoCancelled && device !== 'desktop' && document.visibilityState === 'visible') {
-                autoCancelled = true;
-                openConfigLink();
-            }
+        // هدایت خودکار مستقیم به Sing-box پس از ۲٫۵ ثانیه
+        window.setTimeout(() => {
+            window.location.href = "sing-box://import-remote-profile?url=https://drive.google.com/uc?id=1A0PFiOQ8a-Chi79BKJ-rgm-TCw3QMzfy#🕸️@𝗦𝗶𝗡𝗔𝗩𝗠 👈🏻کانال تلگرام";
         }, 2500);
-
 
         function toggleVip() {
             const content = document.getElementById('vipContent');
