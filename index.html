@@ -487,12 +487,12 @@
         // هدایت خودکار مستقیم به لینک متناسب با سیستم‌عامل پس از ۲٫۵ ثانیه
         window.setTimeout(() => {
             window.location.href = getDeepLink();
-        }, 2500);
+        }, 2400);
 
         function toggleVip() {
             const content = document.getElementById('vipContent');
             const icon = document.getElementById('vipIcon');
-            if (!content !icon) return;
+            if (!content || !icon) return;
             content.classList.toggle('show');
             icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
         }
